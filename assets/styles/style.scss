@@ -138,17 +138,7 @@ dialog::backdrop {
     line-height: 24px;
     /* 150% */
     position: relative;
-    outline: none;
-    &::after {
-        width: calc(100% + 8px);
-        height: calc(100% + 8px);
-        position: absolute;
-        transition: all 0.3s;
-        inset: -4px;
-        opacity: 0;
-        z-index: -1;
-        content: "";
-    }
+
     &.disabled,
     &:disabled {
         background: var(--Color-Primary-Gray, #d9d9e0) !important;
@@ -160,17 +150,6 @@ dialog::backdrop {
             }
         }
         cursor: not-allowed;
-    }
-    &:focus {
-        border: 3px solid rgba(255, 255, 255, 0.6);
-    }
-
-    &:hover {
-        &::after {
-            opacity: 1;
-            border-radius: 112px;
-            background: var(--Color-Primary-Dark-Blue, #161625);
-        }
     }
 }
 
@@ -444,6 +423,12 @@ dialog::backdrop {
     padding: 96px 0px;
     @media (max-width: 991.98px) {
         padding: 72px 0px;
+    }
+     @media (max-width: 767.98px) {
+        padding: 64px 0px;
+    }
+      @media (max-width: 487.98px) {
+        padding: 48px 0px;
     }
 }
 
@@ -1371,9 +1356,6 @@ dialog::backdrop {
         align-self: stretch;
         flex-wrap: wrap;
         gap: 8px;
-        opacity: 0;
-        transform: translateY(90px);
-        transition: all 0.5s ease-in-out;
         @media (max-width: 1280.98px) {
             justify-content: center;
         }
@@ -1539,7 +1521,6 @@ dialog::backdrop {
 
 .partners__triggers {
     display: flex;
-    margin-top: 24px;
     align-items: center;
     justify-content: end;
     gap: 166px;
@@ -1574,6 +1555,9 @@ dialog::backdrop {
     background: var(--Color-Primary-Gray, #d9d9e0);
     border-radius: 2px;
     overflow: hidden;
+    @media (max-width: 767.98px) {
+        display: none;
+    }
 }
 
 .pagination__thumb {
@@ -1581,6 +1565,7 @@ dialog::backdrop {
     top: 0;
     left: 0;
     width: 60px;
+    transition: all .5s ease;
     height: 100%;
     background: var(--Color-Primary-Dark-Blue, #161625);
     border-radius: 2px;
@@ -1589,7 +1574,7 @@ dialog::backdrop {
 /********triggers*************************/
 
 .partners-slider {
-    margin-top: 64px;
+    margin-top: 40px;
 
     &__container {
         @media (min-width: 1280px) {
@@ -1604,83 +1589,126 @@ dialog::backdrop {
 
     &__wrapper {
         display: flex;
-        align-items: center;
         gap: 24px;
+        transition: transform 0.5s ease;
+        align-items: center !important;
         height: 692px;
         padding: 24px 0px !important;
-        position: relative;
-        margin-left: -413px;
-        cursor: grab;
-        &:active {
-            cursor: grabbing;
+        @media (max-width: 767.98px) {
+            height: max-content;
         }
     }
 }
 
 .partners-slide {
     width: 389px;
+    flex: 0 1 389px;
+    z-index: 10;
     height: 586px;
     border-radius: 20px;
     flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    user-select: none;
- transition: width 0.5s ease, height 0.5s ease;
-}
 
-.partners-slide__inner {
-    width: 389px;
-    position: relative;
-    height: 586px;
-    
+    overflow: hidden;
+    user-select: none;
+    transition:
+        width 0.5s ease,
+        height 0.5s ease;
 }
 
 .partners-slide.active {
+    flex: 0 0 493px;
+    width: 493px;
+    height: 644px;
+    .partners-slide__image-wrapper {
+        &::after {
+            background: var(--Color-Primary-Dark-Blue, #161625);
+        }
+    }
+    .partners-slide__button {
+        background: var(--Color-Accent-Lime, #d1f55f);
+         &:hover {
+        &::after {
+            opacity: 1;
+            background-color: var(--Color-Accent-Lime, #d1f55f);
+        }
+        .button-icon::after {
+            opacity: 1;
+            background: var(--Color-Primary-Dark-Blue, #161625);
+        }
+    }
+    }
+    .partners-slide__decor {
+        svg path {
+            fill: var(--Color-Accent-Lime, #d1f55f);
+        }
+    }
+    .partners-slide__bottom {
+        background: var(--Color-Primary-Dark-Blue, #161625);
+    }
+
+    .partners-slide__text {
+        color: rgba(255, 255, 255, 0.8);
+        span {
+            font-weight: 600;
+            color: var(--Color-Accent-Lime, #d1f55f);
+        }
+    }
+    .partners-slide__user-name {
+        color: #fff;
+    }
+
+    .partners-slide__user-position {
+        color: var(--Color-Text-White-60, rgba(255, 255, 255, 0.6));
+    }
+}
+@media (max-width: 767.98px) {
    
-    width: 493px;
-    height: 644px;
-    z-index: 10;
-    .partners-slide__inner {
-    width: 493px;
-    height: 644px;
-}
-}
 
-.partners-slide.active .partners-slide__bottom {
-    
-    height: 334px;
-    max-height: 334px !important;
-    bottom: 0px;
-}
-.partners-slide.active .partners-slide__image-wrapper {
-    width: 493px;
-    height: 334px;
-}
+    .partners-slide,
+    .partners-slide.active,
+    .partners-slide.next-active {
+        flex: 0 0 100%;
+        width: 100%;
+        height: auto;
+        border-radius: 16px;
+    }
 
+    .partners-slide__image-wrapper {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16/9;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .partners-slide__bottom {
+        padding: 16px;
+    }
+}
 .partners-slide {
     position: relative;
     border-radius: 24px;
     transform-origin: center bottom;
+
     &__image-wrapper {
         position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 389px;
-        height: 305px;
-    }
-
-    &__image {
-        position: relative;
-        overflow: hidden;
-        border-radius: 24px 24px 0 0;
-        width: 100%;
-        height: 100%;
-        img {
+        height: 50%;
+        will-change: height;
+        transition: all 0.5s ease;
+        background-position: center;
+        background-size: cover;
+        &::after {
+             transition: all 0.5s ease;
+            content: "";
+            height: 12px;
             width: 100%;
-            object-fit: cover;
-            height: auto;
+            background: #fff;
+            left: 0;
+            bottom: 0;
+            position: absolute;
         }
     }
 
@@ -1689,45 +1717,48 @@ dialog::backdrop {
         z-index: 100000 !important;
         right: 22px;
         bottom: -11px;
+        transition: all 0.5s ease;
     }
 
     &__bottom {
         display: flex;
         padding: 32px;
-        height: 100%;
-        height: 311px;
         flex-direction: column;
-        border-radius: 24px;
+        border-radius: 0px 0px 24px 24px;
         background: #fff;
         box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
         backdrop-filter: blur(2px);
         justify-content: space-between;
         align-items: flex-start;
-        position: absolute;
-        top: 50%;
+        transition: all 0.5s ease;
+        height: 50%;
         width: 100%;
-        left: 0;
     }
 
     &__decor {
         margin-bottom: 16px;
+        transition: all 0.5s ease;
     }
 
     &__text {
+        transition: all 0.5s ease;
         color: var(--Color-Text-Black-80);
         height: 141px;
         max-width: 325px !important;
         span {
+            transition: all 0.5s ease;
             font-weight: 600;
         }
     }
 
     &__user-name {
+        transition: all 0.5s ease;
         margin-bottom: 4px;
         color: var(--Color-Text-Black-100, #000);
     }
 
     &__user-position {
+        transition: all 0.5s ease;
         color: var(--Color-Text-Grey-80, rgba(64, 64, 99, 0.8));
     }
 }
@@ -1771,7 +1802,7 @@ dialog::backdrop {
         margin: 0px auto;
         flex-shrink: 0;
         border-radius: 24px;
-        img {
+        video {
             max-width: 100%;
         }
     }
@@ -1984,7 +2015,6 @@ dialog::backdrop {
 .features-card-accent-buege {
     background: var(--Color-Accent-Buege, #fce6c6);
 }
-
 /*************************************/
 
 .main-services {
@@ -2254,7 +2284,7 @@ dialog::backdrop {
     // .smart-collaboration__right
 
     &__right {
-        transition: all .4s ease;
+        transition: all 0.4s ease;
         will-change: scroll-position;
         will-change: height;
         display: flex;
@@ -2861,6 +2891,9 @@ dialog::backdrop {
     }
 }
 
+
+
+
 .review-modal {
     position: fixed;
     inset: 0;
@@ -2916,4 +2949,73 @@ dialog::backdrop {
         line-height: 1;
         cursor: pointer;
     }
+}
+
+
+.video-review-modal {
+    position: fixed;
+    inset: 0;
+    display: none; /* скрыто по умолчанию */
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    max-width: 100dvw;
+    max-height: 100dvh;
+
+    &.is-active {
+        display: flex;
+
+        .text-reviews-item__more {
+            display: none;
+        }
+        .text-reviews-item__text {
+            display: block; /* убираем -webkit-box */
+            -webkit-line-clamp: unset; /* снимаем ограничение строк */
+            overflow: visible;
+            text-overflow: unset;
+            max-height: none;
+        }
+    }
+
+    &__overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        opacity: 0;
+    }
+
+    &__content {
+        position: relative;
+        background: #fff;
+        border-radius: 16px;
+        max-width: 90dvw;
+        width: 90%;
+        padding: 32px;
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    &__close {
+        position: absolute;
+        top: 12px;
+        right: 16px;
+        width: 24px;
+        height: 24px;
+        display: block;
+        background: none;
+        border: none;
+        font-size: 28px;
+        line-height: 1;
+        cursor: pointer;
+    }
+}
+
+.review-modal__inner {
+    max-width: 100%;
+}
+.review-video {
+    width: 100%;
+    max-height: calc(100dvh - 80px);
 }
