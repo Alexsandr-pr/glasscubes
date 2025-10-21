@@ -10,48 +10,49 @@
 </head>
 
 <body>
-    <div class="wrapper">
-        <header class="header">
-            <div class="header__container">
-                <a href="#" class="header__logo">
-                    <img src="./assets/images/header/logo.svg" alt="Logo">
-                </a>
-                <div class="header__right">
-                    <nav class="header__nav header-nav">
-                        <ul class="header-nav__list">
-                            <li class="header-nav_li">
-                                <a href="#" class="header-nav__link active">
-                                    <span>Pricing</span>
-                                </a>
-                            </li>
-                            <li class="header-nav_li">
-                                <a href="#" class="header-nav__link">
-                                    <span>MTD</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                    <div class="header__buttons">
-                        <button class="header__demo">
-                            View Demo
-                            <img src="./assets/images/header/play.svg" alt="play">
-                        </button>
-                        <a href="#" class="header__button auth-button">
-                            Sign In
-                        </a>
-
-                    </div>
-                </div>
-                <div class="header__right-mobile">
+    <header class="header">
+        <div class="header__container">
+            <a href="#" class="header__logo">
+                <img src="./assets/images/header/logo.svg" alt="Logo">
+            </a>
+            <div class="header__right">
+                <nav class="header__nav header-nav">
+                    <ul class="header-nav__list">
+                        <li class="header-nav__li">
+                            <a href="#" class="header-nav__link active">
+                                <span>Pricing</span>
+                            </a>
+                        </li>
+                        <li class="header-nav__li">
+                            <a href="#" class="header-nav__link">
+                                <span>MTD</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="header__buttons">
+                    <button class="header__demo">
+                        View Demo
+                        <img src="./assets/images/header/play.svg" alt="play">
+                    </button>
                     <a href="#" class="header__button auth-button">
                         Sign In
                     </a>
-                    <button class="burger-menu">
-                        <span></span>
-                    </button>
+
                 </div>
             </div>
-        </header>
+            <div class="header__right-mobile">
+                <a href="#" class="header__button auth-button">
+                    Sign In
+                </a>
+                <button class="burger-menu">
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <div class="wrapper">
+
         <main class="main">
             <section class="main__hero main-hero section">
                 <div class="main-hero__container">
@@ -125,8 +126,8 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="before-solution__right">
-                            <div class="before-solution__card">
+                        <div class="before-solution__right" data-cards>
+                            <div class="before-solution__card" data-card>
                                 <div class="before-solution__badge badge-text">
                                     01
                                 </div>
@@ -134,7 +135,7 @@
                                     Chasing clients and scattered emails <span>waste hours</span> and slow your team
                                 </p>
                             </div>
-                            <div class="before-solution__card">
+                            <div class="before-solution__card" data-card>
                                 <div class="before-solution__badge badge-text">
                                     02
                                 </div>
@@ -143,7 +144,7 @@
                                     risks.
                                 </p>
                             </div>
-                            <div class="before-solution__card">
+                            <div class="before-solution__card" data-card>
                                 <div class="before-solution__badge badge-text">
                                     03
                                 </div>
@@ -157,7 +158,7 @@
                 </div>
             </section>
 
-            <!-- <section class="main__partners partners section">
+            <section class="main__partners partners section">
                 <div class="partners__container">
                     <div class="partners__content section-content">
                         <div class="partners__header section-header">
@@ -190,19 +191,26 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="partners__swiper partners-swiper swiper">
-                            <div class="partners-swiper__wrapper swiper-wrapper">
-                                <div class="partners-swiper__slide partners-swiper-slide swiper-slide">
-                                    <div class="partners-swiper-slide__image">
-                                        <img width="389" height="305" src="./assets/images/video-review-conor.png"
-                                            alt="image">
+                    </div>
+                </div>
+
+                <div class="partners-slider__container">
+                    <div class="partners__slider partners-slider">
+                        <div class="partners-slider__wrapper" id="slider">
+                            <div class="partners-slider__slide partners-slide">
+                                <div class="partners-slide__inner">
+                                    <div class="partners-slide__image-wrapper">
+                                        <div class="partners-slide__image">
+                                            <img width="389" height="305" src="./assets/images/video-review-conor.png"
+                                                alt="image">
+                                        </div>
                                         <button
-                                            class="partners-swiper-slide__button button-icon button-icon-max button-icon-dark">
+                                            class="partners-slide__button button-icon button-icon-max button-icon-dark">
                                             <img src="./assets/icons/Play-Filled.svg" alt="Play">
                                         </button>
                                     </div>
-                                    <div class="partners-swiper-slide__bottom">
-                                        <div class="partners-swiper-slide__decor">
+                                    <div class="partners-slide__bottom">
+                                        <div class="partners-slide__decor">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="21"
                                                 viewBox="0 0 26 21" fill="none">
                                                 <path
@@ -210,15 +218,339 @@
                                                     fill="#89899E" />
                                             </svg>
                                         </div>
-                                        <p class="partners-swiper-slide__text regular-text">
+                                        <p class="partners-slide__text regular-text">
                                             We are seeing a <span>40% uptick on information being received</span>, which
                                             makes a huge difference to December and January deadlines.
                                         </p>
-                                        <div class="partners-swiper-slide__user">
-                                            <p class="partners-swiper-slide__user-name h4">
+                                        <div class="partners-slide__user">
+                                            <p class="partners-slide__user-name h4">
                                                 Conor McManus
                                             </p>
-                                            <p class="partners-swiper-slide__user-position small-text">
+                                            <p class="partners-slide__user-position small-text">
+                                                Tax Senior Manager, Menzies LLP
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="partners-slider__slide partners-slide active">
+                                <div class="partners-slide__inner">
+                                    <div class="partners-slide__image-wrapper">
+                                        <div class="partners-slide__image">
+                                            <img width="389" height="305" src="./assets/images/video-review-conor.png"
+                                                alt="image">
+                                        </div>
+                                        <button
+                                            class="partners-slide__button button-icon button-icon-max button-icon-dark">
+                                            <img src="./assets/icons/Play-Filled.svg" alt="Play">
+                                        </button>
+                                    </div>
+                                    <div class="partners-slide__bottom">
+                                        <div class="partners-slide__decor">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="21"
+                                                viewBox="0 0 26 21" fill="none">
+                                                <path
+                                                    d="M1.69405 17.6206C4.59112 16.3236 6.03966 14.3003 6.03966 11.5506C6.03966 10.3054 5.8187 9.52724 5.37677 9.21595C4.98395 8.85279 4.39471 8.67121 3.60907 8.67121C2.28329 8.67121 1.35033 8.30804 0.810199 7.58171C0.270066 6.85538 0 5.97341 0 4.9358C0 3.5869 0.392824 2.52335 1.17847 1.74514C1.96412 0.915046 3.06893 0.5 4.49292 0.5C7.93012 0.5 9.64873 2.41958 9.64873 6.25875V9.06031C9.64873 12.1732 8.91218 14.6634 7.43909 16.5311C5.96601 18.347 4.05099 19.644 1.69405 20.4222V17.6206ZM18.0453 17.6984C20.9424 16.4014 22.3909 14.404 22.3909 11.7062C22.3909 10.4092 22.17 9.60506 21.728 9.29377C21.3352 8.93061 20.746 8.74903 19.9603 8.74903C18.6346 8.74903 17.7016 8.4118 17.1615 7.73735C16.6213 7.01102 16.3513 6.12905 16.3513 5.09144C16.3513 3.74254 16.7441 2.65305 17.5297 1.82296C18.3154 0.992867 19.4202 0.577821 20.8442 0.577821C24.2814 0.577821 26 2.52335 26 6.4144V9.13813C26 14.9488 23.3484 18.7361 18.0453 20.5V17.6984Z"
+                                                    fill="#89899E" />
+                                            </svg>
+                                        </div>
+                                        <p class="partners-slide__text regular-text">
+                                            We are seeing a <span>40% uptick on information being received</span>, which
+                                            makes a huge difference to December and January deadlines.
+                                        </p>
+                                        <div class="partners-slide__user">
+                                            <p class="partners-slide__user-name h4">
+                                                Conor McManus
+                                            </p>
+                                            <p class="partners-slide__user-position small-text">
+                                                Tax Senior Manager, Menzies LLP
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="partners-slider__slide partners-slide">
+                                <div class="partners-slide__inner">
+                                    <div class="partners-slide__image-wrapper">
+                                        <div class="partners-slide__image">
+                                            <img width="389" height="305" src="./assets/images/video-review-conor.png"
+                                                alt="image">
+                                        </div>
+                                        <button
+                                            class="partners-slide__button button-icon button-icon-max button-icon-dark">
+                                            <img src="./assets/icons/Play-Filled.svg" alt="Play">
+                                        </button>
+                                    </div>
+                                    <div class="partners-slide__bottom">
+                                        <div class="partners-slide__decor">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="21"
+                                                viewBox="0 0 26 21" fill="none">
+                                                <path
+                                                    d="M1.69405 17.6206C4.59112 16.3236 6.03966 14.3003 6.03966 11.5506C6.03966 10.3054 5.8187 9.52724 5.37677 9.21595C4.98395 8.85279 4.39471 8.67121 3.60907 8.67121C2.28329 8.67121 1.35033 8.30804 0.810199 7.58171C0.270066 6.85538 0 5.97341 0 4.9358C0 3.5869 0.392824 2.52335 1.17847 1.74514C1.96412 0.915046 3.06893 0.5 4.49292 0.5C7.93012 0.5 9.64873 2.41958 9.64873 6.25875V9.06031C9.64873 12.1732 8.91218 14.6634 7.43909 16.5311C5.96601 18.347 4.05099 19.644 1.69405 20.4222V17.6206ZM18.0453 17.6984C20.9424 16.4014 22.3909 14.404 22.3909 11.7062C22.3909 10.4092 22.17 9.60506 21.728 9.29377C21.3352 8.93061 20.746 8.74903 19.9603 8.74903C18.6346 8.74903 17.7016 8.4118 17.1615 7.73735C16.6213 7.01102 16.3513 6.12905 16.3513 5.09144C16.3513 3.74254 16.7441 2.65305 17.5297 1.82296C18.3154 0.992867 19.4202 0.577821 20.8442 0.577821C24.2814 0.577821 26 2.52335 26 6.4144V9.13813C26 14.9488 23.3484 18.7361 18.0453 20.5V17.6984Z"
+                                                    fill="#89899E" />
+                                            </svg>
+                                        </div>
+                                        <p class="partners-slide__text regular-text">
+                                            We are seeing a <span>40% uptick on information being received</span>, which
+                                            makes a huge difference to December and January deadlines.
+                                        </p>
+                                        <div class="partners-slide__user">
+                                            <p class="partners-slide__user-name h4">
+                                                Conor McManus
+                                            </p>
+                                            <p class="partners-slide__user-position small-text">
+                                                Tax Senior Manager, Menzies LLP
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="partners-slider__slide partners-slide">
+                                <div class="partners-slide__inner">
+                                    <div class="partners-slide__image-wrapper">
+                                        <div class="partners-slide__image">
+                                            <img width="389" height="305" src="./assets/images/video-review-conor.png"
+                                                alt="image">
+                                        </div>
+                                        <button
+                                            class="partners-slide__button button-icon button-icon-max button-icon-dark">
+                                            <img src="./assets/icons/Play-Filled.svg" alt="Play">
+                                        </button>
+                                    </div>
+                                    <div class="partners-slide__bottom">
+                                        <div class="partners-slide__decor">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="21"
+                                                viewBox="0 0 26 21" fill="none">
+                                                <path
+                                                    d="M1.69405 17.6206C4.59112 16.3236 6.03966 14.3003 6.03966 11.5506C6.03966 10.3054 5.8187 9.52724 5.37677 9.21595C4.98395 8.85279 4.39471 8.67121 3.60907 8.67121C2.28329 8.67121 1.35033 8.30804 0.810199 7.58171C0.270066 6.85538 0 5.97341 0 4.9358C0 3.5869 0.392824 2.52335 1.17847 1.74514C1.96412 0.915046 3.06893 0.5 4.49292 0.5C7.93012 0.5 9.64873 2.41958 9.64873 6.25875V9.06031C9.64873 12.1732 8.91218 14.6634 7.43909 16.5311C5.96601 18.347 4.05099 19.644 1.69405 20.4222V17.6206ZM18.0453 17.6984C20.9424 16.4014 22.3909 14.404 22.3909 11.7062C22.3909 10.4092 22.17 9.60506 21.728 9.29377C21.3352 8.93061 20.746 8.74903 19.9603 8.74903C18.6346 8.74903 17.7016 8.4118 17.1615 7.73735C16.6213 7.01102 16.3513 6.12905 16.3513 5.09144C16.3513 3.74254 16.7441 2.65305 17.5297 1.82296C18.3154 0.992867 19.4202 0.577821 20.8442 0.577821C24.2814 0.577821 26 2.52335 26 6.4144V9.13813C26 14.9488 23.3484 18.7361 18.0453 20.5V17.6984Z"
+                                                    fill="#89899E" />
+                                            </svg>
+                                        </div>
+                                        <p class="partners-slide__text regular-text">
+                                            We are seeing a <span>40% uptick on information being received</span>, which
+                                            makes a huge difference to December and January deadlines.
+                                        </p>
+                                        <div class="partners-slide__user">
+                                            <p class="partners-slide__user-name h4">
+                                                Conor McManus
+                                            </p>
+                                            <p class="partners-slide__user-position small-text">
+                                                Tax Senior Manager, Menzies LLP
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="partners-slider__slide partners-slide">
+                                <div class="partners-slide__inner">
+                                    <div class="partners-slide__image-wrapper">
+                                        <div class="partners-slide__image">
+                                            <img width="389" height="305" src="./assets/images/video-review-conor.png"
+                                                alt="image">
+                                        </div>
+                                        <button
+                                            class="partners-slide__button button-icon button-icon-max button-icon-dark">
+                                            <img src="./assets/icons/Play-Filled.svg" alt="Play">
+                                        </button>
+                                    </div>
+                                    <div class="partners-slide__bottom">
+                                        <div class="partners-slide__decor">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="21"
+                                                viewBox="0 0 26 21" fill="none">
+                                                <path
+                                                    d="M1.69405 17.6206C4.59112 16.3236 6.03966 14.3003 6.03966 11.5506C6.03966 10.3054 5.8187 9.52724 5.37677 9.21595C4.98395 8.85279 4.39471 8.67121 3.60907 8.67121C2.28329 8.67121 1.35033 8.30804 0.810199 7.58171C0.270066 6.85538 0 5.97341 0 4.9358C0 3.5869 0.392824 2.52335 1.17847 1.74514C1.96412 0.915046 3.06893 0.5 4.49292 0.5C7.93012 0.5 9.64873 2.41958 9.64873 6.25875V9.06031C9.64873 12.1732 8.91218 14.6634 7.43909 16.5311C5.96601 18.347 4.05099 19.644 1.69405 20.4222V17.6206ZM18.0453 17.6984C20.9424 16.4014 22.3909 14.404 22.3909 11.7062C22.3909 10.4092 22.17 9.60506 21.728 9.29377C21.3352 8.93061 20.746 8.74903 19.9603 8.74903C18.6346 8.74903 17.7016 8.4118 17.1615 7.73735C16.6213 7.01102 16.3513 6.12905 16.3513 5.09144C16.3513 3.74254 16.7441 2.65305 17.5297 1.82296C18.3154 0.992867 19.4202 0.577821 20.8442 0.577821C24.2814 0.577821 26 2.52335 26 6.4144V9.13813C26 14.9488 23.3484 18.7361 18.0453 20.5V17.6984Z"
+                                                    fill="#89899E" />
+                                            </svg>
+                                        </div>
+                                        <p class="partners-slide__text regular-text">
+                                            We are seeing a <span>40% uptick on information being received</span>, which
+                                            makes a huge difference to December and January deadlines.
+                                        </p>
+                                        <div class="partners-slide__user">
+                                            <p class="partners-slide__user-name h4">
+                                                Conor McManus
+                                            </p>
+                                            <p class="partners-slide__user-position small-text">
+                                                Tax Senior Manager, Menzies LLP
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="partners-slider__slide partners-slide">
+                                <div class="partners-slide__inner">
+                                    <div class="partners-slide__image-wrapper">
+                                        <div class="partners-slide__image">
+                                            <img width="389" height="305" src="./assets/images/video-review-conor.png"
+                                                alt="image">
+                                        </div>
+                                        <button
+                                            class="partners-slide__button button-icon button-icon-max button-icon-dark">
+                                            <img src="./assets/icons/Play-Filled.svg" alt="Play">
+                                        </button>
+                                    </div>
+                                    <div class="partners-slide__bottom">
+                                        <div class="partners-slide__decor">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="21"
+                                                viewBox="0 0 26 21" fill="none">
+                                                <path
+                                                    d="M1.69405 17.6206C4.59112 16.3236 6.03966 14.3003 6.03966 11.5506C6.03966 10.3054 5.8187 9.52724 5.37677 9.21595C4.98395 8.85279 4.39471 8.67121 3.60907 8.67121C2.28329 8.67121 1.35033 8.30804 0.810199 7.58171C0.270066 6.85538 0 5.97341 0 4.9358C0 3.5869 0.392824 2.52335 1.17847 1.74514C1.96412 0.915046 3.06893 0.5 4.49292 0.5C7.93012 0.5 9.64873 2.41958 9.64873 6.25875V9.06031C9.64873 12.1732 8.91218 14.6634 7.43909 16.5311C5.96601 18.347 4.05099 19.644 1.69405 20.4222V17.6206ZM18.0453 17.6984C20.9424 16.4014 22.3909 14.404 22.3909 11.7062C22.3909 10.4092 22.17 9.60506 21.728 9.29377C21.3352 8.93061 20.746 8.74903 19.9603 8.74903C18.6346 8.74903 17.7016 8.4118 17.1615 7.73735C16.6213 7.01102 16.3513 6.12905 16.3513 5.09144C16.3513 3.74254 16.7441 2.65305 17.5297 1.82296C18.3154 0.992867 19.4202 0.577821 20.8442 0.577821C24.2814 0.577821 26 2.52335 26 6.4144V9.13813C26 14.9488 23.3484 18.7361 18.0453 20.5V17.6984Z"
+                                                    fill="#89899E" />
+                                            </svg>
+                                        </div>
+                                        <p class="partners-slide__text regular-text">
+                                            We are seeing a <span>40% uptick on information being received</span>, which
+                                            makes a huge difference to December and January deadlines.
+                                        </p>
+                                        <div class="partners-slide__user">
+                                            <p class="partners-slide__user-name h4">
+                                                Conor McManus
+                                            </p>
+                                            <p class="partners-slide__user-position small-text">
+                                                Tax Senior Manager, Menzies LLP
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="partners-slider__slide partners-slide">
+                                <div class="partners-slide__inner">
+                                    <div class="partners-slide__image-wrapper">
+                                        <div class="partners-slide__image">
+                                            <img width="389" height="305" src="./assets/images/video-review-conor.png"
+                                                alt="image">
+                                        </div>
+                                        <button
+                                            class="partners-slide__button button-icon button-icon-max button-icon-dark">
+                                            <img src="./assets/icons/Play-Filled.svg" alt="Play">
+                                        </button>
+                                    </div>
+                                    <div class="partners-slide__bottom">
+                                        <div class="partners-slide__decor">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="21"
+                                                viewBox="0 0 26 21" fill="none">
+                                                <path
+                                                    d="M1.69405 17.6206C4.59112 16.3236 6.03966 14.3003 6.03966 11.5506C6.03966 10.3054 5.8187 9.52724 5.37677 9.21595C4.98395 8.85279 4.39471 8.67121 3.60907 8.67121C2.28329 8.67121 1.35033 8.30804 0.810199 7.58171C0.270066 6.85538 0 5.97341 0 4.9358C0 3.5869 0.392824 2.52335 1.17847 1.74514C1.96412 0.915046 3.06893 0.5 4.49292 0.5C7.93012 0.5 9.64873 2.41958 9.64873 6.25875V9.06031C9.64873 12.1732 8.91218 14.6634 7.43909 16.5311C5.96601 18.347 4.05099 19.644 1.69405 20.4222V17.6206ZM18.0453 17.6984C20.9424 16.4014 22.3909 14.404 22.3909 11.7062C22.3909 10.4092 22.17 9.60506 21.728 9.29377C21.3352 8.93061 20.746 8.74903 19.9603 8.74903C18.6346 8.74903 17.7016 8.4118 17.1615 7.73735C16.6213 7.01102 16.3513 6.12905 16.3513 5.09144C16.3513 3.74254 16.7441 2.65305 17.5297 1.82296C18.3154 0.992867 19.4202 0.577821 20.8442 0.577821C24.2814 0.577821 26 2.52335 26 6.4144V9.13813C26 14.9488 23.3484 18.7361 18.0453 20.5V17.6984Z"
+                                                    fill="#89899E" />
+                                            </svg>
+                                        </div>
+                                        <p class="partners-slide__text regular-text">
+                                            We are seeing a <span>40% uptick on information being received</span>, which
+                                            makes a huge difference to December and January deadlines.
+                                        </p>
+                                        <div class="partners-slide__user">
+                                            <p class="partners-slide__user-name h4">
+                                                Conor McManus
+                                            </p>
+                                            <p class="partners-slide__user-position small-text">
+                                                Tax Senior Manager, Menzies LLP
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="partners-slider__slide partners-slide">
+                                <div class="partners-slide__inner">
+                                    <div class="partners-slide__image-wrapper">
+                                        <div class="partners-slide__image">
+                                            <img width="389" height="305" src="./assets/images/video-review-conor.png"
+                                                alt="image">
+                                        </div>
+                                        <button
+                                            class="partners-slide__button button-icon button-icon-max button-icon-dark">
+                                            <img src="./assets/icons/Play-Filled.svg" alt="Play">
+                                        </button>
+                                    </div>
+                                    <div class="partners-slide__bottom">
+                                        <div class="partners-slide__decor">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="21"
+                                                viewBox="0 0 26 21" fill="none">
+                                                <path
+                                                    d="M1.69405 17.6206C4.59112 16.3236 6.03966 14.3003 6.03966 11.5506C6.03966 10.3054 5.8187 9.52724 5.37677 9.21595C4.98395 8.85279 4.39471 8.67121 3.60907 8.67121C2.28329 8.67121 1.35033 8.30804 0.810199 7.58171C0.270066 6.85538 0 5.97341 0 4.9358C0 3.5869 0.392824 2.52335 1.17847 1.74514C1.96412 0.915046 3.06893 0.5 4.49292 0.5C7.93012 0.5 9.64873 2.41958 9.64873 6.25875V9.06031C9.64873 12.1732 8.91218 14.6634 7.43909 16.5311C5.96601 18.347 4.05099 19.644 1.69405 20.4222V17.6206ZM18.0453 17.6984C20.9424 16.4014 22.3909 14.404 22.3909 11.7062C22.3909 10.4092 22.17 9.60506 21.728 9.29377C21.3352 8.93061 20.746 8.74903 19.9603 8.74903C18.6346 8.74903 17.7016 8.4118 17.1615 7.73735C16.6213 7.01102 16.3513 6.12905 16.3513 5.09144C16.3513 3.74254 16.7441 2.65305 17.5297 1.82296C18.3154 0.992867 19.4202 0.577821 20.8442 0.577821C24.2814 0.577821 26 2.52335 26 6.4144V9.13813C26 14.9488 23.3484 18.7361 18.0453 20.5V17.6984Z"
+                                                    fill="#89899E" />
+                                            </svg>
+                                        </div>
+                                        <p class="partners-slide__text regular-text">
+                                            We are seeing a <span>40% uptick on information being received</span>, which
+                                            makes a huge difference to December and January deadlines.
+                                        </p>
+                                        <div class="partners-slide__user">
+                                            <p class="partners-slide__user-name h4">
+                                                Conor McManus
+                                            </p>
+                                            <p class="partners-slide__user-position small-text">
+                                                Tax Senior Manager, Menzies LLP
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="partners-slider__slide partners-slide">
+                                <div class="partners-slide__inner">
+                                    <div class="partners-slide__image-wrapper">
+                                        <div class="partners-slide__image">
+                                            <img width="389" height="305" src="./assets/images/video-review-conor.png"
+                                                alt="image">
+                                        </div>
+                                        <button
+                                            class="partners-slide__button button-icon button-icon-max button-icon-dark">
+                                            <img src="./assets/icons/Play-Filled.svg" alt="Play">
+                                        </button>
+                                    </div>
+                                    <div class="partners-slide__bottom">
+                                        <div class="partners-slide__decor">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="21"
+                                                viewBox="0 0 26 21" fill="none">
+                                                <path
+                                                    d="M1.69405 17.6206C4.59112 16.3236 6.03966 14.3003 6.03966 11.5506C6.03966 10.3054 5.8187 9.52724 5.37677 9.21595C4.98395 8.85279 4.39471 8.67121 3.60907 8.67121C2.28329 8.67121 1.35033 8.30804 0.810199 7.58171C0.270066 6.85538 0 5.97341 0 4.9358C0 3.5869 0.392824 2.52335 1.17847 1.74514C1.96412 0.915046 3.06893 0.5 4.49292 0.5C7.93012 0.5 9.64873 2.41958 9.64873 6.25875V9.06031C9.64873 12.1732 8.91218 14.6634 7.43909 16.5311C5.96601 18.347 4.05099 19.644 1.69405 20.4222V17.6206ZM18.0453 17.6984C20.9424 16.4014 22.3909 14.404 22.3909 11.7062C22.3909 10.4092 22.17 9.60506 21.728 9.29377C21.3352 8.93061 20.746 8.74903 19.9603 8.74903C18.6346 8.74903 17.7016 8.4118 17.1615 7.73735C16.6213 7.01102 16.3513 6.12905 16.3513 5.09144C16.3513 3.74254 16.7441 2.65305 17.5297 1.82296C18.3154 0.992867 19.4202 0.577821 20.8442 0.577821C24.2814 0.577821 26 2.52335 26 6.4144V9.13813C26 14.9488 23.3484 18.7361 18.0453 20.5V17.6984Z"
+                                                    fill="#89899E" />
+                                            </svg>
+                                        </div>
+                                        <p class="partners-slide__text regular-text">
+                                            We are seeing a <span>40% uptick on information being received</span>, which
+                                            makes a huge difference to December and January deadlines.
+                                        </p>
+                                        <div class="partners-slide__user">
+                                            <p class="partners-slide__user-name h4">
+                                                Conor McManus
+                                            </p>
+                                            <p class="partners-slide__user-position small-text">
+                                                Tax Senior Manager, Menzies LLP
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="partners-slider__slide partners-slide">
+                                <div class="partners-slide__inner">
+                                    <div class="partners-slide__image-wrapper">
+                                        <div class="partners-slide__image">
+                                            <img width="389" height="305" src="./assets/images/video-review-conor.png"
+                                                alt="image">
+                                        </div>
+                                        <button
+                                            class="partners-slide__button button-icon button-icon-max button-icon-dark">
+                                            <img src="./assets/icons/Play-Filled.svg" alt="Play">
+                                        </button>
+                                    </div>
+                                    <div class="partners-slide__bottom">
+                                        <div class="partners-slide__decor">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="21"
+                                                viewBox="0 0 26 21" fill="none">
+                                                <path
+                                                    d="M1.69405 17.6206C4.59112 16.3236 6.03966 14.3003 6.03966 11.5506C6.03966 10.3054 5.8187 9.52724 5.37677 9.21595C4.98395 8.85279 4.39471 8.67121 3.60907 8.67121C2.28329 8.67121 1.35033 8.30804 0.810199 7.58171C0.270066 6.85538 0 5.97341 0 4.9358C0 3.5869 0.392824 2.52335 1.17847 1.74514C1.96412 0.915046 3.06893 0.5 4.49292 0.5C7.93012 0.5 9.64873 2.41958 9.64873 6.25875V9.06031C9.64873 12.1732 8.91218 14.6634 7.43909 16.5311C5.96601 18.347 4.05099 19.644 1.69405 20.4222V17.6206ZM18.0453 17.6984C20.9424 16.4014 22.3909 14.404 22.3909 11.7062C22.3909 10.4092 22.17 9.60506 21.728 9.29377C21.3352 8.93061 20.746 8.74903 19.9603 8.74903C18.6346 8.74903 17.7016 8.4118 17.1615 7.73735C16.6213 7.01102 16.3513 6.12905 16.3513 5.09144C16.3513 3.74254 16.7441 2.65305 17.5297 1.82296C18.3154 0.992867 19.4202 0.577821 20.8442 0.577821C24.2814 0.577821 26 2.52335 26 6.4144V9.13813C26 14.9488 23.3484 18.7361 18.0453 20.5V17.6984Z"
+                                                    fill="#89899E" />
+                                            </svg>
+                                        </div>
+                                        <p class="partners-slide__text regular-text">
+                                            We are seeing a <span>40% uptick on information being received</span>, which
+                                            makes a huge difference to December and January deadlines.
+                                        </p>
+                                        <div class="partners-slide__user">
+                                            <p class="partners-slide__user-name h4">
+                                                Conor McManus
+                                            </p>
+                                            <p class="partners-slide__user-position small-text">
                                                 Tax Senior Manager, Menzies LLP
                                             </p>
                                         </div>
@@ -228,7 +560,31 @@
                         </div>
                     </div>
                 </div>
-            </section> -->
+
+                <div class="partners-bottom__container">
+                    <div class="partners__triggers partners-triggers">
+                        <div class="pagination" id="pagination">
+                            <div class="pagination__thumb" id="thumb"></div>
+                        </div>
+                        <div class="partners-triggers__buttons">
+                            <button id="prev" class="partners-trigger partners-triggers__prev  partners__prev"><svg
+                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <path
+                                        d="M4.247 12.6548C4.25625 12.6669 4.27109 12.6858 4.29188 12.7066L11.2918 19.7066C11.6815 20.096 12.3142 20.0977 12.7053 19.7073L12.7744 19.6313C13.0946 19.2385 13.071 18.659 12.7053 18.293L7.4124 13.0001L18.9989 12.9994C19.5502 12.9989 19.9988 12.5521 19.9988 11.9995L19.9932 11.8973C19.9419 11.3931 19.5159 11.0001 18.9989 10.9996L7.41309 10.9996L12.706 5.70668L12.7385 5.67146L12.8027 5.59343L12.8345 5.55062C13.0908 5.16214 13.0475 4.63424 12.706 4.29246C12.4068 3.9932 11.9655 3.92377 11.5998 4.08254L11.4479 4.16402L11.4051 4.19579L11.327 4.26001C11.3147 4.27017 11.3031 4.28117 11.2918 4.29246L4.29119 11.2931L4.2463 11.3449C4.2415 11.3511 4.2365 11.3564 4.23388 11.3601C4.23144 11.3635 4.22904 11.3677 4.22904 11.3677C4.21653 11.3828 4.20158 11.3972 4.18899 11.4146C4.18899 11.4146 4.18782 11.4177 4.18554 11.4208C4.18373 11.4233 4.18094 11.427 4.17794 11.4312C4.17171 11.4399 4.16151 11.4538 4.15101 11.4706C4.12053 11.5195 4.099 11.5677 4.09163 11.5838C4.09339 11.58 4.09508 11.5762 4.09508 11.5762C4.09508 11.5762 4.09329 11.5798 4.09232 11.5817C4.08878 11.5888 4.07793 11.6101 4.06746 11.637C4.05538 11.668 4.04796 11.6981 4.04122 11.7226L4.04053 11.7247C4.03953 11.7274 4.03573 11.7383 4.03155 11.7516L4.01567 11.8145C4.01035 11.8428 4.0063 11.8731 4.00324 11.9042L3.9984 12.0002C3.99847 12.0672 4.00616 12.1293 4.01636 12.1839C4.01767 12.1909 4.01942 12.197 4.0205 12.2018L4.0205 12.206C4.03337 12.2667 4.05127 12.3204 4.06746 12.362C4.07602 12.384 4.08459 12.4015 4.08817 12.409L4.09093 12.4131C4.10619 12.4466 4.12609 12.4876 4.15308 12.5305C4.1665 12.5519 4.17936 12.5688 4.18485 12.5761C4.18617 12.5779 4.1883 12.5809 4.1883 12.5809L4.23111 12.6334C4.23111 12.6334 4.23339 12.6377 4.23526 12.6403C4.23783 12.6439 4.2424 12.6488 4.247 12.6548ZM4.27116 12.6831C4.2694 12.6813 4.26806 12.6788 4.26633 12.6769L4.26357 12.6728L4.27116 12.6831ZM4.02257 12.215L4.02326 12.217L4.0205 12.206L4.02257 12.215ZM4.02741 11.7696C4.03178 11.7511 4.03683 11.737 4.03914 11.7302L4.04053 11.7288C4.03592 11.7459 4.02979 11.7595 4.02741 11.7696Z"
+                                        fill="white" />
+                                </svg></button>
+                            <button id="next" class="partners-trigger partners-triggers__next  partners__next"><svg
+                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <path
+                                        d="M19.7511 11.3442C19.7418 11.3322 19.727 11.3132 19.7062 11.2924L12.7062 4.29246C12.3165 3.90302 11.6838 3.90136 11.2927 4.29177L11.2236 4.36773C10.9034 4.76056 10.927 5.34005 11.2927 5.70599L16.5856 10.9989L4.99917 10.9996C4.44785 11.0001 3.99928 11.4469 3.99928 11.9995L4.00481 12.1017C4.05611 12.6059 4.48216 12.999 4.99917 12.9994H16.585L11.292 18.2923L11.2596 18.3276L11.1953 18.4056L11.1636 18.4484C10.9073 18.8369 10.9506 19.3648 11.292 19.7066C11.5913 20.0058 12.0325 20.0753 12.3982 19.9165L12.5502 19.835L12.593 19.8032L12.671 19.739C12.6833 19.7289 12.6949 19.7179 12.7062 19.7066L19.7069 12.7059L19.7517 12.6541C19.7565 12.6479 19.7615 12.6426 19.7642 12.6389C19.7666 12.6355 19.769 12.6314 19.769 12.6314C19.7815 12.6162 19.7965 12.6018 19.8091 12.5844C19.8091 12.5844 19.8102 12.5813 19.8125 12.5782C19.8143 12.5757 19.8171 12.572 19.8201 12.5678C19.8263 12.5591 19.8365 12.5453 19.847 12.5285C19.8775 12.4795 19.899 12.4313 19.9064 12.4152C19.9047 12.4191 19.903 12.4228 19.903 12.4228C19.903 12.4228 19.9048 12.4192 19.9057 12.4173C19.9093 12.4102 19.9201 12.3889 19.9306 12.362C19.9427 12.331 19.9501 12.3009 19.9568 12.2764L19.9575 12.2743C19.9585 12.2716 19.9623 12.2607 19.9665 12.2474L19.9824 12.1846C19.9877 12.1562 19.9917 12.1259 19.9948 12.0948L19.9996 11.9988C19.9996 11.9319 19.9919 11.8697 19.9817 11.8151C19.9804 11.8081 19.9786 11.8021 19.9775 11.7972V11.793C19.9647 11.7323 19.9468 11.6786 19.9306 11.637C19.922 11.615 19.9135 11.5975 19.9099 11.59L19.9071 11.5859C19.8919 11.5524 19.872 11.5115 19.845 11.4685C19.8315 11.4472 19.8187 11.4303 19.8132 11.4229C19.8119 11.4211 19.8097 11.4181 19.8097 11.4181L19.7669 11.3656C19.7669 11.3656 19.7647 11.3613 19.7628 11.3587C19.7602 11.3551 19.7556 11.3502 19.7511 11.3442ZM19.7269 11.3159C19.7287 11.3178 19.73 11.3202 19.7317 11.3221L19.7345 11.3262L19.7269 11.3159ZM19.9755 11.7841L19.9748 11.782L19.9775 11.793L19.9755 11.7841ZM19.9706 12.2295C19.9663 12.2479 19.9612 12.262 19.9589 12.2688L19.9575 12.2702C19.9621 12.2531 19.9683 12.2396 19.9706 12.2295Z"
+                                        fill="white" />
+                                </svg></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             <section class="main__hour-video hour-video section">
                 <div class="hour-video__container">
@@ -239,7 +595,7 @@
                         </div>
                         <div data-follow class="hour-video__video hour-video-video">
                             <img src="./assets/images/glasscubes.png" alt="glasscubes">
-                            <button  class="hour-video-video__button button middle button-primary-dark fixed-button">
+                            <button class="hour-video-video__button button middle button-primary-dark fixed-button">
                                 Watch 1 min Tour
                                 <span class="button-icon button-icon-accent">
                                     <img width="24" height="24" src="./assets/icons/Play.svg" alt="Arrow-Up">
@@ -251,60 +607,74 @@
             </section>
 
             <div class="main__features features section">
-                <section class="features__top features-top">
-                    <div class="features-top__container">
-                        <div class="features-top__content">
-                            <div class="features-top__left section-header">
-                                <h2 class="features-top__title h2">Supercharge Your Workflow with AI</h2>
-                                <p class="features-top__text regular-text">
-                                    Turn unstructured information into verified, financial compliance-ready records
-                                    using AI, saving hours of manual review and ensuring nothing gets missed.
-                                </p>
-                            </div>
-                            <div class="features-top__right">
-                                <img width="541" height="465" src="./assets/images/features/placeholder-1.png"
-                                    alt="Image 1">
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <div class="features__wrapper">
+                    <div class="features__list">
+                        <section class="features__card features-card">
+                            <div class="max-container">
+                                <div class="features-card__content section-padding features-card-accent">
+                                    <div class="features-card__left section-header">
 
-                <section class="features__card features-card ">
-                    <div class="max-container">
-                        <div class="features-card__content section-padding features-card-accent-light">
-                            <div class="features-card__left section-header">
+                                        <h2 class="features-card__title h2">Supercharge Your Workflow with AI</h2>
+                                        <p class="features-card__text regular-text">
+                                            Turn unstructured information into verified, financial compliance-ready
+                                            records
+                                            using AI, saving hours of manual review and ensuring nothing gets missed.
+                                        </p>
+                                    </div>
+                                    <div class="features-card__right">
+                                        <img width="596" height="512" src="./assets/images/features/placeholder-1.png"
+                                            alt="Image 1">
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
 
-                                <h2 class="features-card__title h2">Automated Reminders & Centralised Conversations</h2>
-                                <p class="features-card__text regular-text">
-                                    Schedule automated reminders for Tax, VAT, and Payroll requests. Responses are
-                                    centralised, avoiding missed updates or duplicate requests.
-                                </p>
-                            </div>
-                            <div class="features-card__right">
-                                <img width="596" height="512" src="./assets/images/features/placeholder-2.png"
-                                    alt="Image 1">
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                        <section class="features__card features-card">
+                            <div class="max-container">
+                                <div class="features-card__content section-padding features-card-accent-light">
+                                    <div class="features-card__left section-header">
 
-                <section class="features__card features-card ">
-                    <div class="max-container">
-                        <div class="features-card__content section-padding features-card-accent-buege">
-                            <div class="features-card__left section-header">
-                                <h2 class="features-card__title h2">Real-Time Reporting Across Every Engagement</h2>
-                                <p class="features-card__text regular-text">
-                                    Track client requests instantly, spot bottlenecks early and keep Tax, VAT and Audits
-                                    on track, freeing your team to focus on high-value work.
-                                </p>
+                                        <h2 class="features-card__title h2">Automated Reminders & Centralised
+                                            Conversations
+                                        </h2>
+                                        <p class="features-card__text regular-text">
+                                            Schedule automated reminders for Tax, VAT, and Payroll requests. Responses
+                                            are
+                                            centralised, avoiding missed updates or duplicate requests.
+                                        </p>
+                                    </div>
+                                    <div class="features-card__right">
+                                        <img width="596" height="512" src="./assets/images/features/placeholder-2.png"
+                                            alt="Image 1">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="features-card__right">
-                                <img width="596" height="512" src="./assets/images/features/placeholder-3.png"
-                                    alt="Image 1">
+                        </section>
+
+                        <section class="features__card features-card">
+                            <div class="max-container">
+                                <div class="features-card__content section-padding features-card-accent-buege">
+                                    <div class="features-card__left section-header">
+                                        <h2 class="features-card__title h2">Real-Time Reporting Across Every Engagement
+                                        </h2>
+                                        <p class="features-card__text regular-text">
+                                            Track client requests instantly, spot bottlenecks early and keep Tax, VAT
+                                            and
+                                            Audits
+                                            on track, freeing your team to focus on high-value work.
+                                        </p>
+                                    </div>
+                                    <div class="features-card__right">
+                                        <img width="596" height="512" src="./assets/images/features/placeholder-3.png"
+                                            alt="Image 1">
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </section>
+
+
                     </div>
-                </section>
+                </div>
             </div>
 
             <section class="main__services main-services section">
@@ -416,9 +786,9 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="testimonial__right" data-follow>
+                        <div class="testimonial__right">
                             <img width="596" height="488" src="./assets/images/testimonial.png" alt="testimonial">
-                            <button class="testimonial__button button-icon button-icon-max-2 button-icon-accent fixed-button">
+                            <button class="testimonial__button button-icon button-icon-max-2 button-icon-accent">
                                 <img src="./assets/icons/Play.svg" alt="Play">
                             </button>
                         </div>
@@ -442,7 +812,7 @@
                             </p>
                         </div>
                         <div class="smart-collaboration__right smart-collaboration__right-accent">
-                            <div class="smart-collaboration__cards">
+                            <div class="smart-collaboration__cards" >
                                 <div class="smart-collaboration__card">
                                     <div class="smart-collaboration__badge badge-text primary-dark-blue">
                                         01
@@ -470,7 +840,6 @@
                             </div>
                         </div>
                     </div>
-
                 </section>
                 <section class="max-container">
                     <div class="smart-collaboration__content smart-collaboration__content-2">
@@ -597,7 +966,6 @@
                             </div>
                         </div>
                     </div>
-
                 </section>
             </div>
 
@@ -921,8 +1289,13 @@
                                 </h3>
                                 <p class="text-reviews-item__text regular-text">
                                     The homepage and website is well set up , and is easy to locate what you are looking
+                                    for. The homepage and website is well set up , and is easy to locate what you are
+                                    looking
+                                    for. The homepage and website is well set up , and is easy to locate what you are
+                                    looking
+                                    for. The homepage and website is well set up , and is easy to locate what you are
+                                    looking
                                     for
-                                    .
                                 </p>
                                 <button class="text-reviews-item__more">
                                     read more
@@ -1132,7 +1505,15 @@
             </div>
         </footer>
     </div>
+    <div class="review-modal" id="reviewModal">
+        <div class="review-modal__overlay"></div>
+        <div class="review-modal__content">
+            <button class="review-modal__close" aria-label="Close">&times;</button>
+            <div class="review-modal__inner"></div>
+        </div>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 

@@ -102,7 +102,7 @@ dialog::backdrop {
 }
 
 .wrapper {
-    // overflow-x: hidden;
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     min-height: 100dvh;
@@ -117,7 +117,9 @@ dialog::backdrop {
     pointer-events: none;
     will-change: left, top;
     z-index: 5;
-    transition: left 0.08s linear, top 0.08s linear !important;
+    transition:
+        left 0.08s linear,
+        top 0.08s linear !important;
 }
 
 .auth-button {
@@ -547,9 +549,13 @@ dialog::backdrop {
         width: calc(100% + 8px);
         height: calc(100% + 8px);
         position: absolute;
-        transition: all 0.3s;
+        transition:
+            opacity 0.3s ease,
+            background-color 0.3s ease,
+            transform 0.3s ease;
         inset: -4px;
         opacity: 0;
+        background-color: transparent;
         z-index: -1;
         content: "";
     }
@@ -743,7 +749,6 @@ dialog::backdrop {
     z-index: 200;
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(30px);
-
     &__container {
         display: flex;
         justify-content: space-between;
@@ -768,15 +773,15 @@ dialog::backdrop {
     // .header__right
 
     &__right {
-        display: flex;
-        gap: 64px;
-
         @media (min-width: 767.98px) {
             align-items: center;
+            display: flex;
+            gap: 64px;
         }
 
         @media (max-width: 767.98px) {
             flex-direction: column;
+            display: flex;
             width: 100%;
             z-index: 50;
             height: 100%;
@@ -784,9 +789,8 @@ dialog::backdrop {
             position: fixed;
             max-height: 100dvh;
             transition: all 0.3s ease-in;
-            transform: translateX(100%);
             top: 0;
-            left: 0;
+            left: -100%;
             background: var(--Color-Text-White-100);
             padding: 88px 16px 40px 16px;
             justify-content: space-between;
@@ -933,40 +937,43 @@ dialog::backdrop {
 }
 
 .burger-menu {
-    width: 24px;
-    height: 18px;
-    position: relative;
-    z-index: 51;
-    display: block;
-    min-width: 24px;
+    display: none;
 
-    span,
-    &::after,
-    &::before {
-        height: 2px;
-        width: 100%;
-        position: absolute;
-        left: 0;
+    @media (max-width: 767.98px) {
+        width: 24px;
+        height: 18px;
+        min-width: 24px;
+        position: relative;
         display: block;
-        transition: all 0.3s ease-in;
-        background: var(--Color-Primary-Dark-Blue, #161625);
-    }
+        z-index: 51;
+        span,
+        &::after,
+        &::before {
+            height: 2px;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            display: block;
+            transition: all 0.3s ease-in;
+            background: var(--Color-Primary-Dark-Blue, #161625);
+        }
 
-    &::after,
-    &::before {
-        content: "";
-    }
+        &::after,
+        &::before {
+            content: "";
+        }
 
-    &::after {
-        top: 0;
-    }
+        &::after {
+            top: 0;
+        }
 
-    &::before {
-        bottom: 0;
-    }
+        &::before {
+            bottom: 0;
+        }
 
-    span {
-        top: calc(50% - 1px);
+        span {
+            top: calc(50% - 1px);
+        }
     }
 }
 
@@ -988,7 +995,7 @@ dialog::backdrop {
     }
 
     .header__right {
-        transform: translateX(0);
+        left: 0;
     }
 }
 
@@ -1364,6 +1371,9 @@ dialog::backdrop {
         align-self: stretch;
         flex-wrap: wrap;
         gap: 8px;
+        opacity: 0;
+        transform: translateY(90px);
+        transition: all 0.5s ease-in-out;
         @media (max-width: 1280.98px) {
             justify-content: center;
         }
@@ -1432,6 +1442,9 @@ dialog::backdrop {
 
     &__right {
         flex: 0 1 50%;
+        transition: all 0.5s ease-in-out;
+        display: flex;
+        flex-direction: column;
         /* 596/1216 */
     }
 
@@ -1464,28 +1477,6 @@ dialog::backdrop {
 /*************************/
 
 .partners {
-    // .partners__container
-
-    &__container {
-    }
-
-    // .partners__content
-
-    &__content {
-    }
-
-    // .partners__header
-
-    &__header {
-    }
-
-    // .partners__label
-
-    &__label {
-    }
-
-    // .partners__title
-
     &__title {
         max-width: 681px;
     }
@@ -1496,16 +1487,9 @@ dialog::backdrop {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 24px;
-    }
-
-    // .partners__card
-
-    &__card {
-    }
-
-    // .partners__swiper
-
-    &__swiper {
+        @media (max-width: 767.98px) {
+            grid-template-columns: 1fr;
+        }
     }
 }
 
@@ -1515,9 +1499,7 @@ dialog::backdrop {
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
-    // .partners-card__numbers
     border-radius: 24px;
-
     &:nth-child(1) {
         background: var(--Color-Accent-Lime, #d1f55f);
     }
@@ -1529,7 +1511,12 @@ dialog::backdrop {
     &:nth-child(3) {
         background: var(--Color-Accent-Buege, #fce6c6);
     }
-
+    @media (max-width: 991.98px) {
+        padding: 32px 24px;
+    }
+    @media (max-width: 767.98px) {
+        padding: 20px;
+    }
     &__numbers {
         color: var(--Color-Text-Black-100, #000);
         text-align: right;
@@ -1538,7 +1525,6 @@ dialog::backdrop {
         font-style: normal;
         font-weight: 400;
         line-height: 78px;
-        /* 121.875% */
         letter-spacing: -3px;
     }
 
@@ -1549,29 +1535,148 @@ dialog::backdrop {
     }
 }
 
-.partners-swiper {
-    // .partners-swiper__wrapper
+/********TOP BLOCK*************************/
 
-    &__wrapper {
-        gap: 24px;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    // .partners-swiper__slide
-
-    &__slide {
+.partners__triggers {
+    display: flex;
+    margin-top: 24px;
+    align-items: center;
+    justify-content: end;
+    gap: 166px;
+}
+.partners-triggers__buttons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.partners-trigger {
+    width: 64px;
+    height: 64px;
+    border-radius: 48px;
+    background: var(--Color-Primary-Dark-Blue, #161625);
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    &:disabled {
+        background: var(--Color-Primary-Gray, #d9d9e0);
+        svg path {
+            fill: #89899e;
+        }
     }
 }
 
-.partners-swiper-slide {
-    // .partners-swiper-slide__image
-    border-radius: 24px;
+.pagination {
+    position: relative;
+    width: 378px;
+    height: 2px;
+    background: var(--Color-Primary-Gray, #d9d9e0);
+    border-radius: 2px;
     overflow: hidden;
+}
+
+.pagination__thumb {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 100%;
+    background: var(--Color-Primary-Dark-Blue, #161625);
+    border-radius: 2px;
+}
+
+/********triggers*************************/
+
+.partners-slider {
+    margin-top: 64px;
+
+    &__container {
+        @media (min-width: 1280px) {
+            margin-left: auto;
+            overflow: hidden;
+            margin-right: 0;
+            padding: 0px 0px 0px 16px;
+            padding-right: 0;
+            max-width: calc(((100vw - 1232px) / 2) + 1232px);
+        }
+    }
+
+    &__wrapper {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        height: 692px;
+        padding: 24px 0px !important;
+        position: relative;
+        margin-left: -413px;
+        cursor: grab;
+        &:active {
+            cursor: grabbing;
+        }
+    }
+}
+
+.partners-slide {
+    width: 389px;
+    height: 586px;
+    border-radius: 20px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+ transition: width 0.5s ease, height 0.5s ease;
+}
+
+.partners-slide__inner {
+    width: 389px;
+    position: relative;
+    height: 586px;
+    
+}
+
+.partners-slide.active {
+   
+    width: 493px;
+    height: 644px;
+    z-index: 10;
+    .partners-slide__inner {
+    width: 493px;
+    height: 644px;
+}
+}
+
+.partners-slide.active .partners-slide__bottom {
+    
+    height: 334px;
+    max-height: 334px !important;
+    bottom: 0px;
+}
+.partners-slide.active .partners-slide__image-wrapper {
+    width: 493px;
+    height: 334px;
+}
+
+.partners-slide {
+    position: relative;
+    border-radius: 24px;
+    transform-origin: center bottom;
+    &__image-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 389px;
+        height: 305px;
+    }
 
     &__image {
         position: relative;
-
+        overflow: hidden;
+        border-radius: 24px 24px 0 0;
+        width: 100%;
+        height: 100%;
         img {
             width: 100%;
             object-fit: cover;
@@ -1579,62 +1684,48 @@ dialog::backdrop {
         }
     }
 
-    // .partners-swiper-slide__button
-
     &__button {
         position: absolute;
-        z-index: 10;
+        z-index: 100000 !important;
         right: 22px;
         bottom: -11px;
     }
 
-    // .partners-swiper-slide__bottom
-
     &__bottom {
         display: flex;
         padding: 32px;
-        margin-top: -24px;
+        height: 100%;
+        height: 311px;
         flex-direction: column;
         border-radius: 24px;
         background: #fff;
-        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
         backdrop-filter: blur(2px);
         justify-content: space-between;
         align-items: flex-start;
-        flex: 1 0 0;
-        align-self: stretch;
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        left: 0;
     }
-
-    // .partners-swiper-slide__decor
 
     &__decor {
         margin-bottom: 16px;
     }
 
-    // .partners-swiper-slide__text
-
     &__text {
         color: var(--Color-Text-Black-80);
         height: 141px;
-
+        max-width: 325px !important;
         span {
             font-weight: 600;
         }
     }
 
-    // .partners-swiper-slide__user
-
-    &__user {
-    }
-
-    // .partners-swiper-slide__user-name
-
     &__user-name {
         margin-bottom: 4px;
         color: var(--Color-Text-Black-100, #000);
     }
-
-    // .partners-swiper-slide__user-position
 
     &__user-position {
         color: var(--Color-Text-Grey-80, rgba(64, 64, 99, 0.8));
@@ -1675,7 +1766,8 @@ dialog::backdrop {
         position: relative;
         overflow: hidden;
         max-width: 1009px;
-        height: 564px;
+        max-height: 564px;
+        height: auto;
         margin: 0px auto;
         flex-shrink: 0;
         border-radius: 24px;
@@ -1790,10 +1882,43 @@ dialog::backdrop {
     }
 }
 
+.features__wrapper {
+    height: 670px;
+    overflow: hidden;
+    @media (max-width: 991.98px) {
+        height: 570px;
+    }
+    @media (max-width: 767.98px) {
+        height: 770px;
+    }
+    @media (max-width: 640.98px) {
+        height: 670px;
+    }
+    @media (max-width: 487.98px) {
+        height: 670px;
+    }
+}
+
+.features__list {
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+    position: relative;
+}
+
 .features-card {
     // .features-card__content
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    position: absolute;
+    inset: 0%;
+    overflow: hidden;
 
     &__content {
+        height: 100%;
         display: flex;
         align-items: center;
         gap: 24px;
@@ -1803,6 +1928,7 @@ dialog::backdrop {
         @media (max-width: 767.98px) {
             flex-direction: column;
             align-items: start;
+            justify-content: center;
         }
     }
 
@@ -1810,6 +1936,9 @@ dialog::backdrop {
 
     &__left {
         flex: 0 1 50%;
+        @media (max-width: 487.98px) {
+            padding-top: 60px;
+        }
     }
 
     // .features-card__title
@@ -1844,21 +1973,12 @@ dialog::backdrop {
         }
     }
 }
+.features-card-accent {
+    background: var(--Color-Accent-Lime, #d1f55f);
+}
 
 .features-card-accent-light {
-    margin-bottom: 79px;
-    position: relative;
-    z-index: 10;
-    margin-top: -137px;
     background: var(--Color-Accent-Light-Blue, #e3e3fc);
-    @media (max-width: 991.98px) {
-        margin-bottom: 64px;
-        margin-top: -100px;
-    }
-    @media (max-width: 767.98px) {
-        margin-bottom: 40px;
-        margin-top: -70px;
-    }
 }
 
 .features-card-accent-buege {
@@ -2134,6 +2254,12 @@ dialog::backdrop {
     // .smart-collaboration__right
 
     &__right {
+        transition: all .4s ease;
+        will-change: scroll-position;
+        will-change: height;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         border-radius: 24px;
         border: 1px solid var(--Boarder-Gradient-Stroke, rgba(255, 255, 255, 0.08));
         backdrop-filter: blur(5px);
@@ -2159,6 +2285,8 @@ dialog::backdrop {
     // .smart-collaboration__cards
 
     &__cards {
+        display: flex;
+        flex-direction: column;
     }
 
     // .smart-collaboration__card
@@ -2169,6 +2297,7 @@ dialog::backdrop {
         padding: 24px;
         align-items: center;
         gap: 24px;
+        transition: all 0.3s ease-in-out;
         flex-shrink: 0;
         border: 1px solid var(--Color-Stroke-Dark, rgba(137, 137, 158, 0.3));
         background: rgba(255, 255, 255, 0.9);
@@ -2178,6 +2307,14 @@ dialog::backdrop {
         }
         @media (max-width: 767.98px) {
             padding: 16px;
+        }
+        &:nth-child(2) {
+            margin-top: 10px;
+            transform: rotate(3deg);
+        }
+        &:nth-child(3) {
+            transform: rotate(8.7deg);
+            margin-top: 55px;
         }
     }
 
@@ -2397,8 +2534,8 @@ dialog::backdrop {
     }
 
     &__track {
-        max-width: 100dvw;
-        overflow-x: auto;
+        width: 100%;
+        overflow: hidden;
 
         &::-webkit-scrollbar {
             display: none;
@@ -2415,6 +2552,8 @@ dialog::backdrop {
     // .main-reviews__lines
 
     &__lines {
+        width: 100%;
+        overflow: hidden;
     }
 
     // .main-reviews__line
@@ -2422,6 +2561,8 @@ dialog::backdrop {
     &__line {
         display: flex;
         gap: 24px;
+        width: max-content;
+        will-change: transform;
         width: 100%;
         min-width: 100%;
         @media (max-width: 767.98px) {
@@ -2551,7 +2692,12 @@ dialog::backdrop {
 
     &__text {
         color: var(--Color-Text-Black-80, rgba(0, 0, 0, 0.8));
-
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: all 0.3s ease;
         &:not(:last-child) {
             margin-bottom: 12px;
         }
@@ -2712,5 +2858,62 @@ dialog::backdrop {
     // .main-subscription-right__button
 
     &__button {
+    }
+}
+
+.review-modal {
+    position: fixed;
+    inset: 0;
+    display: none; /* скрыто по умолчанию */
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    max-width: 100dvw;
+    max-height: 100dvh;
+
+    &.is-active {
+        display: flex;
+
+        .text-reviews-item__more {
+            display: none;
+        }
+        .text-reviews-item__text {
+            display: block; /* убираем -webkit-box */
+            -webkit-line-clamp: unset; /* снимаем ограничение строк */
+            overflow: visible;
+            text-overflow: unset;
+            max-height: none;
+        }
+    }
+
+    &__overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        opacity: 0;
+    }
+
+    &__content {
+        position: relative;
+        background: #fff;
+        border-radius: 16px;
+        max-width: 640px;
+        width: 90%;
+        padding: 32px;
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    &__close {
+        position: absolute;
+        top: 12px;
+        right: 16px;
+        background: none;
+        border: none;
+        font-size: 28px;
+        line-height: 1;
+        cursor: pointer;
     }
 }
