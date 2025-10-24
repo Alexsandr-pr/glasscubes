@@ -1134,8 +1134,26 @@ dialog::backdrop {
   margin-bottom: 24px;
 }
 .main-hero__title span {
+  position: relative;
+  z-index: 10;
   color: var(--Color-Text-Black-100, #000);
   letter-spacing: -6px;
+  display: inline-block;
+}
+.main-hero__title span::after {
+  content: "";
+  height: 28px;
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  z-index: -1;
+  background: var(--Color-Accent-Lime-50, rgba(209, 245, 95, 0.5));
+}
+@media (max-width: 991.98px) {
+  .main-hero__title span::after {
+    height: 20px;
+  }
 }
 .main-hero__text {
   color: var(--Color-Text-Black-80);
@@ -2192,6 +2210,43 @@ dialog::backdrop {
 .main-reviews__lines {
   width: 100%;
   overflow: hidden;
+  position: relative;
+}
+@media (min-width: 767.98px) {
+  .main-reviews__lines {
+    height: 679px;
+  }
+}
+@media (max-width: 767.98px) {
+  .main-reviews__lines {
+    height: 540px;
+  }
+}
+.main-reviews__lines.is-loading::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  z-index: 5;
+}
+.main-reviews__lines.is-loading::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid #ccc;
+  border-top-color: var(--Color-Accent, #000);
+  transform: translate(-50%, -50%);
+  animation: spinner 0.8s linear infinite;
+  z-index: 6;
 }
 .main-reviews__line {
   display: flex;
@@ -2208,6 +2263,11 @@ dialog::backdrop {
   }
 }
 
+@keyframes spinner {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
 .main-reviews-header__content {
   margin-bottom: 64px;
 }

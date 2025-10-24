@@ -10,6 +10,8 @@
     <title>Index</title>
 </head>
 
+
+
 <body>
     <header class="header">
         <div class="header__container">
@@ -20,7 +22,7 @@
                 <nav class="header__nav header-nav">
                     <ul class="header-nav__list">
                         <li class="header-nav__li">
-                            <a href="#" class="header-nav__link active">
+                            <a href="#" class="header-nav__link">
                                 <span>Pricing</span>
                             </a>
                         </li>
@@ -75,16 +77,16 @@
                             </a>
                         </div>
                     </div>
-                    <div class="main-hero__video main-hero-video" data-follow>
-                        <video autoplay muted loop playsinline>
+                    <div data-url="./assets/videos/1.mp4" class="main-hero__video main-hero-video" data-follow>
+                        <video class="main-hero-video__bg" muted loop playsinline>
                             <source src="./assets/videos/1.mp4" type="video/mp4" />
                         </video>
-                        <button class="main-hero-video__button button middle button-primary-dark fixed-button">
+                        <div class="main-hero-video__button button middle button-primary-dark fixed-button">
                             2 min tour
                             <span class="button-icon button-icon-accent">
                                 <img width="24" height="24" src="./assets/icons/Play.svg" alt="Arrow-Up">
                             </span>
-                        </button>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -195,7 +197,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="partners-slider__container">
                     <div class="partners__slider partners-slider" id="slider">
                         <div class="partners-slider__wrapper">
@@ -390,7 +391,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="partners-bottom__container">
                     <div class="partners__triggers partners-triggers">
                         <div class="pagination" id="pagination">
@@ -423,17 +423,15 @@
                             <div class="hour-video__label label">60 min video</div>
                             <h2 class="hour-video__title h2">See Glasscubes in action</h2>
                         </div>
-                        <div data-follow class="hour-video__video hour-video-video">
-                            <video autoplay muted loop playsinline>
-                                <source src="./assets/videos/1.mp4" type="video/mp4" />
-                            </video>
-                            <button class="hour-video-video__button button middle button-primary-dark fixed-button">
+                        <a href="#" class="hour-video__video hour-video-video">
+                            <img src="./assets/images/glasscubes.png" alt="Glasscubes">
+                            <div class="hour-video-video__button button middle button-primary-dark fixed-button">
                                 Watch 1 min Tour
                                 <span class="button-icon button-icon-accent">
                                     <img width="24" height="24" src="./assets/icons/Play.svg" alt="Arrow-Up">
                                 </span>
-                            </button>
-                        </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </section>
@@ -816,323 +814,12 @@
                 <div class="main-reviews__lines">
                     <div class="main-reviews__track">
                         <div class="main-reviews__line main-reviews-line">
-                            <div class="main-reviews-line__item text-reviews-item">
-                                <div class="text-reviews-item__top">
-                                    <div class="text-reviews-item__user">
-                                        <p class="text-reviews-item__user-name h6">
-                                            Mrs El-karti
-                                        </p>
-                                        <p class="text-reviews-item__date small-text">
-                                            27 August
-                                        </p>
-                                    </div>
-                                    <div class="text-reviews-item__stars">
-                                        <img width="96" height="18" src="./assets/icons/stars.svg" alt="Rating">
-                                    </div>
-                                </div>
-                                <h3 class="text-reviews-item__title h5">
-                                    Best Data Room I've used
-                                </h3>
-                                <p class="text-reviews-item__text regular-text">
-                                    Easiest data room I have used by a mile. Very easy to upload information and the
-                                    search
-                                    function ...
-                                </p>
-                                <button class="text-reviews-item__more">
-                                    read more
-                                </button>
-                            </div>
-                            <div class="main-reviews-line__item text-reviews-item">
-                                <div class="text-reviews-item__top">
-                                    <div class="text-reviews-item__user">
-                                        <p class="text-reviews-item__user-name h6">
-                                            Shab M
-                                        </p>
-                                        <p class="text-reviews-item__date small-text">
-                                            12 June
-                                        </p>
-                                    </div>
-                                    <div class="text-reviews-item__stars">
-                                        <img width="96" height="18" src="./assets/icons/stars.svg" alt="Rating">
-                                    </div>
-                                </div>
-                                <h3 class="text-reviews-item__title h5">
-                                    An innovative system!
-                                </h3>
-                                <p class="text-reviews-item__text regular-text">
-                                    Glasscubes is a modern way to gather information and something that I think will be
-                                    of
-                                    real benefit...
-                                </p>
-                                <button class="text-reviews-item__more">
-                                    read more
-                                </button>
-                            </div>
-                            <div class="main-reviews-line__item text-reviews-item">
-                                <div class="text-reviews-item__top">
-                                    <div class="text-reviews-item__user">
-                                        <p class="text-reviews-item__user-name h6">
-                                            Mark W
-                                        </p>
-                                        <p class="text-reviews-item__date small-text">
-                                            11 June
-                                        </p>
-                                    </div>
-                                    <div class="text-reviews-item__stars">
-                                        <img width="96" height="18" src="./assets/icons/stars.svg" alt="Rating">
-                                    </div>
-                                </div>
-                                <h3 class="text-reviews-item__title h5">
-                                    The Glasscubes product is used by our
-                                    Finance team
-                                </h3>
-                                <p class="text-reviews-item__text regular-text">
-                                    The Glasscubes product is used by our Financial
-
-                                </p>
-                                <button class="text-reviews-item__more">
-                                    read more
-                                </button>
-                            </div>
-                            <div class="main-reviews-line__item text-reviews-item">
-                                <div class="text-reviews-item__top">
-                                    <div class="text-reviews-item__user">
-                                        <p class="text-reviews-item__user-name h6">
-                                            Joe
-                                        </p>
-                                        <p class="text-reviews-item__date small-text">
-                                            2 April
-                                        </p>
-                                    </div>
-                                    <div class="text-reviews-item__stars">
-                                        <img width="96" height="18" src="./assets/icons/stars.svg" alt="Rating">
-                                    </div>
-                                </div>
-                                <h3 class="text-reviews-item__title h5">
-                                    Glasscubes Review
-                                </h3>
-                                <p class="text-reviews-item__text regular-text">
-                                    Glasscubes has been excellent for handling queries with our clients accounts. It's
-                                    really easy ...
-                                </p>
-                                <button class="text-reviews-item__more">
-                                    read more
-                                </button>
-                            </div>
-                            <div class="main-reviews-line__item text-reviews-item">
-                                <div class="text-reviews-item__top">
-                                    <div class="text-reviews-item__user">
-                                        <p class="text-reviews-item__user-name h6">
-                                            Sebastian Dakowicz
-                                        </p>
-                                        <p class="text-reviews-item__date small-text">
-                                            31 March
-                                        </p>
-                                    </div>
-                                    <div class="text-reviews-item__stars">
-                                        <img width="96" height="18" src="./assets/icons/stars.svg" alt="Rating">
-                                    </div>
-                                </div>
-                                <h3 class="text-reviews-item__title h5">
-                                    Glasscubes Review
-                                </h3>
-                                <p class="text-reviews-item__text regular-text">
-                                    Glasscubes has been very useful since starting to work on it, it's made it easier to
-                                    send queries ...
-                                </p>
-                                <button class="text-reviews-item__more">
-                                    read more
-                                </button>
-                            </div>
-                            <div class="main-reviews-line__item text-reviews-item">
-                                <div class="text-reviews-item__top">
-                                    <div class="text-reviews-item__user">
-                                        <p class="text-reviews-item__user-name h6">
-                                            Ella Batchelor
-                                        </p>
-                                        <p class="text-reviews-item__date small-text">
-                                            28 March
-                                        </p>
-                                    </div>
-                                    <div class="text-reviews-item__stars">
-                                        <img width="96" height="18" src="./assets/icons/stars.svg" alt="Rating">
-                                    </div>
-                                </div>
-                                <h3 class="text-reviews-item__title h5">
-                                    The homepage and website is well set up…
-                                </h3>
-                                <p class="text-reviews-item__text regular-text">
-                                    The homepage and website is well set up , and is easy to locate what you are looking
-                                    for
-                                    .
-                                </p>
-                                <button class="text-reviews-item__more">
-                                    read more
-                                </button>
-                            </div>
+                            
                         </div>
                     </div>
                     <div class="main-reviews__track">
                         <div class="main-reviews__line main-reviews-line">
-                            <div class="main-reviews-line__item text-reviews-item">
-                                <div class="text-reviews-item__top">
-                                    <div class="text-reviews-item__user">
-                                        <p class="text-reviews-item__user-name h6">
-                                            Mrs El-karti
-                                        </p>
-                                        <p class="text-reviews-item__date small-text">
-                                            27 August
-                                        </p>
-                                    </div>
-                                    <div class="text-reviews-item__stars">
-                                        <img width="96" height="18" src="./assets/icons/stars.svg" alt="Rating">
-                                    </div>
-                                </div>
-                                <h3 class="text-reviews-item__title h5">
-                                    Best Data Room I've used
-                                </h3>
-                                <p class="text-reviews-item__text regular-text">
-                                    Easiest data room I have used by a mile. Very easy to upload information and the
-                                    search
-                                    function ...
-                                </p>
-                                <button class="text-reviews-item__more">
-                                    read more
-                                </button>
-                            </div>
-                            <div class="main-reviews-line__item text-reviews-item">
-                                <div class="text-reviews-item__top">
-                                    <div class="text-reviews-item__user">
-                                        <p class="text-reviews-item__user-name h6">
-                                            Shab M
-                                        </p>
-                                        <p class="text-reviews-item__date small-text">
-                                            12 June
-                                        </p>
-                                    </div>
-                                    <div class="text-reviews-item__stars">
-                                        <img width="96" height="18" src="./assets/icons/stars.svg" alt="Rating">
-                                    </div>
-                                </div>
-                                <h3 class="text-reviews-item__title h5">
-                                    An innovative system!
-                                </h3>
-                                <p class="text-reviews-item__text regular-text">
-                                    Glasscubes is a modern way to gather information and something that I think will be
-                                    of
-                                    real benefit...
-                                </p>
-                                <button class="text-reviews-item__more">
-                                    read more
-                                </button>
-                            </div>
-                            <div class="main-reviews-line__item text-reviews-item">
-                                <div class="text-reviews-item__top">
-                                    <div class="text-reviews-item__user">
-                                        <p class="text-reviews-item__user-name h6">
-                                            Mark W
-                                        </p>
-                                        <p class="text-reviews-item__date small-text">
-                                            11 June
-                                        </p>
-                                    </div>
-                                    <div class="text-reviews-item__stars">
-                                        <img width="96" height="18" src="./assets/icons/stars.svg" alt="Rating">
-                                    </div>
-                                </div>
-                                <h3 class="text-reviews-item__title h5">
-                                    The Glasscubes product is used by our
-                                    Finance team
-                                </h3>
-                                <p class="text-reviews-item__text regular-text">
-                                    The Glasscubes product is used by our Financial
-
-                                </p>
-                                <button class="text-reviews-item__more">
-                                    read more
-                                </button>
-                            </div>
-                            <div class="main-reviews-line__item text-reviews-item">
-                                <div class="text-reviews-item__top">
-                                    <div class="text-reviews-item__user">
-                                        <p class="text-reviews-item__user-name h6">
-                                            Joe
-                                        </p>
-                                        <p class="text-reviews-item__date small-text">
-                                            2 April
-                                        </p>
-                                    </div>
-                                    <div class="text-reviews-item__stars">
-                                        <img width="96" height="18" src="./assets/icons/stars.svg" alt="Rating">
-                                    </div>
-                                </div>
-                                <h3 class="text-reviews-item__title h5">
-                                    Glasscubes Review
-                                </h3>
-                                <p class="text-reviews-item__text regular-text">
-                                    Glasscubes has been excellent for handling queries with our clients accounts. It's
-                                    really easy ...
-                                </p>
-                                <button class="text-reviews-item__more">
-                                    read more
-                                </button>
-                            </div>
-                            <div class="main-reviews-line__item text-reviews-item">
-                                <div class="text-reviews-item__top">
-                                    <div class="text-reviews-item__user">
-                                        <p class="text-reviews-item__user-name h6">
-                                            Sebastian Dakowicz
-                                        </p>
-                                        <p class="text-reviews-item__date small-text">
-                                            31 March
-                                        </p>
-                                    </div>
-                                    <div class="text-reviews-item__stars">
-                                        <img width="96" height="18" src="./assets/icons/stars.svg" alt="Rating">
-                                    </div>
-                                </div>
-                                <h3 class="text-reviews-item__title h5">
-                                    Glasscubes Review
-                                </h3>
-                                <p class="text-reviews-item__text regular-text">
-                                    Glasscubes has been very useful since starting to work on it, it's made it easier to
-                                    send queries ...
-                                </p>
-                                <button class="text-reviews-item__more">
-                                    read more
-                                </button>
-                            </div>
-                            <div class="main-reviews-line__item text-reviews-item">
-                                <div class="text-reviews-item__top">
-                                    <div class="text-reviews-item__user">
-                                        <p class="text-reviews-item__user-name h6">
-                                            Ella Batchelor
-                                        </p>
-                                        <p class="text-reviews-item__date small-text">
-                                            28 March
-                                        </p>
-                                    </div>
-                                    <div class="text-reviews-item__stars">
-                                        <img width="96" height="18" src="./assets/icons/stars.svg" alt="Rating">
-                                    </div>
-                                </div>
-                                <h3 class="text-reviews-item__title h5">
-                                    The homepage and website is well set up…
-                                </h3>
-                                <p class="text-reviews-item__text regular-text">
-                                    The homepage and website is well set up , and is easy to locate what you are looking
-                                    for. The homepage and website is well set up , and is easy to locate what you are
-                                    looking
-                                    for. The homepage and website is well set up , and is easy to locate what you are
-                                    looking
-                                    for. The homepage and website is well set up , and is easy to locate what you are
-                                    looking
-                                    for
-                                </p>
-                                <button class="text-reviews-item__more">
-                                    read more
-                                </button>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -1337,15 +1024,6 @@
             </div>
         </footer>
     </div>
-    <div class="review-modal" id="reviewModal">
-        <div class="review-modal__overlay"></div>
-        <div class="review-modal__content">
-            <button class="review-modal__close" aria-label="Close">&times;</button>
-            <div class="review-modal__inner"></div>
-        </div>
-    </div>
-
-
     <div class="video-review-modal" id="videoReviewModal">
         <div class="review-modal__overlay"></div>
         <div class="video-review-modal__content">

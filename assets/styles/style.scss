@@ -424,10 +424,10 @@ dialog::backdrop {
     @media (max-width: 991.98px) {
         padding: 72px 0px;
     }
-     @media (max-width: 767.98px) {
+    @media (max-width: 767.98px) {
         padding: 64px 0px;
     }
-      @media (max-width: 487.98px) {
+    @media (max-width: 487.98px) {
         padding: 48px 0px;
     }
 }
@@ -1282,8 +1282,24 @@ dialog::backdrop {
         margin-bottom: 24px;
 
         span {
+            position: relative;
+            z-index: 10;
             color: var(--Color-Text-Black-100, #000);
             letter-spacing: -6px;
+            display: inline-block;
+            &::after {
+                content: "";
+                height: 28px;
+                width: 100%;
+                position: absolute;
+                bottom: 0px;
+                left: 0;
+                z-index: -1;
+                background: var(--Color-Accent-Lime-50, rgba(209, 245, 95, 0.5));
+                @media (max-width: 991.98px) {
+                    height: 20px;
+                }
+            }
         }
     }
 
@@ -1305,6 +1321,7 @@ dialog::backdrop {
     // .main-hero__button
 
     &__button {
+        
     }
 
     // .main-hero__video
@@ -1565,7 +1582,7 @@ dialog::backdrop {
     top: 0;
     left: 0;
     width: 60px;
-    transition: all .5s ease;
+    transition: all 0.5s ease;
     height: 100%;
     background: var(--Color-Primary-Dark-Blue, #161625);
     border-radius: 2px;
@@ -1626,16 +1643,16 @@ dialog::backdrop {
     }
     .partners-slide__button {
         background: var(--Color-Accent-Lime, #d1f55f);
-         &:hover {
-        &::after {
-            opacity: 1;
-            background-color: var(--Color-Accent-Lime, #d1f55f);
+        &:hover {
+            &::after {
+                opacity: 1;
+                background-color: var(--Color-Accent-Lime, #d1f55f);
+            }
+            .button-icon::after {
+                opacity: 1;
+                background: var(--Color-Primary-Dark-Blue, #161625);
+            }
         }
-        .button-icon::after {
-            opacity: 1;
-            background: var(--Color-Primary-Dark-Blue, #161625);
-        }
-    }
     }
     .partners-slide__decor {
         svg path {
@@ -1662,8 +1679,6 @@ dialog::backdrop {
     }
 }
 @media (max-width: 767.98px) {
-   
-
     .partners-slide,
     .partners-slide.active,
     .partners-slide.next-active {
@@ -1701,7 +1716,7 @@ dialog::backdrop {
         background-position: center;
         background-size: cover;
         &::after {
-             transition: all 0.5s ease;
+            transition: all 0.5s ease;
             content: "";
             height: 12px;
             width: 100%;
@@ -2584,6 +2599,40 @@ dialog::backdrop {
     &__lines {
         width: 100%;
         overflow: hidden;
+            position: relative;
+        @media (min-width: 767.98px) {
+            height: 679px;
+        }
+        @media (max-width: 767.98px) {
+            height: 540px;
+        }
+      
+        &.is-loading::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(2px);
+            z-index: 5;
+        }
+
+        &.is-loading::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 3px solid #ccc;
+            border-top-color: var(--Color-Accent, #000);
+            transform: translate(-50%, -50%);
+            animation: spinner 0.8s linear infinite;
+            z-index: 6;
+        }
     }
 
     // .main-reviews__line
@@ -2599,6 +2648,13 @@ dialog::backdrop {
             gap: 16px;
         }
     }
+}
+
+
+@keyframes spinner {
+	to {
+		transform: translate(-50%, -50%) rotate(360deg);
+	}
 }
 
 .main-reviews-header {
@@ -2891,9 +2947,6 @@ dialog::backdrop {
     }
 }
 
-
-
-
 .review-modal {
     position: fixed;
     inset: 0;
@@ -2950,7 +3003,6 @@ dialog::backdrop {
         cursor: pointer;
     }
 }
-
 
 .video-review-modal {
     position: fixed;

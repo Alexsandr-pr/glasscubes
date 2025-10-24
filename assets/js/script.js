@@ -19,8 +19,8 @@ window.addEventListener("DOMContentLoaded", () => {
 	function initFollowButtons() {
 		document.querySelectorAll('[data-follow]').forEach(container => {
 			const btn = container.querySelector('.fixed-button');
-			const offsetX = 10;
-			const offsetY = -10;
+			const offsetX = 0;
+			const offsetY = 0;
 			const edgePadding = 20;
 
 			const defaultTop = btn.style.top || window.getComputedStyle(btn).top;
@@ -32,8 +32,8 @@ window.addEventListener("DOMContentLoaded", () => {
 				const btnW = btn.offsetWidth;
 				const btnH = btn.offsetHeight;
 
-				let x = e.clientX - rect.left + offsetX;
-				let y = e.clientY - rect.top + offsetY;
+				let x = e.clientX - rect.left - btnW / 2 + offsetX;
+				let y = e.clientY - rect.top - btnH / 2 + offsetY;
 
 				const minX = edgePadding;
 				const minY = edgePadding;
@@ -50,29 +50,11 @@ window.addEventListener("DOMContentLoaded", () => {
 					ease: "power2.out"
 				});
 			});
+
 			container.addEventListener('mouseleave', () => {
-				const rect = container.getBoundingClientRect();
-				const btnW = btn.offsetWidth;
-				const btnH = btn.offsetHeight;
-
-				let resetX = 0;
-				let resetY = 0;
-
-				if (defaultRight !== 'auto') {
-					resetX = (rect.width - parseFloat(defaultRight) - btnW) - (rect.width - parseFloat(defaultRight) - btnW);
-				} else if (btn.style.left !== 'auto' && btn.style.left) {
-					resetX = parseFloat(btn.style.left) - parseFloat(btn.style.left);
-				}
-
-				if (defaultTop !== 'auto') {
-					resetY = parseFloat(defaultTop) - parseFloat(defaultTop);
-				} else if (btn.style.bottom !== 'auto' && btn.style.bottom) {
-					resetY = -(rect.height - parseFloat(btn.style.bottom) - btnH - (rect.height - parseFloat(btn.style.bottom) - btnH));
-				}
-
 				gsap.to(btn, {
-					x: resetX,
-					y: resetY,
+					x: 0,
+					y: 0,
 					duration: 0.4,
 					ease: "power3.inOut",
 					onComplete: () => {
@@ -84,6 +66,26 @@ window.addEventListener("DOMContentLoaded", () => {
 	}
 
 	initFollowButtons();
+
+	function initVideoOnScroll() {
+		const video = document.querySelector('.main-hero-video__bg');
+		let played = false;
+
+		function checkScroll() {
+			const scrollY = window.scrollY || window.pageYOffset;
+
+			if (scrollY > 300 && !played) {
+				video.play();
+				played = true;
+				window.removeEventListener('scroll', checkScroll);
+			}
+		}
+
+		window.addEventListener('scroll', checkScroll);
+	}
+
+	initVideoOnScroll()
+
 
 	gsap.registerPlugin(ScrollTrigger);
 
@@ -118,37 +120,6 @@ window.addEventListener("DOMContentLoaded", () => {
 		});
 	})
 
-
-
-	const tracks = document.querySelectorAll('.main-reviews__track');
-
-	tracks.forEach((track, i) => {
-		const line = track.querySelector('.main-reviews__line');
-
-		line.innerHTML += line.innerHTML;
-
-		const direction = i % 2 === 0 ? -1 : 1;
-
-		if (direction === 1) {
-			gsap.set(line, { xPercent: -50 });
-		}
-
-		const tween = gsap.to(line, {
-			xPercent: direction === 1 ? 0 : -50,
-			ease: "none",
-			duration: 20,
-			repeat: -1,
-		});
-
-		line.querySelectorAll('.main-reviews-line__item').forEach(item => {
-			item.addEventListener('mouseenter', () => tween.pause());
-			item.addEventListener('mouseleave', () => tween.play());
-		});
-	});
-
-
-
-
 	const scrollSection = document.querySelectorAll(".main__features");
 
 	scrollSection.forEach((section) => {
@@ -170,7 +141,7 @@ window.addEventListener("DOMContentLoaded", () => {
 				trigger: section,
 				pin: true,
 				start: "top top",
-				end: () => `+=${items.length * 100}%`,
+				end: () => `+=${items.length * 40}%`,
 				scrub: 1,
 				invalidateOnRefresh: true,
 			},
@@ -191,60 +162,7 @@ window.addEventListener("DOMContentLoaded", () => {
 	}
 
 
-	function initReviewModal() {
-		const modal = document.getElementById('reviewModal');
-		const overlay = modal.querySelector('.review-modal__overlay');
-		const content = modal.querySelector('.review-modal__content');
-		const inner = modal.querySelector('.review-modal__inner');
-		const closeBtn = modal.querySelector('.review-modal__close');
 
-		document.querySelectorAll('.text-reviews-item__more').forEach((btn) => {
-			btn.addEventListener('click', () => {
-				const card = btn.closest('.text-reviews-item');
-				if (!card) return;
-
-				inner.innerHTML = card.innerHTML;
-
-				modal.classList.add('is-active');
-
-				gsap.fromTo(
-					overlay,
-					{ opacity: 0 },
-					{ opacity: 1, duration: 0.3, ease: 'power2.out' }
-				);
-				gsap.fromTo(
-					content,
-					{ opacity: 0, y: 40 },
-					{ opacity: 1, y: 0, duration: 0.4, ease: 'power2.out', delay: 0.1 }
-				);
-				document.body.style.overflow = 'hidden';
-			});
-		});
-
-		function closeModal() {
-			gsap.to(content, {
-				opacity: 0,
-				y: 40,
-				duration: 0.3,
-				ease: 'power2.inOut',
-			});
-			gsap.to(overlay, {
-				opacity: 0,
-				duration: 0.25,
-				ease: 'power2.inOut',
-				onComplete: () => {
-					modal.classList.remove('is-active');
-					document.body.style.overflow = '';
-				},
-			});
-		}
-
-		closeBtn.addEventListener('click', closeModal);
-		overlay.addEventListener('click', closeModal);
-	}
-
-	initReviewModal()
-	
 	function initVideoReviewModal() {
 		const modal = document.getElementById('videoReviewModal');
 		const overlay = modal.querySelector('.review-modal__overlay');
@@ -252,9 +170,11 @@ window.addEventListener("DOMContentLoaded", () => {
 		const inner = modal.querySelector('.review-modal__inner');
 		const closeBtn = modal.querySelector('.review-modal__close');
 
-		document.querySelectorAll('.partners-slide__button').forEach((btn) => {
+		document.querySelectorAll('[data-url]').forEach((btn) => {
 			btn.addEventListener('click', () => {
+				
 				const videoUrl = btn.dataset.url;
+				console.log(videoUrl)
 				if (!videoUrl) return;
 
 				const videoHTML = `
@@ -298,7 +218,7 @@ window.addEventListener("DOMContentLoaded", () => {
 				ease: 'power2.inOut',
 				onComplete: () => {
 					modal.classList.remove('is-active');
-					inner.innerHTML = ''; 
+					inner.innerHTML = '';
 					document.body.style.overflow = '';
 				},
 			});
@@ -309,7 +229,11 @@ window.addEventListener("DOMContentLoaded", () => {
 	}
 
 	initVideoReviewModal();
-	
+
+
+
+
+
 	function initSlider() {
 
 		const slider = document.querySelector(".partners-slider__wrapper");
@@ -455,4 +379,101 @@ window.addEventListener("DOMContentLoaded", () => {
 	}
 
 	initSlider();
+
+	function initReviews() {
+
+		function formatDate(dateString) {
+			const date = new Date(dateString);
+			const day = date.getDate();
+			const month = date.toLocaleString("en", { month: "long" });
+			return `${day} ${month}`;
+		}
+
+		const linesWrapper = document.querySelector(".main-reviews__lines");
+		const linesContainers = document.querySelectorAll(".main-reviews-line");
+
+		function createCard(consumerName, createdAt, title, text, reviewUrl) {
+			return `
+				<div class="main-reviews-line__item text-reviews-item">
+					<div class="text-reviews-item__top">
+						<div class="text-reviews-item__user">
+							<p class="text-reviews-item__user-name h6">${consumerName}</p>
+							<p class="text-reviews-item__date small-text">${formatDate(createdAt)}</p>
+						</div>
+						<div class="text-reviews-item__stars">
+							<img width="96" height="18" src="./assets/icons/stars.svg" alt="Rating">
+						</div>
+					</div>
+					<h3 class="text-reviews-item__title h5">${title}</h3>
+					<p class="text-reviews-item__text regular-text">${text}</p>
+					<a href="${reviewUrl}" target="_blank" class="text-reviews-item__more">read more</a>
+				</div>
+			`;
+		}
+
+		async function fetchReviews() {
+			try {
+				linesWrapper.classList.add("is-loading");
+
+				const res = await fetch(
+					"https://widget.trustpilot.com/trustbox-data/539ad60defb9600b94d7df2c?businessUnitId=51929a4f00006400052c105b&locale=en-GB&reviewLanguages=en&reviewStars=5&reviewsPerPage=100"
+				);
+				const data = await res.json();
+
+				const reviews = data?.reviews || [];
+				if (!reviews.length) return;
+
+				reviews.forEach((review, i) => {
+					const lineIndex = i % linesContainers.length;
+					linesContainers[lineIndex].insertAdjacentHTML(
+						"beforeend",
+						createCard(
+							review.consumer?.displayName || "Anonymous",
+							review.createdAt,
+							review.title,
+							review.text,
+							review.reviewUrl
+						)
+					);
+				});
+			} catch (err) {
+				console.error("Error loading reviews:", err);
+			} finally {
+				linesWrapper.classList.remove("is-loading");
+				initGSAP()
+			}
+		}
+		fetchReviews();
+
+		function initGSAP() {
+			const tracks = document.querySelectorAll(".main-reviews__track");
+
+			tracks.forEach((track, i) => {
+				const line = track.querySelector(".main-reviews__line");
+				const direction = i % 2 === 0 ? -1 : 1;
+
+				if (direction === 1) {
+					gsap.set(line, { xPercent: -50 });
+				}
+
+				const tween = gsap.to(line, {
+					xPercent: direction === 1 ? 0 : -50,
+					ease: "none",
+					duration: 20,
+					repeat: -1,
+				});
+
+				// теперь карточки уже загружены — события наведения работают
+				line.querySelectorAll(".main-reviews-line__item").forEach((item) => {
+					item.addEventListener("mouseenter", () => tween.pause());
+					item.addEventListener("mouseleave", () => tween.play());
+				});
+			});
+		}
+	}
+
+	initReviews()
+
+
+
 })
