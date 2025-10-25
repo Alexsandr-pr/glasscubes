@@ -23,6 +23,21 @@
     --Color-Text-White-100: #fff;
     --Color-Text-White-60: rgba(255, 255, 255, 0.6);
     --Color-Text-White-80: rgba(255, 255, 255, 0.8);
+
+
+    --section-padding: 96px;
+
+    @media (max-width: 991.98px) {
+        --section-padding: 72px;
+    }
+
+    @media (max-width: 767.98px) {
+        --section-padding: 64px;
+    }
+
+    @media (max-width: 487.98px) {
+        --section-padding: 48px;
+    }
 }
 
 *,
@@ -102,7 +117,6 @@ dialog::backdrop {
 }
 
 .wrapper {
-    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     min-height: 100dvh;
@@ -143,12 +157,14 @@ dialog::backdrop {
     &:disabled {
         background: var(--Color-Primary-Gray, #d9d9e0) !important;
         color: var(--Color-Primary-Purple-Gray, #89899e) !important;
+
         &:hover {
             &::after {
                 opacity: 0;
                 background-color: transparent;
             }
         }
+
         cursor: not-allowed;
     }
 }
@@ -163,6 +179,10 @@ dialog::backdrop {
 
     @media (max-width: 767.98px) {
         font-size: 18px;
+    }
+
+    span {
+        font-weight: 700;
     }
 }
 
@@ -188,6 +208,34 @@ dialog::backdrop {
     @media (max-width: 767.98px) {
         font-size: 14px;
     }
+    span {
+        font-weight: 600;
+        color: var(--Color-Text-White-100, #FFF);
+    }
+    a {
+        text-decoration-line: underline;
+        text-decoration-style: solid;
+        text-decoration-skip-ink: none;
+        text-decoration-thickness: auto;
+        text-underline-offset: auto;
+        text-underline-position: from-font;
+    }
+}
+
+.x-small-text {
+    color: var(--Color-Text-Black-60, rgba(0, 0, 0, 0.60));
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 142%; 
+    a {
+        text-decoration-line: underline;
+        text-decoration-style: solid;
+        text-decoration-skip-ink: none;
+        text-decoration-thickness: auto;
+        text-underline-offset: auto;
+        text-underline-position: from-font;
+    }
 }
 
 /*********TITLE*******************/
@@ -199,13 +247,39 @@ dialog::backdrop {
     font-weight: 500;
     line-height: 115.625%;
     letter-spacing: -3px;
+
+    span {
+        position: relative;
+        z-index: 10;
+        color: var(--Color-Text-Black-100, #000);
+        letter-spacing: -6px;
+        display: inline-block;
+
+        &::after {
+            content: "";
+            height: 28px;
+            width: 100%;
+            position: absolute;
+            bottom: 0px;
+            left: 0;
+            z-index: -1;
+            background: var(--Color-Accent-Lime-50, rgba(209, 245, 95, 0.5));
+
+            @media (max-width: 991.98px) {
+                height: 20px;
+            }
+        }
+    }
+
     @media (max-width: 991.98px) {
         font-size: 48px;
         letter-spacing: -1px !important;
+
         span {
             letter-spacing: -1px !important;
         }
     }
+
     @media (max-width: 767.98px) {
         font-size: 36px;
         letter-spacing: 0px !important;
@@ -219,10 +293,12 @@ dialog::backdrop {
     line-height: 120.833%;
     /* 120.833% */
     letter-spacing: -3px;
+
     @media (max-width: 991.98px) {
         font-size: 34px;
         letter-spacing: -1px !important;
     }
+
     @media (max-width: 767.98px) {
         font-size: 28px;
         letter-spacing: 0px !important;
@@ -235,10 +311,12 @@ dialog::backdrop {
     line-height: 42px;
     /* 131.25% */
     letter-spacing: -1px;
+
     @media (max-width: 991.98px) {
         font-size: 28px;
         letter-spacing: normal;
     }
+
     @media (max-width: 767.98px) {
         font-size: 20px;
     }
@@ -251,10 +329,12 @@ dialog::backdrop {
     line-height: 150%;
     /* 150% */
     letter-spacing: -0.72px;
+
     @media (max-width: 991.98px) {
         font-size: 22px;
         letter-spacing: normal;
     }
+
     @media (max-width: 767.98px) {
         font-size: 20px;
     }
@@ -266,10 +346,12 @@ dialog::backdrop {
     font-weight: 700;
     line-height: normal;
     letter-spacing: -0.36px;
+
     @media (max-width: 991.98px) {
         font-size: 16px;
         letter-spacing: normal;
     }
+
     @media (max-width: 767.98px) {
         font-size: 14px;
     }
@@ -282,6 +364,7 @@ dialog::backdrop {
     font-weight: 700;
     line-height: normal;
     letter-spacing: -0.32px;
+
     @media (max-width: 767.98px) {
         font-size: 14px;
         letter-spacing: normal;
@@ -305,10 +388,12 @@ dialog::backdrop {
     align-items: center;
     gap: 6px;
     border-radius: 46px;
+
     @media (max-width: 991.98px) {
         padding: 9px 14px 10px 14px;
         font-size: 15px;
     }
+
     @media (max-width: 767.98px) {
         padding: 7px 12px 8px 12px;
         font-size: 14px;
@@ -318,11 +403,35 @@ dialog::backdrop {
 /***********BADGE*************************/
 
 .badge-icon {
-    display: flex;
+    display: inline-flex;
+    max-width: fit-content;
     justify-content: center;
     align-items: center;
     aspect-ratio: 1/1;
     border-radius: 16px;
+
+    &.mini { 
+        height: 32px;
+        width: 32px;
+        border-radius: 8px;
+        padding: 8px;
+
+        img {
+            width: 16px;
+            height: 16px;
+        }
+    }
+
+    &.w-40 {
+        width: 40px;
+        max-width: 40px;
+        height: 40px;
+        padding: 8px;
+        img {
+            width: 24px;
+            height: 24px;
+        }
+    }
 
     &.small {
         padding: 8px;
@@ -333,10 +442,26 @@ dialog::backdrop {
             width: 40px;
             height: 40px;
         }
+
         @media (max-width: 767.98px) {
             width: 48px;
             height: 48px;
             padding: 4px;
+        }
+    }
+
+    &.small-2 {
+        padding: 16px;
+        width: 56px;
+        height: 56px;
+        img {
+            width: 24px;
+            height: 24px;
+        }
+        @media (max-width: 767.98px) {
+            width: 48px;
+            height: 48px;
+            padding: 12px;
         }
     }
 
@@ -349,6 +474,7 @@ dialog::backdrop {
             width: 24px;
             height: 24px;
         }
+
         @media (max-width: 767.98px) {
             padding: 8px;
             width: 56px;
@@ -365,6 +491,7 @@ dialog::backdrop {
             width: 32px;
             height: 32px;
         }
+
         @media (max-width: 767.98px) {
             padding: 16px;
             width: 64px;
@@ -384,6 +511,12 @@ dialog::backdrop {
 .badge-icon.primary-light-gray {
     background: var(--Color-Primary-Light-Gray, #f3f4f6);
 }
+.badge-icon.primary-dark-blue {
+    background: var(--Color-Primary-Dark-Blue, #161625);
+}
+.badge-icon.black-100 {
+    background: var(--Color-Text-Black-100, #000);
+}
 
 .badge-text {
     border-radius: 16px;
@@ -396,6 +529,7 @@ dialog::backdrop {
     align-items: center;
     flex-shrink: 0;
     color: var(--Color-Accent-Bright-lime, #d1f55f);
+
     span {
         color: var(--Color-Accent-Bright-lime, #d1f55f);
         text-align: center;
@@ -405,6 +539,7 @@ dialog::backdrop {
         font-weight: 400;
         line-height: normal;
     }
+
     @media (max-width: 767.98px) {
         width: 48px;
         height: 48px;
@@ -418,17 +553,34 @@ dialog::backdrop {
 }
 
 /**************Content Wrapper******************************/
+.section-bottom {
+    padding-bottom: var(--section-padding);
 
-.section {
-    padding: 96px 0px;
     @media (max-width: 991.98px) {
-        padding: 72px 0px;
+        padding-bottom: var(--section-padding);
     }
+
     @media (max-width: 767.98px) {
-        padding: 64px 0px;
+        padding-bottom: var(--section-padding);
     }
+
     @media (max-width: 487.98px) {
-        padding: 48px 0px;
+        padding-bottom: var(--section-padding);
+    }
+}
+.section {
+    padding: var(--section-padding) 0px;
+
+    @media (max-width: 991.98px) {
+        padding: var(--section-padding) 0px;
+    }
+
+    @media (max-width: 767.98px) {
+        padding: var(--section-padding) 0px;
+    }
+
+    @media (max-width: 487.98px) {
+        padding: var(--section-padding) 0px;
     }
 }
 
@@ -436,9 +588,11 @@ dialog::backdrop {
     display: flex;
     flex-direction: column;
     gap: 64px;
+
     @media (max-width: 991.98px) {
         gap: 48px;
     }
+
     @media (max-width: 767.98px) {
         gap: 32px;
     }
@@ -449,9 +603,11 @@ dialog::backdrop {
     flex-direction: column;
     align-items: flex-start;
     gap: 24px;
+
     @media (max-width: 991.98px) {
         gap: 20px;
     }
+
     @media (max-width: 767.98px) {
         gap: 16px;
     }
@@ -460,13 +616,126 @@ dialog::backdrop {
 .section-padding {
     padding: 80px 56px;
     border-radius: 24px;
+
     @media (max-width: 991.98px) {
         padding: 40px 20px;
     }
+
     @media (max-width: 767.98px) {
         padding: 32px 16px;
     }
 }
+
+
+.flex-content-50 {
+    display: flex;
+    gap: 24px;
+    @media (min-width: 991.98px) {
+        align-items: center;
+        justify-content: space-between;
+
+        div:nth-child(1),
+        div:nth-child(2) {
+            flex: 0 1 50%;
+        }
+    }
+    @media (max-width: 991.98px) {
+        flex-direction: column;
+    }
+}
+
+.bottom-cta-bg {
+    position: relative;
+
+    &::after {
+        content: "";
+        width: 100%;
+        height: 121px;
+        background: var(--Color-Primary-Dark-Blue, #161625);
+        position: absolute;
+        bottom: 0;
+    }
+
+    [class*=__content] {
+        position: relative;
+        z-index: 2;
+    }
+}
+
+
+.check-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0px 8px;
+        &::before {
+            width: 24px;
+            height: 24px;
+            content: url("../icons/RoundCheck.svg");
+        }
+    }
+}
+
+
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    align-self: stretch;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    align-self: stretch;
+    border-radius: 20px;
+    border: 1px solid var(--Color-Stroke-Dark, rgba(137, 137, 158, 0.30));
+    background: rgba(255, 255, 255, 0.90);
+    backdrop-filter: blur(5px);
+    @media(min-width:991.98px) {
+        padding: 24px 32px 24px 24px;
+    }
+    @media(max-width:991.98px) {
+        padding: 16px 24px 16px 16px;
+    }
+}
+
+.text-dark-100 .regular-text{
+    color: var(--Color-Text-Black-100, #000) !important; 
+}
+
+
+
+
+
+.right-card {
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+    border-radius: 24px;
+    flex-direction: column;
+    flex-shrink: 0;
+    border: 1px solid var(--Boarder-Gradient-Stroke, rgba(255, 255, 255, 0.08));
+    backdrop-filter: blur(5px);
+    @media(min-width:991.98px) {
+        padding: 56px 40px;
+    }
+    @media(max-width:991.98px) {
+        padding: 32px 24px;
+    }
+}
+
+
 
 /***********BUTTONS*************************/
 
@@ -478,6 +747,7 @@ dialog::backdrop {
     z-index: 20;
     outline: none;
     transition: all 0.3s;
+
     &::after {
         width: calc(100% + 8px);
         height: calc(100% + 8px);
@@ -496,6 +766,7 @@ dialog::backdrop {
     width: 64px;
     height: 64px;
     padding: 16px;
+
     @media (max-width: 767.98px) {
         width: 56px;
         height: 56px;
@@ -508,6 +779,7 @@ dialog::backdrop {
     width: 72px;
     height: 72px;
     padding: 24px;
+
     @media (max-width: 767.98px) {
         width: 64px;
         height: 64px;
@@ -544,6 +816,7 @@ dialog::backdrop {
         z-index: -1;
         content: "";
     }
+
     /* 125% */
     &.large {
         height: 80px;
@@ -556,12 +829,15 @@ dialog::backdrop {
             width: 56px;
             height: 56px;
         }
+
         &::after {
             border-radius: 48px;
         }
+
         @media (max-width: 767.98px) {
             height: 64px;
             padding: 10px 10px 10px 24px;
+
             .button-icon {
                 border-radius: 48px;
                 padding: 16px;
@@ -582,12 +858,15 @@ dialog::backdrop {
             height: 48px;
             padding: 8px;
         }
+
         &::after {
             border-radius: 40px;
         }
+
         @media (max-width: 767.98px) {
             height: 48px;
             padding: 10px 10px 10px 24px;
+
             .button-icon {
                 border-radius: 48px;
                 padding: 6px;
@@ -602,9 +881,11 @@ dialog::backdrop {
         height: 56px;
         gap: 8px;
         padding: 16px 16px 16px 32px;
+
         &::after {
             border-radius: 48px;
         }
+
         @media (max-width: 767.98px) {
             height: 48px;
             padding: 10px 10px 10px 24px;
@@ -615,16 +896,19 @@ dialog::backdrop {
     &:disabled {
         background: var(--Color-Primary-Gray, #d9d9e0) !important;
         color: var(--Color-Primary-Purple-Gray, #89899e) !important;
+
         .button-icon {
             border-radius: 48px;
             background: var(--Color-Primary-Purple-Gray, #89899e) !important;
         }
+
         &:hover {
             &::after {
                 opacity: 0;
                 background-color: transparent;
             }
         }
+
         cursor: not-allowed;
     }
 }
@@ -641,12 +925,14 @@ dialog::backdrop {
     &:hover {
         background-color: var(--Color-Accent-Lime, #d1f55f);
         color: var(--Color-Primary-Dark-Blue, #161625);
+
         &::after {
             border-radius: 48px;
             opacity: 1;
             border: 3px solid var(--Color-Accent-Lime, #d1f55f);
             background-color: var(--Color-Accent-Lime, #d1f55f);
         }
+
         img {
             filter: brightness(0) saturate(100%);
         }
@@ -666,6 +952,7 @@ dialog::backdrop {
             opacity: 1;
             background-color: var(--Color-Accent-Lime, #d1f55f);
         }
+
         .button-icon::after {
             opacity: 1;
             background: var(--Color-Primary-Dark-Blue, #161625);
@@ -676,6 +963,7 @@ dialog::backdrop {
 .button-primary-dark {
     color: var(--Color-Text-White-100, #fff);
     background: var(--Color-Primary-Dark-Blue, #161625);
+
     &:focus {
         border: 3px solid rgba(255, 255, 255, 0.6);
     }
@@ -686,6 +974,7 @@ dialog::backdrop {
             border-radius: 112px;
             background: var(--Color-Primary-Dark-Blue, #161625);
         }
+
         .button-icon::after {
             opacity: 1;
             background-color: var(--Color-Accent-Lime, #d1f55f);
@@ -695,6 +984,7 @@ dialog::backdrop {
 
 .button-icon-dark {
     background: var(--Color-Primary-Dark-Blue, #161625);
+
     &:focus {
         border: 3px solid rgba(255, 255, 255, 0.6);
     }
@@ -710,6 +1000,7 @@ dialog::backdrop {
 
 .button-icon-accent {
     background: var(--Color-Accent-Lime, #d1f55f);
+
     &:focus {
         border: 3px solid rgba(255, 255, 255, 0.6);
     }
@@ -734,6 +1025,7 @@ dialog::backdrop {
     z-index: 200;
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(30px);
+
     &__container {
         display: flex;
         justify-content: space-between;
@@ -839,8 +1131,7 @@ dialog::backdrop {
 .header-nav {
     // .header-nav_li
 
-    &_li {
-    }
+    &_li {}
 
     // .header-nav__list
     ul,
@@ -864,7 +1155,7 @@ dialog::backdrop {
     }
 
     // .header-nav__link
-    li > a,
+    li>a,
     &__link {
         color: var(--Color-Text-Black-80, rgba(0, 0, 0, 0.8));
         padding: 0px 8px 2px 8px;
@@ -931,6 +1222,7 @@ dialog::backdrop {
         position: relative;
         display: block;
         z-index: 51;
+
         span,
         &::after,
         &::before {
@@ -991,8 +1283,7 @@ dialog::backdrop {
     padding: 48px 0px 0 0px;
     // .footer_li
 
-    &_li {
-    }
+    &_li {}
 
     // .footer__container
 
@@ -1038,18 +1329,15 @@ dialog::backdrop {
 
     // .footer__link
 
-    &__link {
-    }
+    &__link {}
 
     // .footer__middle
 
-    &__middle {
-    }
+    &__middle {}
 
     // .footer__bottom
 
-    &__bottom {
-    }
+    &__bottom {}
 }
 
 .footer-sub-title {
@@ -1083,13 +1371,11 @@ dialog::backdrop {
         width: 100%;
     }
 
-    &__nav {
-    }
+    &__nav {}
 
     // .footer-top-left__title
 
-    &__title {
-    }
+    &__title {}
 
     // .footer-top-left__list
 
@@ -1132,8 +1418,7 @@ dialog::backdrop {
         width: 100%;
     }
 
-    &__title {
-    }
+    &__title {}
 
     // .footer-top-right__list
 
@@ -1145,13 +1430,11 @@ dialog::backdrop {
 
     // .footer-top-right__li
 
-    &__li {
-    }
+    &__li {}
 
     // .footer-top-right__link
 
-    &__link {
-    }
+    &__link {}
 }
 
 .footer-bottom {
@@ -1167,8 +1450,7 @@ dialog::backdrop {
         flex-direction: column;
     }
 
-    &__logo {
-    }
+    &__logo {}
 
     // .footer-bottom__text
 
@@ -1191,6 +1473,7 @@ dialog::backdrop {
 /*************************************/
 
 .main {
+
     // .main__hero
     &__hero {
         padding-top: 76px;
@@ -1202,6 +1485,11 @@ dialog::backdrop {
         background: #fff;
     }
 
+    .main-logos-mtd {
+        border-radius: 0 0 40px 40px;
+        padding-bottom: var(--section-padding);
+    }
+
     // .main__before-solution
 
     &__before-solution {
@@ -1209,10 +1497,14 @@ dialog::backdrop {
         background: #fff;
     }
 
+    .before-solution-mtd {
+        background: none;
+        border-radius: 0;
+    }
+
     // .main__partners
 
-    &__partners {
-    }
+    &__partners {}
 
     // .main__hour-video
 
@@ -1250,20 +1542,23 @@ dialog::backdrop {
 
     // .main__reviews
 
-    &__reviews {
-    }
+    &__reviews {}
 
     // .main__subscription
 
-    &__subscription {
+    &__subscription {}
+
+
+    &__mtd-subscription {
+        border-radius: 0 0 40px 40px;
+        background: #fff;
     }
 }
 
 .main-hero {
     // .main-hero__container
 
-    &__container {
-    }
+    &__container {}
 
     // .main-hero__content
 
@@ -1287,6 +1582,7 @@ dialog::backdrop {
             color: var(--Color-Text-Black-100, #000);
             letter-spacing: -6px;
             display: inline-block;
+
             &::after {
                 content: "";
                 height: 28px;
@@ -1296,6 +1592,7 @@ dialog::backdrop {
                 left: 0;
                 z-index: -1;
                 background: var(--Color-Accent-Lime-50, rgba(209, 245, 95, 0.5));
+
                 @media (max-width: 991.98px) {
                     height: 20px;
                 }
@@ -1308,21 +1605,22 @@ dialog::backdrop {
     &__text {
         color: var(--Color-Text-Black-80);
         text-align: center;
-        margin: 0px auto 48px auto;
+        margin: 0px auto 0px auto;
         max-width: 634px;
     }
-
+    &__check-list {
+        margin-top: 24px;
+    }
     // .main-hero__buttons
 
     &__buttons {
+        margin-top: 48px;
         margin-bottom: 96px;
     }
 
     // .main-hero__button
 
-    &__button {
-        
-    }
+    &__button {}
 
     // .main-hero__video
 
@@ -1335,8 +1633,32 @@ dialog::backdrop {
         max-height: 336px;
         cursor: pointer;
         margin: 0px auto;
+
         @media (max-width: 767.98px) {
             max-height: 280px;
+        }
+    }
+}
+
+.main-hero-mtd {
+    .main-hero {
+
+        &__title {
+            max-width: 638px;
+        }
+
+        // .main-hero__text
+
+        &__text {
+            max-width: 742px;
+        }
+
+        &__video {
+            img {
+                display: block;
+                max-width: 100%;
+                height: auto;
+            }
         }
     }
 }
@@ -1346,10 +1668,12 @@ dialog::backdrop {
     white-space: nowrap;
     right: 36px;
     display: inline-flex !important;
+
     @media (max-width: 991.98px) {
         top: 20px;
         right: 20px;
     }
+
     @media (max-width: 767.98px) {
         right: 12px;
         top: 12px;
@@ -1361,8 +1685,7 @@ dialog::backdrop {
 .main-logos {
     // .main-logos__container
 
-    &__container {
-    }
+    &__container {}
 
     // .main-logos__items
 
@@ -1373,6 +1696,7 @@ dialog::backdrop {
         align-self: stretch;
         flex-wrap: wrap;
         gap: 8px;
+
         @media (max-width: 1280.98px) {
             justify-content: center;
         }
@@ -1405,6 +1729,7 @@ dialog::backdrop {
         display: flex;
         align-items: start;
         gap: 24px;
+
         @media (max-width: 991.98px) {
             flex-direction: column;
         }
@@ -1415,12 +1740,13 @@ dialog::backdrop {
     &__left {
         display: flex;
         flex-direction: column;
-        gap: 48px;
         flex: 0 1 50%;
+
         /* 596/1216 */
         @media (max-width: 991.98px) {
             gap: 32px;
         }
+
         @media (max-width: 767.98px) {
             gap: 24px;
         }
@@ -1432,9 +1758,20 @@ dialog::backdrop {
         color: #fff;
     }
 
+    // .before-solution__texts
+    &__texts {
+        margin-top: 24px;
+        max-width: 458px;
+
+        p:not(:last-child) {
+            margin-bottom: 8px;
+        }
+    }
+
     // .before-solution__buttons
 
     &__buttons {
+        margin-top: 48px;
     }
 
     // .before-solution__right
@@ -1462,15 +1799,24 @@ dialog::backdrop {
         flex-shrink: 0;
     }
 
+    // .before-solution__card-start
+
+    &__card-start {
+        align-items: start;
+        gap: 8px;
+
+        .before-solution__text {
+            padding: 8px;
+        }
+    }
+
     // .before-solution__badge
 
-    &__badge {
-    }
+    &__badge {}
 
     // .before-solution__text
 
-    &__text {
-    }
+    &__text {}
 }
 
 /*************************/
@@ -1486,6 +1832,7 @@ dialog::backdrop {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 24px;
+
         @media (max-width: 767.98px) {
             grid-template-columns: 1fr;
         }
@@ -1499,6 +1846,7 @@ dialog::backdrop {
     align-items: flex-start;
     gap: 16px;
     border-radius: 24px;
+
     &:nth-child(1) {
         background: var(--Color-Accent-Lime, #d1f55f);
     }
@@ -1510,12 +1858,15 @@ dialog::backdrop {
     &:nth-child(3) {
         background: var(--Color-Accent-Buege, #fce6c6);
     }
+
     @media (max-width: 991.98px) {
         padding: 32px 24px;
     }
+
     @media (max-width: 767.98px) {
         padding: 20px;
     }
+
     &__numbers {
         color: var(--Color-Text-Black-100, #000);
         text-align: right;
@@ -1542,11 +1893,13 @@ dialog::backdrop {
     justify-content: end;
     gap: 166px;
 }
+
 .partners-triggers__buttons {
     display: flex;
     align-items: center;
     gap: 16px;
 }
+
 .partners-trigger {
     width: 64px;
     height: 64px;
@@ -1557,8 +1910,10 @@ dialog::backdrop {
     justify-content: center;
     align-items: center;
     gap: 8px;
+
     &:disabled {
         background: var(--Color-Primary-Gray, #d9d9e0);
+
         svg path {
             fill: #89899e;
         }
@@ -1572,6 +1927,7 @@ dialog::backdrop {
     background: var(--Color-Primary-Gray, #d9d9e0);
     border-radius: 2px;
     overflow: hidden;
+
     @media (max-width: 767.98px) {
         display: none;
     }
@@ -1611,6 +1967,7 @@ dialog::backdrop {
         align-items: center !important;
         height: 692px;
         padding: 24px 0px !important;
+
         @media (max-width: 767.98px) {
             height: max-content;
         }
@@ -1636,40 +1993,48 @@ dialog::backdrop {
     flex: 0 0 493px;
     width: 493px;
     height: 644px;
+
     .partners-slide__image-wrapper {
         &::after {
             background: var(--Color-Primary-Dark-Blue, #161625);
         }
     }
+
     .partners-slide__button {
         background: var(--Color-Accent-Lime, #d1f55f);
+
         &:hover {
             &::after {
                 opacity: 1;
                 background-color: var(--Color-Accent-Lime, #d1f55f);
             }
+
             .button-icon::after {
                 opacity: 1;
                 background: var(--Color-Primary-Dark-Blue, #161625);
             }
         }
     }
+
     .partners-slide__decor {
         svg path {
             fill: var(--Color-Accent-Lime, #d1f55f);
         }
     }
+
     .partners-slide__bottom {
         background: var(--Color-Primary-Dark-Blue, #161625);
     }
 
     .partners-slide__text {
         color: rgba(255, 255, 255, 0.8);
+
         span {
             font-weight: 600;
             color: var(--Color-Accent-Lime, #d1f55f);
         }
     }
+
     .partners-slide__user-name {
         color: #fff;
     }
@@ -1678,7 +2043,9 @@ dialog::backdrop {
         color: var(--Color-Text-White-60, rgba(255, 255, 255, 0.6));
     }
 }
+
 @media (max-width: 767.98px) {
+
     .partners-slide,
     .partners-slide.active,
     .partners-slide.next-active {
@@ -1700,6 +2067,7 @@ dialog::backdrop {
         padding: 16px;
     }
 }
+
 .partners-slide {
     position: relative;
     border-radius: 24px;
@@ -1715,6 +2083,7 @@ dialog::backdrop {
         transition: all 0.5s ease;
         background-position: center;
         background-size: cover;
+
         &::after {
             transition: all 0.5s ease;
             content: "";
@@ -1760,6 +2129,7 @@ dialog::backdrop {
         color: var(--Color-Text-Black-80);
         height: 141px;
         max-width: 325px !important;
+
         span {
             transition: all 0.5s ease;
             font-weight: 600;
@@ -1783,28 +2153,23 @@ dialog::backdrop {
 .hour-video {
     // .hour-video__container
 
-    &__container {
-    }
+    &__container {}
 
     // .hour-video__content
 
-    &__content {
-    }
+    &__content {}
 
     // .hour-video__header
 
-    &__header {
-    }
+    &__header {}
 
     // .hour-video__label
 
-    &__label {
-    }
+    &__label {}
 
     // .hour-video__title
 
-    &__title {
-    }
+    &__title {}
 
     // .hour-video__video
 
@@ -1817,6 +2182,7 @@ dialog::backdrop {
         margin: 0px auto;
         flex-shrink: 0;
         border-radius: 24px;
+
         video {
             max-width: 100%;
         }
@@ -1827,10 +2193,12 @@ dialog::backdrop {
     position: absolute;
     top: 40px;
     right: 40px;
+
     @media (max-width: 991.98px) {
         top: 20px;
         right: 20px;
     }
+
     @media (max-width: 767.98px) {
         right: 12px;
         top: 12px;
@@ -1842,8 +2210,7 @@ dialog::backdrop {
 .features-top {
     // .features-top__container
 
-    &__container {
-    }
+    &__container {}
 
     // .features-top__content
 
@@ -1855,14 +2222,17 @@ dialog::backdrop {
         padding: 72.738px 50.917px;
         align-items: center;
         gap: 21.821px;
+
         @media (max-width: 991.98px) {
             gap: 36px;
         }
+
         @media (max-width: 767.98px) {
             flex-direction: column;
             align-items: start;
             padding: 40px 36px;
         }
+
         @media (max-width: 487.98px) {
             padding: 30px 20px;
         }
@@ -1890,10 +2260,12 @@ dialog::backdrop {
         /* 120.833% */
         letter-spacing: -2.56px;
         max-width: 451px;
+
         @media (max-width: 991.98px) {
             font-size: 30px;
             letter-spacing: -1px !important;
         }
+
         @media (max-width: 767.98px) {
             font-size: 24px;
             letter-spacing: 0px !important;
@@ -1922,6 +2294,7 @@ dialog::backdrop {
             width: 100%;
             object-fit: cover;
         }
+
         @media (max-width: 767.98px) {
             width: 100%;
         }
@@ -1931,15 +2304,19 @@ dialog::backdrop {
 .features__wrapper {
     height: 670px;
     overflow: hidden;
+
     @media (max-width: 991.98px) {
         height: 570px;
     }
+
     @media (max-width: 767.98px) {
         height: 770px;
     }
+
     @media (max-width: 640.98px) {
         height: 670px;
     }
+
     @media (max-width: 487.98px) {
         height: 670px;
     }
@@ -1968,9 +2345,11 @@ dialog::backdrop {
         display: flex;
         align-items: center;
         gap: 24px;
+
         @media (max-width: 991.98px) {
             gap: 36px;
         }
+
         @media (max-width: 767.98px) {
             flex-direction: column;
             align-items: start;
@@ -1982,6 +2361,7 @@ dialog::backdrop {
 
     &__left {
         flex: 0 1 50%;
+
         @media (max-width: 487.98px) {
             padding-top: 60px;
         }
@@ -2009,16 +2389,19 @@ dialog::backdrop {
         background-blend-mode: soft-light;
         backdrop-filter: blur(5px);
         flex: 0 1 50%;
+
         img {
             max-width: 100%;
             height: auto;
             object-fit: cover;
         }
+
         @media (max-width: 767.98px) {
             width: 100%;
         }
     }
 }
+
 .features-card-accent {
     background: var(--Color-Accent-Lime, #d1f55f);
 }
@@ -2030,45 +2413,42 @@ dialog::backdrop {
 .features-card-accent-buege {
     background: var(--Color-Accent-Buege, #fce6c6);
 }
+
 /*************************************/
 
 .main-services {
     // .main-services__container
 
-    &__container {
-    }
+    &__container {}
 
     // .main-services__content
 
-    &__content {
-    }
+    &__content {}
 
     // .main-services__header
 
-    &__header {
-    }
+    &__header {}
 
     // .main-services__label
 
-    &__label {
-    }
+    &__label {}
 
     // .main-services__title
 
-    &__title {
-    }
+    &__title {}
 
     // .main-services__cards
 
     &__cards {
         display: grid;
-
         gap: 24px;
+
         @media (min-width: 991.98px) {
             height: 752px;
             grid-template-rows: repeat(3, minmax(0, 1fr));
             grid-template-columns: repeat(3, minmax(0, 1fr));
         }
+
         @media (max-width: 991.98px) {
             grid-template-columns: 1fr;
         }
@@ -2077,6 +2457,32 @@ dialog::backdrop {
     // .main-services__card
 
     &__card {
+        @media (min-width: 991.98px) {
+            &:nth-child(1) {
+                grid-row: 1 / span 2;
+                grid-column: 1 / span 1;
+            }
+
+            &:nth-child(2) {
+                grid-row: 1 / span 1;
+                grid-column: 2 / span 2;
+            }
+
+            &:nth-child(3) {
+                grid-row: 2 / span 1;
+                grid-column: 2 / span 1;
+            }
+
+            &:nth-child(4) {
+                grid-row: 3 / span 1;
+                grid-column: 1 / span 2;
+            }
+
+            &:nth-child(5) {
+                grid-row: 2 / span 2;
+                grid-column: 3 / span 1;
+            }
+        }
     }
 }
 
@@ -2101,44 +2507,19 @@ dialog::backdrop {
 
     // .services-card__badge
 
-    &__badge {
-    }
+    &__badge {}
 
     // .services-card__title
 
-    &__title {
-    }
+    &__title {}
 
     // .services-card__text
 
     &__text {
+        
         color: var(--Color-Text-Black-80);
-    }
-
-    @media (min-width: 991.98px) {
-        &:nth-child(1) {
-            grid-row: 1 / span 2;
-            grid-column: 1 / span 1;
-        }
-
-        &:nth-child(2) {
-            grid-row: 1 / span 1;
-            grid-column: 2 / span 2;
-        }
-
-        &:nth-child(3) {
-            grid-row: 2 / span 1;
-            grid-column: 2 / span 1;
-        }
-
-        &:nth-child(4) {
-            grid-row: 3 / span 1;
-            grid-column: 1 / span 2;
-        }
-
-        &:nth-child(5) {
-            grid-row: 2 / span 2;
-            grid-column: 3 / span 1;
+        @media (min-width: 487.98px) {
+            margin: 0px 8px;
         }
     }
 }
@@ -2154,6 +2535,7 @@ dialog::backdrop {
         justify-content: space-between;
         gap: 24px;
         background: var(--Color-Primary-Dark-Blue, #161625);
+
         @media (max-width: 991.98px) {
             flex-direction: column;
         }
@@ -2175,6 +2557,7 @@ dialog::backdrop {
         position: relative;
         overflow: hidden;
         border-radius: 24px;
+
         img {
             width: 100%;
             object-fit: cover;
@@ -2189,10 +2572,12 @@ dialog::backdrop {
         position: absolute;
         bottom: 32px;
         right: 32px;
+
         @media (max-width: 991.98px) {
             bottom: 20px;
             right: 20px;
         }
+
         @media (max-width: 767.98px) {
             right: 12px;
             bottom: 12px;
@@ -2229,8 +2614,7 @@ dialog::backdrop {
 
     // .testimonial-left__user
 
-    &__user {
-    }
+    &__user {}
 
     // .testimonial-left__user-name
 
@@ -2256,9 +2640,11 @@ dialog::backdrop {
         padding: 0px 56px;
         flex: 0 1 100%;
         gap: 24px;
+
         @media (max-width: 1280.98px) {
             padding: 0px;
         }
+
         @media (max-width: 991.98px) {
             flex-direction: column;
             align-items: start;
@@ -2268,9 +2654,11 @@ dialog::backdrop {
     &__content-1,
     &__content-2 {
         margin-bottom: 64px;
+
         @media (max-width: 991.98px) {
             margin-bottom: 48px;
         }
+
         @media (max-width: 767.98px) {
             margin-bottom: 32px;
         }
@@ -2318,10 +2706,12 @@ dialog::backdrop {
         padding: 56px 40px;
         flex-direction: column;
         background: var(--Color-Accent-Bright-lime, #d1f55f);
+
         @media (max-width: 991.98px) {
             width: 100%;
             padding: 32px 24px;
         }
+
         @media (max-width: 767.98px) {
             padding: 20px 16px;
         }
@@ -2347,16 +2737,20 @@ dialog::backdrop {
         border: 1px solid var(--Color-Stroke-Dark, rgba(137, 137, 158, 0.3));
         background: rgba(255, 255, 255, 0.9);
         backdrop-filter: blur(5px);
+
         @media (max-width: 991.98px) {
             padding: 20px;
         }
+
         @media (max-width: 767.98px) {
             padding: 16px;
         }
+
         &:nth-child(2) {
             margin-top: 10px;
             transform: rotate(3deg);
         }
+
         &:nth-child(3) {
             transform: rotate(8.7deg);
             margin-top: 55px;
@@ -2365,8 +2759,7 @@ dialog::backdrop {
 
     // .smart-collaboration__badge
 
-    &__badge {
-    }
+    &__badge {}
 
     // .smart-collaboration__list
 
@@ -2379,8 +2772,7 @@ dialog::backdrop {
 
     // .smart-collaboration__li
 
-    &__li {
-    }
+    &__li {}
 
     // .smart-collaboration__right-accent-light-blue
 
@@ -2390,13 +2782,11 @@ dialog::backdrop {
 
     // .smart-collaboration__reviews
 
-    &__reviews {
-    }
+    &__reviews {}
 
     // .smart-collaboration__review
 
-    &__review {
-    }
+    &__review {}
 
     // .smart-collaboration__right-accent-buege
 
@@ -2441,15 +2831,19 @@ dialog::backdrop {
     border-radius: 24px;
     border: 1px solid var(--Boarder-Gradient-Stroke, rgba(255, 255, 255, 0.08));
     backdrop-filter: blur(5px);
+
     @media (max-width: 991.98px) {
         padding: 32px 24px;
     }
+
     @media (max-width: 767.98px) {
         padding: 24px 16px;
     }
+
     @media (max-width: 487.98px) {
         padding: 16px;
     }
+
     // .video-review__top
 
     &__top {
@@ -2462,6 +2856,7 @@ dialog::backdrop {
         border: 1px solid var(--Color-Stroke-Dark, rgba(137, 137, 158, 0.3));
         background: rgba(255, 255, 255, 0.9);
         backdrop-filter: blur(5px);
+
         @media (max-width: 991.98px) {
             padding: 20px;
         }
@@ -2480,9 +2875,11 @@ dialog::backdrop {
         border: 1px solid var(--Color-Stroke-Dark, rgba(137, 137, 158, 0.3));
         background: rgba(255, 255, 255, 0.9);
         backdrop-filter: blur(5px);
+
         @media (max-width: 991.98px) {
             padding: 24px 24px 24px 20px;
         }
+
         @media (max-width: 487.98px) {
             flex-direction: column;
             gap: 12px;
@@ -2501,10 +2898,12 @@ dialog::backdrop {
         justify-content: center;
         align-items: center;
         aspect-ratio: 1/1;
+
         @media (max-width: 991.98px) {
             width: 80px;
             height: 80px;
         }
+
         @media (max-width: 767.98px) {
             height: 64px;
             width: 64px;
@@ -2532,11 +2931,13 @@ dialog::backdrop {
         bottom: 0;
         border-radius: 48px;
         background: var(--Color-Primary-Dark-Blue, #161625);
+
         @media (max-width: 991.98px) {
             padding: 4px;
             bottom: -3px;
             right: -3px;
         }
+
         @media (max-width: 767.98px) {
             padding: 2px;
         }
@@ -2544,8 +2945,7 @@ dialog::backdrop {
 
     // .video-review-top__content
 
-    &__content {
-    }
+    &__content {}
 
     // .video-review-top__user-name
 
@@ -2570,13 +2970,11 @@ dialog::backdrop {
 .main-reviews {
     // .main-reviews__container
 
-    &__container {
-    }
+    &__container {}
 
     // .main-reviews__header
 
-    &__header {
-    }
+    &__header {}
 
     &__track {
         width: 100%;
@@ -2588,6 +2986,7 @@ dialog::backdrop {
 
         &:not(:last-child) {
             margin-bottom: 24px;
+
             @media (max-width: 767.98px) {
                 margin-bottom: 16px;
             }
@@ -2599,14 +2998,16 @@ dialog::backdrop {
     &__lines {
         width: 100%;
         overflow: hidden;
-            position: relative;
+        position: relative;
+
         @media (min-width: 767.98px) {
             height: 679px;
         }
+
         @media (max-width: 767.98px) {
             height: 540px;
         }
-      
+
         &.is-loading::after {
             content: "";
             position: absolute;
@@ -2644,6 +3045,7 @@ dialog::backdrop {
         will-change: transform;
         width: 100%;
         min-width: 100%;
+
         @media (max-width: 767.98px) {
             gap: 16px;
         }
@@ -2652,24 +3054,25 @@ dialog::backdrop {
 
 
 @keyframes spinner {
-	to {
-		transform: translate(-50%, -50%) rotate(360deg);
-	}
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
 }
 
 .main-reviews-header {
     // .main-reviews-header__label
 
-    &__label {
-    }
+    &__label {}
 
     // .main-reviews-header__content
 
     &__content {
         margin-bottom: 64px;
+
         @media (max-width: 991.98px) {
             margin-bottom: 48px;
         }
+
         @media (max-width: 767.98px) {
             margin-bottom: 32px;
         }
@@ -2691,8 +3094,10 @@ dialog::backdrop {
         background: var(--Color-Primary-Purple-Gray, #89899e);
         align-items: flex-start;
         gap: 8px;
+
         @media (max-width: 991.98px) {
             padding: 4px 12px 8px 8px;
+
             img {
                 max-width: 70px;
                 height: auto;
@@ -2712,18 +3117,22 @@ dialog::backdrop {
     border: 1px solid var(--Color-Stroke-Dark, rgba(137, 137, 158, 0.3));
     background: #fff;
     backdrop-filter: blur(2px);
+
     @media (max-width: 991.98px) {
         padding: 32px;
         width: 420px;
     }
+
     @media (max-width: 767.98px) {
         padding: 24px;
         width: 380px;
     }
+
     @media (max-width: 487.98px) {
         padding: 16px;
         width: 100dvw !important;
     }
+
     &__top {
         display: flex;
         align-items: center;
@@ -2732,9 +3141,11 @@ dialog::backdrop {
 
         &:not(:last-child) {
             margin-bottom: 24px;
+
             @media (max-width: 991.98px) {
                 margin-bottom: 20px;
             }
+
             @media (max-width: 767.98px) {
                 margin-bottom: 16px;
             }
@@ -2743,8 +3154,7 @@ dialog::backdrop {
 
     // .text-reviews-item__user
 
-    &__user {
-    }
+    &__user {}
 
     // .text-reviews-item__user-name
 
@@ -2761,8 +3171,7 @@ dialog::backdrop {
 
     // .text-reviews-item__stars
 
-    &__stars {
-    }
+    &__stars {}
 
     // .text-reviews-item__title
 
@@ -2784,6 +3193,7 @@ dialog::backdrop {
         overflow: hidden;
         text-overflow: ellipsis;
         transition: all 0.3s ease;
+
         &:not(:last-child) {
             margin-bottom: 12px;
         }
@@ -2809,22 +3219,10 @@ dialog::backdrop {
 /***********************************/
 
 .main-subscription {
-    position: relative;
-
-    &::after {
-        content: "";
-        width: 100%;
-        height: 121px;
-        background: var(--Color-Primary-Dark-Blue, #161625);
-        position: absolute;
-        bottom: 0;
-    }
 
     // .main-subscription__content
 
     &__content {
-        position: relative;
-        z-index: 10;
         display: flex;
         padding: 64px 56px;
         align-items: start;
@@ -2832,13 +3230,16 @@ dialog::backdrop {
         gap: 56px;
         border-radius: 24px;
         background: var(--Color-Accent-Lime, #d1f55f);
+
         @media (max-width: 1280.98px) {
             flex-direction: column;
         }
+
         @media (max-width: 991.98px) {
             padding: 40px 32px;
             gap: 40px;
         }
+
         @media (max-width: 767.98px) {
             padding: 32px 24px;
             gap: 32px;
@@ -2853,21 +3254,21 @@ dialog::backdrop {
         align-items: start;
         gap: 24px;
         flex: 0 1 46.381579%;
+
         @media (min-width: 1280px) {
             padding-top: 88px;
         }
+
         /* 564/1216 */
     }
 
     // .main-subscription__label
 
-    &__label {
-    }
+    &__label {}
 
     // .main-subscription__title
 
-    &__title {
-    }
+    &__title {}
 
     // .main-subscription__right
 
@@ -2880,21 +3281,27 @@ dialog::backdrop {
         background: var(--Color-Primary-Dark-Blue, #161625);
         backdrop-filter: blur(5px);
         gap: 40px;
+
         @media (min-width: 1280px) {
             flex: 0 1 49.013158%;
         }
+
         @media (max-width: 1280.98px) {
             width: 100%;
         }
+
         @media (max-width: 991.98px) {
             padding: 40px 32px;
         }
+
         @media (max-width: 767.98px) {
             padding: 32px 24px;
         }
+
         @media (max-width: 487.98px) {
             padding: 20px;
         }
+
         /* 596/1216 */
     }
 }
@@ -2913,6 +3320,7 @@ dialog::backdrop {
         flex-direction: column;
         gap: 24px;
         align-self: stretch;
+
         @media (min-width: 767.98px) {
             margin-left: 24px;
             gap: 16px;
@@ -2943,14 +3351,14 @@ dialog::backdrop {
 
     // .main-subscription-right__button
 
-    &__button {
-    }
+    &__button {}
 }
 
 .review-modal {
     position: fixed;
     inset: 0;
-    display: none; /* скрыто по умолчанию */
+    display: none;
+    /* скрыто по умолчанию */
     align-items: center;
     justify-content: center;
     z-index: 1000;
@@ -2965,9 +3373,12 @@ dialog::backdrop {
         .text-reviews-item__more {
             display: none;
         }
+
         .text-reviews-item__text {
-            display: block; /* убираем -webkit-box */
-            -webkit-line-clamp: unset; /* снимаем ограничение строк */
+            display: block;
+            /* убираем -webkit-box */
+            -webkit-line-clamp: unset;
+            /* снимаем ограничение строк */
             overflow: visible;
             text-overflow: unset;
             max-height: none;
@@ -3007,7 +3418,8 @@ dialog::backdrop {
 .video-review-modal {
     position: fixed;
     inset: 0;
-    display: none; /* скрыто по умолчанию */
+    display: none;
+    /* скрыто по умолчанию */
     align-items: center;
     justify-content: center;
     z-index: 1000;
@@ -3022,9 +3434,12 @@ dialog::backdrop {
         .text-reviews-item__more {
             display: none;
         }
+
         .text-reviews-item__text {
-            display: block; /* убираем -webkit-box */
-            -webkit-line-clamp: unset; /* снимаем ограничение строк */
+            display: block;
+            /* убираем -webkit-box */
+            -webkit-line-clamp: unset;
+            /* снимаем ограничение строк */
             overflow: visible;
             text-overflow: unset;
             max-height: none;
@@ -3067,7 +3482,452 @@ dialog::backdrop {
 .review-modal__inner {
     max-width: 100%;
 }
+
 .review-video {
     width: 100%;
     max-height: calc(100dvh - 80px);
+}
+
+
+/*****************************************************/
+
+
+.mtd-bottom-cta {
+    &__content {
+        padding: var(--section-padding) 56px;
+        border-radius: 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: var(--Color-Accent-Lime, #D1F55F);
+    }
+
+    &__title,
+    &__text {
+        max-width: 752px;
+        text-align: center;
+    }
+
+    &__title {
+        margin-bottom: 16px;
+    }
+
+    &__text {
+        margin-bottom: 48px;
+    }
+}
+
+
+.mtd-advantages__cards {
+    display: grid;
+    row-gap: 24px;
+    column-gap: 24px;
+    align-self: stretch;
+    @media (min-width: 991.98px) {
+        height: 400px;
+        grid-template-rows: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+    @media (max-width: 991.98px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.mtd-advantages__card {
+    @media (min-width: 991.98px) {
+        &:nth-child(1) {
+            grid-row: 1 / span 1;
+            grid-column: 1 / span 3;
+        }
+    
+        &:nth-child(2) {
+            grid-row: 1 / span 1;
+            grid-column: 4 / span 2;
+        }
+    
+        &:nth-child(3) {
+            grid-row: 2 / span 1;
+            grid-column: 1 / span 2;
+        }
+    
+        &:nth-child(4) {
+            grid-row: 2 / span 1;
+            grid-column: 3 / span 3;
+        }
+    }
+}
+
+.services-card-mtd {
+    .services-card__header {
+        gap: 16px;
+    }
+}
+
+.mtd-pricing-options {
+    border-radius: 40px 40px 0 0;
+    background: #FFF;
+}
+.mtd-pricing-options__texts {
+    color: var(--Color-Text-Black-100, #000);
+    @media(min-width:991.98px) {
+        max-width: 492px;
+    }
+}
+
+.mtd-pricing-options-right {
+    display: flex;
+    padding: 32px 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    flex-shrink: 0;
+    border-radius: 24px;
+    border: 1px solid var(--Boarder-Gradient-Stroke, rgba(255, 255, 255, 0.08));
+    background: var(--Color-Accent-Light-Blue, #E3E3FC);
+    backdrop-filter: blur(5px);
+    @media(min-width:991.98px) {
+        padding: 56px 40px;
+    }
+    &__title {
+        color: var(--Color-Text-Black-100, #000);
+    }
+}
+
+
+.mtd-subscription {
+    &__content {
+        padding: 32px 24px;
+        border-radius: 24px;
+        background: var(--Color-Primary-Dark-Blue, #161625);
+        @media(min-width:991.98px) {
+            padding: 64px 56px;
+        }
+    }
+
+    &__left {
+        padding: 20px  0px;
+        @media(min-width:991.98px) {
+            padding: 40px 40px 40px 0px;
+        }
+    }
+}
+
+.mtd-subscription-left {
+    &__title {
+        color: var(--Color-Text-White-100, #FFF);
+        margin-bottom: 16px;
+    }
+    &__text {
+        color: var(--Color-Text-White-80, rgba(255, 255, 255, 0.80));
+    }
+    &__list {
+        border-radius: 16px;
+        backdrop-filter: blur(9px);
+        margin-top: 16px;
+        padding: 24px 0px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 56px;
+        @media(max-width:991.98px) {
+            margin-bottom: 32px;
+        }
+    }
+
+    &__li {
+        padding:0px 16px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        color: var(--Color-Text-White-80, rgba(255, 255, 255, 0.80));
+        &::before {
+            width: 24px;
+            height: 24px;
+            content: url("../icons/CheckPrimaryBlue.svg");
+        }
+    }
+}
+
+.mtd-subscription-right {
+    gap: 16px;
+    background: var(--Color-Accent-Lime, #D1F55F);
+    &__title {
+        color: var(--Color-Text-Black-100, #000);
+    }
+    &__text {
+        color: var(--Color-Text-Black-80, rgba(0, 0, 0, 0.80));
+    }
+    &__info {
+        color: var(--Color-Text-Black-100, #000);
+        display: flex;
+        padding: 16px 0;
+        align-items: center;
+        gap: 8px;
+        align-self: stretch;
+    }
+    &__card {
+        color: var(--Color-Text-Black-80, rgba(0, 0, 0, 0.80));
+    }
+
+    &__buttons {
+        margin-top: auto;
+        display: flex;
+        justify-content: end;
+    }
+}
+
+
+/*****************************/
+
+.modal-overlay {
+    background: rgba(0, 0, 0, 0.20);
+    backdrop-filter: blur(40px);
+}
+.newsletters-modal {
+    position: fixed;
+    padding: 0px 16px;
+    z-index: 1000;
+    visibility: hidden;
+    height: 100dvh;
+    width: 100dvw;
+    display: flex;
+    opacity: 0;
+    align-items: center;
+    top: -100%;
+    inset: 0;
+    transition: opacity .3s ease-in-out, top .3s ease-in-out, visibility .3s ease-in-out;
+
+    &._active {
+        inset: 0;
+        top: 0;
+        opacity: 1;
+        visibility: visible;
+        .modal-body {
+            transform: translateY(0);
+        }
+    }
+
+    .modal-body {
+        transition: all .3s ease-in-out;
+        transform: translateY(-100%);
+    }
+
+    &__wrapper {
+        position: relative;
+        margin: auto;
+    }
+    &__body {
+        max-height: 90dvh;
+        height: auto;
+        display: flex;
+        overflow-y: auto;
+        max-width: 1086px;
+        padding: 40px;
+        border-radius: 24px;
+        background: var(--Color-Primary-Dark-Blue, #161625);
+        align-items: center;
+        gap: 24px;
+        @media(max-width: 991.98px) {
+            padding: 32px 20px;
+        }
+        @media(max-width: 767.98px) {
+            flex-direction: column;
+        }
+    }
+
+    &__close {
+        position: absolute;
+        right: -32px;
+        border-radius: 24px;
+        background: #FFF;
+        display: flex;
+        padding: 4px;
+        align-items: center;
+        gap: 8px;
+        top: -32px;
+        @media(max-width: 1200.98px) {
+            right: 0;
+            top: -36px;
+        }
+    }
+}   
+
+.newsletters-modal-left {
+    flex: 0 1 52%;
+    display: flex;
+    padding: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    align-self: stretch;
+    @media(max-width: 991.98px) {
+        flex: 0 1 50%;
+        padding: 0;
+    }
+    &__title {
+        color: var(--Color-Text-White-100, #FFF);
+    }
+    &__list {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 4px;
+        .regular-text {
+            color: var(--Color-Text-White-80, rgba(255, 255, 255, 0.80));
+        }
+        height: 100%;
+    }
+
+    &__card {
+        display: flex;
+        padding: 16px;
+        align-items: center;
+        gap: 8px;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(5px);
+        p {
+            color: var(--Color-Text-White-80, rgba(255, 255, 255, 0.80));
+        }
+    }
+
+    &__card-badge {
+        width: 56px;
+        height: 56px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0px 9px;
+        aspect-ratio: 1/1;
+        border-radius: 8px;
+        background: #000;
+    }
+}
+
+.newsletters-modal-right {
+    flex: 0 1 45%;
+    display: flex;
+    padding: 32px;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 24px;
+    background: #FFF;
+
+    align-self: stretch;
+    @media(max-width: 991.98px) {
+        flex: 0 1 47%;
+        padding: 24px;
+    }
+    &__title {
+        color: var(--Color-Text-Black-100, #000);
+        margin-bottom: 24px;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+    &__button {
+        padding: 8px 8px 8px 64px !important;
+        height: 64px !important;
+        border-radius: 48px;
+        &::after {
+            display: none;
+            border-radius: 48px;
+        }
+        p {
+            width: 100%;
+        }
+        span {
+            width: 48px;
+            min-width: 48px !important;
+            height: 48px;
+            min-height: 48px !important;
+        }
+
+    }
+    &__text {
+        transition: color .3s ease-in-out;
+        margin-top: 78px;
+        color: var(--Color-Text-Black-60, rgba(0, 0, 0, 0.60));
+        @media(max-width: 991.98px) {
+            margin-top: 32px;
+        }
+    }
+}
+
+.newsletters-form {
+
+    &._active {
+        .newsletters-form__span {
+            opacity: 1;
+        }
+        .newsletters-form__input {
+            &::placeholder {
+                opacity: 0;
+            }
+        }
+        .newsletters-modal-right__text {
+            color: var(--Color-Text-Black-80, rgba(0, 0, 0, 0.80));
+        }
+    }
+
+    &__label {
+        display: flex;
+        gap: 8px;
+        flex-direction: column;
+    }
+
+    &__span {
+        color: var(--Color-Text-Grey-100, #404063);
+        /* Body/Xsmall Text */
+        font-family: "Be Vietnam Pro";
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px; /* 142.857% */
+        opacity: 0;
+        transition: all .3s ease-in-out;
+    }
+
+    &__input {
+        height: 60px;
+        border-bottom: 1px solid transparent;
+        background: #FFF;
+        font-family: "Be Vietnam Pro";
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 28px; 
+        outline: none;
+        letter-spacing: -0.36px;
+        transition: all .3s ease-in-out;
+        &::placeholder {
+            color: var(--Color-Text-Grey-60, rgba(64, 64, 99, 0.60));
+            padding: 16px;
+        }
+        &:focus {
+            padding: 16px 0px;
+            color: var(--Color-Primary-Dark-Blue, #161625);
+            border-bottom: 1px solid var(--Color-Primary-Purple-Gray, #89899E);
+        }
+    }
+
+    &__text {
+        /* Body/2xsmall Text */
+        font-family: "Be Vietnam Pro";
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px; /* 166.667% */
+    }
+    .error {
+        color: var(--Color-Additional-Error, #FA504D);
+    }
+    .hidden {
+        display: none;
+    }
 }
