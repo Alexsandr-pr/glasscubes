@@ -83,7 +83,6 @@ window.addEventListener("DOMContentLoaded", () => {
 					repeat: -1,
 				});
 
-				// теперь карточки уже загружены — события наведения работают
 				line.querySelectorAll(".main-reviews-line__item").forEach((item) => {
 					item.addEventListener("mouseenter", () => tween.pause());
 					item.addEventListener("mouseleave", () => tween.play());

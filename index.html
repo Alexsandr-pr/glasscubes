@@ -6,16 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/styles/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
     <title>Index</title>
 </head>
-
-
 
 <body>
     <header class="header">
         <div class="header__container">
-            <a href="#" class="header__logo">
+            <a href="/index.html" class="header__logo">
                 <img src="./assets/images/header/logo.svg" alt="Logo">
             </a>
             <div class="header__right">
@@ -34,14 +31,13 @@
                     </ul>
                 </nav>
                 <div class="header__buttons">
-                    <button class="header__demo">
+                    <a href="/demo.html" class="header__demo">
                         View Demo
                         <img src="./assets/images/header/play.svg" alt="play">
-                    </button>
+                    </a>
                     <a href="#" class="header__button auth-button">
                         Sign In
                     </a>
-
                 </div>
             </div>
             <div class="header__right-mobile">
@@ -77,9 +73,13 @@
                             </a>
                         </div>
                     </div>
-                    <div data-url="./assets/videos/1.mp4" class="main-hero__video main-hero-video" data-follow>
+                    <div 
+                        data-modal-button="video-modal"
+                        data-modal-url="./assets/videos/Accountant-busy-simple-tool-opt-sub.webm"
+                        class="main-hero__video main-hero-video" data-follow
+                    >
                         <video class="main-hero-video__bg" muted loop playsinline>
-                            <source src="./assets/videos/1.mp4" type="video/mp4" />
+                            <source src="./assets/videos/Accountant-busy-simple-tool-opt-sub.webm" type="video/webm" />
                         </video>
                         <div class="main-hero-video__button button middle button-primary-dark fixed-button">
                             2 min tour
@@ -203,7 +203,7 @@
                             <div class="partners-slider__slide partners-slide">
                                 <div style="background-image: url(./assets/images/video-review-1.png);"
                                     class="partners-slide__image-wrapper">
-                                    <button data-url="./assets/videos/1.mp4"
+                                    <button data-modal-button="video-modal" data-modal-url="./assets/videos/Accountant-busy-simple-tool-opt-sub.webm"
                                         class="partners-slide__button button-icon button-icon-max button-icon-dark">
                                         <img src="./assets/icons/Play-Filled.svg" alt="Play">
                                     </button>
@@ -235,7 +235,7 @@
                             <div class="partners-slider__slide partners-slide ">
                                 <div style="background-image: url(./assets/images/video-review-conor.png);"
                                     class="partners-slide__image-wrapper">
-                                    <button data-url="./assets/videos/1.mp4"
+                                    <button  data-modal-button="video-modal" data-modal-url="./assets/videos/Accountant-busy-simple-tool-opt-sub.webm"
                                         class="partners-slide__button button-icon button-icon-max button-icon-dark">
                                         <img src="./assets/icons/Play-Filled.svg" alt="Play">
                                     </button>
@@ -266,7 +266,7 @@
                             <div class="partners-slider__slide partners-slide ">
                                 <div style="background-image: url(./assets/images/video-review-3.png);"
                                     class="partners-slide__image-wrapper">
-                                    <button data-url="./assets/videos/1.mp4"
+                                    <button  data-modal-button="video-modal" data-modal-url="./assets/videos/Accountant-busy-simple-tool-opt-sub.webm"
                                         class="partners-slide__button button-icon button-icon-max button-icon-dark">
                                         <img src="./assets/icons/Play-Filled.svg" alt="Play">
                                     </button>
@@ -297,7 +297,7 @@
                             <div class="partners-slider__slide partners-slide">
                                 <div style="background-image: url(./assets/images/video-review-1.png);"
                                     class="partners-slide__image-wrapper">
-                                    <button data-url="./assets/videos/1.mp4"
+                                    <button  data-modal-button="video-modal" data-modal-url="./assets/videos/Accountant-busy-simple-tool-opt-sub.webm"
                                         class="partners-slide__button button-icon button-icon-max button-icon-dark">
                                         <img src="./assets/icons/Play-Filled.svg" alt="Play">
                                     </button>
@@ -329,7 +329,7 @@
                             <div class="partners-slider__slide partners-slide ">
                                 <div style="background-image: url(./assets/images/video-review-conor.png);"
                                     class="partners-slide__image-wrapper">
-                                    <button data-url="./assets/videos/1.mp4"
+                                    <button  data-modal-button="video-modal" data-modal-url="./assets/videos/Accountant-busy-simple-tool-opt-sub.webm"
                                         class="partners-slide__button button-icon button-icon-max button-icon-dark">
                                         <img src="./assets/icons/Play-Filled.svg" alt="Play">
                                     </button>
@@ -360,7 +360,7 @@
                             <div class="partners-slider__slide partners-slide ">
                                 <div style="background-image: url(./assets/images/video-review-3.png);"
                                     class="partners-slide__image-wrapper">
-                                    <button data-url="./assets/videos/1.mp4"
+                                    <button  data-modal-button="video-modal" data-modal-url="./assets/videos/Accountant-busy-simple-tool-opt-sub.webm"
                                         class="partners-slide__button button-icon button-icon-max button-icon-dark">
                                         <img src="./assets/icons/Play-Filled.svg" alt="Play">
                                     </button>
@@ -818,12 +818,12 @@
                 <div class="main-reviews__lines">
                     <div class="main-reviews__track">
                         <div class="main-reviews__line main-reviews-line">
-                            
+
                         </div>
                     </div>
                     <div class="main-reviews__track">
                         <div class="main-reviews__line main-reviews-line">
-                            
+
                         </div>
                     </div>
                 </div>
@@ -1028,18 +1028,22 @@
             </div>
         </footer>
     </div>
-    <div class="video-review-modal" id="videoReviewModal">
-        <div class="review-modal__overlay"></div>
-        <div class="video-review-modal__content">
-            <button class="review-modal__close" aria-label="Close">&times;</button>
-            <div class="review-modal__inner"></div>
-        </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     
+    <section id="video-modal" class="modal-overlay modal">
+        <div class="modal__wrapper">
+            <button data-modal-close class="modal__close">
+                <img width="24" height="24" src="./assets/icons/Close.svg" alt="Close">
+            </button>
+            <div class="modal__body">
+                <div class="video-review-modal">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/home.js"></script>
     <script src="./assets/js/init-reviews.js"></script>

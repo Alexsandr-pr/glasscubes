@@ -118,6 +118,7 @@ dialog::backdrop {
 
 .wrapper {
     display: flex;
+    overflow-x: hidden;
     flex-direction: column;
     min-height: 100dvh;
 }
@@ -1633,9 +1634,18 @@ dialog::backdrop {
         max-height: 336px;
         cursor: pointer;
         margin: 0px auto;
-
+        height: 336px;
         @media (max-width: 767.98px) {
             max-height: 280px;
+        }
+        video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%); 
         }
     }
 }
@@ -3354,141 +3364,6 @@ dialog::backdrop {
     &__button {}
 }
 
-.review-modal {
-    position: fixed;
-    inset: 0;
-    display: none;
-    /* скрыто по умолчанию */
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    width: 100%;
-    height: 100%;
-    max-width: 100dvw;
-    max-height: 100dvh;
-
-    &.is-active {
-        display: flex;
-
-        .text-reviews-item__more {
-            display: none;
-        }
-
-        .text-reviews-item__text {
-            display: block;
-            /* убираем -webkit-box */
-            -webkit-line-clamp: unset;
-            /* снимаем ограничение строк */
-            overflow: visible;
-            text-overflow: unset;
-            max-height: none;
-        }
-    }
-
-    &__overlay {
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.6);
-        opacity: 0;
-    }
-
-    &__content {
-        position: relative;
-        background: #fff;
-        border-radius: 16px;
-        max-width: 640px;
-        width: 90%;
-        padding: 32px;
-        opacity: 0;
-        transform: translateY(40px);
-    }
-
-    &__close {
-        position: absolute;
-        top: 12px;
-        right: 16px;
-        background: none;
-        border: none;
-        font-size: 28px;
-        line-height: 1;
-        cursor: pointer;
-    }
-}
-
-.video-review-modal {
-    position: fixed;
-    inset: 0;
-    display: none;
-    /* скрыто по умолчанию */
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    width: 100%;
-    height: 100%;
-    max-width: 100dvw;
-    max-height: 100dvh;
-
-    &.is-active {
-        display: flex;
-
-        .text-reviews-item__more {
-            display: none;
-        }
-
-        .text-reviews-item__text {
-            display: block;
-            /* убираем -webkit-box */
-            -webkit-line-clamp: unset;
-            /* снимаем ограничение строк */
-            overflow: visible;
-            text-overflow: unset;
-            max-height: none;
-        }
-    }
-
-    &__overlay {
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.6);
-        opacity: 0;
-    }
-
-    &__content {
-        position: relative;
-        background: #fff;
-        border-radius: 16px;
-        max-width: 90dvw;
-        width: 90%;
-        padding: 32px;
-        opacity: 0;
-        transform: translateY(40px);
-    }
-
-    &__close {
-        position: absolute;
-        top: 12px;
-        right: 16px;
-        width: 24px;
-        height: 24px;
-        display: block;
-        background: none;
-        border: none;
-        font-size: 28px;
-        line-height: 1;
-        cursor: pointer;
-    }
-}
-
-.review-modal__inner {
-    max-width: 100%;
-}
-
-.review-video {
-    width: 100%;
-    max-height: calc(100dvh - 80px);
-}
-
-
 /*****************************************************/
 
 
@@ -3684,7 +3559,7 @@ dialog::backdrop {
     background: rgba(0, 0, 0, 0.20);
     backdrop-filter: blur(40px);
 }
-.newsletters-modal {
+.modal {
     position: fixed;
     padding: 0px 16px;
     z-index: 1000;
@@ -3703,36 +3578,27 @@ dialog::backdrop {
         top: 0;
         opacity: 1;
         visibility: visible;
-        .modal-body {
+        .modal__body {
             transform: translateY(0);
         }
     }
-
-    .modal-body {
-        transition: all .3s ease-in-out;
-        transform: translateY(-100%);
-    }
-
     &__wrapper {
         position: relative;
         margin: auto;
     }
+
     &__body {
+        transition: all .3s ease-in-out;
+        transform: translateY(-100%);
         max-height: 90dvh;
         height: auto;
-        display: flex;
         overflow-y: auto;
         max-width: 1086px;
         padding: 40px;
         border-radius: 24px;
         background: var(--Color-Primary-Dark-Blue, #161625);
-        align-items: center;
-        gap: 24px;
         @media(max-width: 991.98px) {
             padding: 32px 20px;
-        }
-        @media(max-width: 767.98px) {
-            flex-direction: column;
         }
     }
 
@@ -3752,6 +3618,16 @@ dialog::backdrop {
         }
     }
 }   
+
+.newsletters-modal {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    @media(max-width: 767.98px) {
+        flex-direction: column;
+    }
+}
+
 
 .newsletters-modal-left {
     flex: 0 1 52%;
@@ -3916,7 +3792,14 @@ dialog::backdrop {
         }
     }
 
-    &__text {
+    .error {
+        color: var(--Color-Additional-Error, #FA504D);
+    }
+    .hidden {
+        display: none;
+    }
+
+    .form__text {
         /* Body/2xsmall Text */
         font-family: "Be Vietnam Pro";
         font-size: 12px;
@@ -3924,10 +3807,16 @@ dialog::backdrop {
         font-weight: 400;
         line-height: 20px; /* 166.667% */
     }
-    .error {
-        color: var(--Color-Additional-Error, #FA504D);
-    }
-    .hidden {
-        display: none;
-    }
+}
+
+.video-review-modal {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.video-review-modal__video {
+    aspect-ratio: 16/9;
+    max-width: 100%;
+    height: auto;
 }

@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Nunito+Sans:opsz,wdth@6..12,86.3&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Nunito+Sans:opsz,wdth@6..12,86.3&family=Poppins:wght@300;400;500;600&display=swap");
 :root {
@@ -116,6 +115,7 @@ dialog::backdrop {
 
 .wrapper {
   display: flex;
+  overflow-x: hidden;
   flex-direction: column;
   min-height: 100dvh;
 }
@@ -1436,11 +1436,22 @@ dialog::backdrop {
   max-height: 336px;
   cursor: pointer;
   margin: 0px auto;
+  height: 336px;
 }
 @media (max-width: 767.98px) {
   .main-hero__video {
     max-height: 280px;
   }
+}
+.main-hero__video video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transform: translate(-50%, -50%);
 }
 
 .main-hero-mtd .main-hero__title {
@@ -2794,128 +2805,6 @@ dialog::backdrop {
   justify-content: end;
   align-items: end;
 }
-.review-modal {
-  position: fixed;
-  inset: 0;
-  display: none;
-  /* скрыто по умолчанию */
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  width: 100%;
-  height: 100%;
-  max-width: 100dvw;
-  max-height: 100dvh;
-}
-.review-modal.is-active {
-  display: flex;
-}
-.review-modal.is-active .text-reviews-item__more {
-  display: none;
-}
-.review-modal.is-active .text-reviews-item__text {
-  display: block;
-  /* убираем -webkit-box */
-  -webkit-line-clamp: unset;
-  /* снимаем ограничение строк */
-  overflow: visible;
-  text-overflow: unset;
-  max-height: none;
-}
-.review-modal__overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  opacity: 0;
-}
-.review-modal__content {
-  position: relative;
-  background: #fff;
-  border-radius: 16px;
-  max-width: 640px;
-  width: 90%;
-  padding: 32px;
-  opacity: 0;
-  transform: translateY(40px);
-}
-.review-modal__close {
-  position: absolute;
-  top: 12px;
-  right: 16px;
-  background: none;
-  border: none;
-  font-size: 28px;
-  line-height: 1;
-  cursor: pointer;
-}
-
-.video-review-modal {
-  position: fixed;
-  inset: 0;
-  display: none;
-  /* скрыто по умолчанию */
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  width: 100%;
-  height: 100%;
-  max-width: 100dvw;
-  max-height: 100dvh;
-}
-.video-review-modal.is-active {
-  display: flex;
-}
-.video-review-modal.is-active .text-reviews-item__more {
-  display: none;
-}
-.video-review-modal.is-active .text-reviews-item__text {
-  display: block;
-  /* убираем -webkit-box */
-  -webkit-line-clamp: unset;
-  /* снимаем ограничение строк */
-  overflow: visible;
-  text-overflow: unset;
-  max-height: none;
-}
-.video-review-modal__overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  opacity: 0;
-}
-.video-review-modal__content {
-  position: relative;
-  background: #fff;
-  border-radius: 16px;
-  max-width: 90dvw;
-  width: 90%;
-  padding: 32px;
-  opacity: 0;
-  transform: translateY(40px);
-}
-.video-review-modal__close {
-  position: absolute;
-  top: 12px;
-  right: 16px;
-  width: 24px;
-  height: 24px;
-  display: block;
-  background: none;
-  border: none;
-  font-size: 28px;
-  line-height: 1;
-  cursor: pointer;
-}
-
-.review-modal__inner {
-  max-width: 100%;
-}
-
-.review-video {
-  width: 100%;
-  max-height: calc(100dvh - 80px);
-}
-
 /*****************************************************/
 .mtd-bottom-cta__content {
   padding: var(--section-padding) 56px;
@@ -3105,7 +2994,7 @@ dialog::backdrop {
           backdrop-filter: blur(40px);
 }
 
-.newsletters-modal {
+.modal {
   position: fixed;
   padding: 0px 16px;
   z-index: 1000;
@@ -3119,46 +3008,36 @@ dialog::backdrop {
   inset: 0;
   transition: opacity 0.3s ease-in-out, top 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
-.newsletters-modal._active {
+.modal._active {
   inset: 0;
   top: 0;
   opacity: 1;
   visibility: visible;
 }
-.newsletters-modal._active .modal-body {
+.modal._active .modal__body {
   transform: translateY(0);
 }
-.newsletters-modal .modal-body {
-  transition: all 0.3s ease-in-out;
-  transform: translateY(-100%);
-}
-.newsletters-modal__wrapper {
+.modal__wrapper {
   position: relative;
   margin: auto;
 }
-.newsletters-modal__body {
+.modal__body {
+  transition: all 0.3s ease-in-out;
+  transform: translateY(-100%);
   max-height: 90dvh;
   height: auto;
-  display: flex;
   overflow-y: auto;
   max-width: 1086px;
   padding: 40px;
   border-radius: 24px;
   background: var(--Color-Primary-Dark-Blue, #161625);
-  align-items: center;
-  gap: 24px;
 }
 @media (max-width: 991.98px) {
-  .newsletters-modal__body {
+  .modal__body {
     padding: 32px 20px;
   }
 }
-@media (max-width: 767.98px) {
-  .newsletters-modal__body {
-    flex-direction: column;
-  }
-}
-.newsletters-modal__close {
+.modal__close {
   position: absolute;
   right: -32px;
   border-radius: 24px;
@@ -3170,9 +3049,20 @@ dialog::backdrop {
   top: -32px;
 }
 @media (max-width: 1200.98px) {
-  .newsletters-modal__close {
+  .modal__close {
     right: 0;
     top: -36px;
+  }
+}
+
+.newsletters-modal {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+@media (max-width: 767.98px) {
+  .newsletters-modal {
+    flex-direction: column;
   }
 }
 
@@ -3338,7 +3228,13 @@ dialog::backdrop {
   color: var(--Color-Primary-Dark-Blue, #161625);
   border-bottom: 1px solid var(--Color-Primary-Purple-Gray, #89899E);
 }
-.newsletters-form__text {
+.newsletters-form .error {
+  color: var(--Color-Additional-Error, #FA504D);
+}
+.newsletters-form .hidden {
+  display: none;
+}
+.newsletters-form .form__text {
   /* Body/2xsmall Text */
   font-family: "Be Vietnam Pro";
   font-size: 12px;
@@ -3346,9 +3242,15 @@ dialog::backdrop {
   font-weight: 400;
   line-height: 20px; /* 166.667% */
 }
-.newsletters-form .error {
-  color: var(--Color-Additional-Error, #FA504D);
+
+.video-review-modal {
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
-.newsletters-form .hidden {
-  display: none;
+
+.video-review-modal__video {
+  aspect-ratio: 16/9;
+  max-width: 100%;
+  height: auto;
 }/*# sourceMappingURL=style.css.map */

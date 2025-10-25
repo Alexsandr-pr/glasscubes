@@ -6,16 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/styles/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
     <title>Index</title>
 </head>
-
-
 
 <body>
     <header class="header">
         <div class="header__container">
-            <a href="#" class="header__logo">
+            <a href="/index.html" class="header__logo">
                 <img src="./assets/images/header/logo.svg" alt="Logo">
             </a>
             <div class="header__right">
@@ -27,21 +24,20 @@
                             </a>
                         </li>
                         <li class="header-nav__li">
-                            <a href="#" class="header-nav__link">
+                            <a href="/mtd.html" class="header-nav__link">
                                 <span>MTD</span>
                             </a>
                         </li>
                     </ul>
                 </nav>
                 <div class="header__buttons">
-                    <button class="header__demo">
+                    <a href="/demo.html" class="header__demo">
                         View Demo
                         <img src="./assets/images/header/play.svg" alt="play">
-                    </button>
+                    </a>
                     <a href="#" class="header__button auth-button">
                         Sign In
                     </a>
-
                 </div>
             </div>
             <div class="header__right-mobile">
@@ -83,7 +79,8 @@
                             </li>
                         </ul>
                         <div class="main-hero__buttons">
-                            <button data-modal-button="newsletters-modal" class="main-hero__button button large button-primary-dark">
+                            <button data-modal-button="newsletters-modal"
+                                class="main-hero__button button large button-primary-dark">
                                 Discover More
                                 <span class="button-icon button-icon-accent">
                                     <img width="24" height="24" src="./assets/icons/Arrow-UpDark.svg" alt="Arrow-Up">
@@ -346,8 +343,7 @@
                             </div>
                             <div class="mtd-subscription-right__card card">
                                 <div class="badge-icon small-2 primary-dark-blue">
-                                    <img width="24" height="24" src="./assets/icons/Badge.svg"
-                                        alt="Badge">
+                                    <img width="24" height="24" src="./assets/icons/Badge.svg" alt="Badge">
                                 </div>
                                 firms opting for central billing enjoy an exclusive discounted rate.
                             </div>
@@ -356,7 +352,8 @@
                                 <a href="#" class="mtd-subscription-right__button button large button-primary-dark">
                                     Try Now
                                     <span class="button-icon button-icon-accent">
-                                        <img width="24" height="24" src="./assets/icons/Arrow-UpDark.svg" alt="Arrow-Up">
+                                        <img width="24" height="24" src="./assets/icons/Arrow-UpDark.svg"
+                                            alt="Arrow-Up">
                                     </span>
                                 </a>
                             </div>
@@ -546,81 +543,91 @@
             </div>
         </footer>
 
-        <section id="newsletters-modal" class="newsletters-modal modal-overlay modal">
-            <div class="newsletters-modal__wrapper">
-                <button data-modal-close class="newsletters-modal__close">
+        <section id="newsletters-modal" class="modal-overlay modal">
+            <div class="modal__wrapper">
+                <button data-modal-close class="modal__close">
                     <img width="24" height="24" src="./assets/icons/Close.svg" alt="Close">
                 </button>
-                <div class="newsletters-modal__body modal-body">
-                    
-                    <div class="newsletters-modal__left newsletters-modal-left">
-                        <h2 class="newsletters-modal-left__title h3">
-                            Discover how 
-                            MTD Assist can transform 
-                            your practice!
-                        </h2>
-                        <ul class="newsletters-modal-left__list list-rounded">
-                            <li class="newsletters-modal-left__li list-rounded__li">
-                                <p class="newsletters-modal-left__text list-rounded__text regular-text">
-                                    Streamlined MTD submissions for your clients
+                <div class="modal__body">
+                    <div class="newsletters-modal">
+                        <div class="newsletters-modal__left newsletters-modal-left">
+                            <h2 class="newsletters-modal-left__title h3">
+                                Discover how
+                                MTD Assist can transform
+                                your practice!
+                            </h2>
+                            <ul class="newsletters-modal-left__list list-rounded">
+                                <li class="newsletters-modal-left__li list-rounded__li">
+                                    <p class="newsletters-modal-left__text list-rounded__text regular-text">
+                                        Streamlined MTD submissions for your clients
+                                    </p>
+                                </li>
+                                <li class="newsletters-modal-left__li list-rounded__li">
+                                    <p class="newsletters-modal-left__text list-rounded__text regular-text">
+                                        Keep control of the client relationship
+                                    </p>
+                                </li>
+                                <li class="newsletters-modal-left__li list-rounded__li">
+                                    <p class="newsletters-modal-left__text list-rounded__text regular-text">
+                                        Create new revenue opportunities
+                                    </p>
+                                </li>
+                            </ul>
+                            <div class="newsletters-modal-left__card">
+                                <div class="newsletters-modal-left__card-badge">
+                                    <img height="10" width="37" src="./assets/icons/menzies-logo.svg"
+                                        alt="menzies logo">
+                                </div>
+                                <p class="small-text">
+                                    Join firms like Menzies that have seen a
+                                    <br />
+                                    <span>40% improvement in client response times.</span>
                                 </p>
-                            </li>
-                            <li class="newsletters-modal-left__li list-rounded__li">
-                                <p class="newsletters-modal-left__text list-rounded__text regular-text">
-                                    Keep control of the client relationship
-                                </p>
-                            </li>
-                            <li class="newsletters-modal-left__li list-rounded__li">
-                                <p class="newsletters-modal-left__text list-rounded__text regular-text">
-                                    Create new revenue opportunities
-                                </p>
-                            </li>
-                        </ul>
-                        <div class="newsletters-modal-left__card">
-                            <div class="newsletters-modal-left__card-badge">
-                                <img height="10" width="37" src="./assets/icons/menzies-logo.svg" alt="menzies logo">
-                            </div>  
-                            <p class="small-text">
-                                Join firms like Menzies that have seen a
-                                <br/>
-                                <span>40% improvement in client response times.</span>
-                            </p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="newsletters-modal__right newsletters-modal-right">
-                        <h3 class="newsletters-modal-right__title h4">
-                            Where should we send more information?
-                        </h3>
-                        <form id="newsletters-form" action="#" class="newsletters-modal-right__form newsletters-form" novalidate>
-                            <label for="newsletters-email" class="newsletters-form__label">
-                                <span class="newsletters-form__span">Work email</span>
-                                <input placeholder="Work email" id="newsletters-email" type="email" class="newsletters-form__input">
-                                <p class="newsletters-form__text error hidden">Email doesn’t exist. Please try enother one</p>
-                            </label>
-                            <button class="newsletters-modal-right__button middle button button-accent">
-                               <p> Submit</p>
-                                <span class="button-icon button-icon-dark">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                        <path d="M4.35185 12.1984C3.58764 11.587 3.79066 10.3745 4.71231 10.0453L17.1585 5.59964C18.1518 5.24493 19.1111 6.20428 18.7564 7.19754L14.3107 19.6437C13.9816 20.5654 12.769 20.7684 12.1577 20.0042L9.15935 16.2573C9.15935 16.2573 13.7694 10.856 13.6347 10.7213C13.5 10.5866 8.09869 15.1967 8.09869 15.1967L4.35185 12.1984Z" fill="white"/>
-                                    </svg>
-                                </span>
-                            </button>
-                            <p class="newsletters-modal-right__text x-small-text">
-                                Prefer a tailored experience? <a href="#">Click here</a> to schedule a personalised demo with one of our Product Specialists.
-                            </p>
-                        </form>
+                        <div class="newsletters-modal__right newsletters-modal-right">
+                            <h3 class="newsletters-modal-right__title h4">
+                                Where should we send more information?
+                            </h3>
+                            <form id="newsletters-form" action="#"
+                                class="newsletters-modal-right__form newsletters-form" novalidate>
+                                <label for="newsletters-email" class="newsletters-form__label">
+                                    <span class="newsletters-form__span">Work email</span>
+                                    <input placeholder="Work email" id="newsletters-email" type="email"
+                                        class="newsletters-form__input">
+                                    <p class="form__text error hidden">Email doesn’t exist. Please try
+                                        enother one</p>
+                                </label>
+                                <button class="newsletters-modal-right__button middle button button-accent">
+                                    <p> Submit</p>
+                                    <span class="button-icon button-icon-dark">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none">
+                                            <path
+                                                d="M4.35185 12.1984C3.58764 11.587 3.79066 10.3745 4.71231 10.0453L17.1585 5.59964C18.1518 5.24493 19.1111 6.20428 18.7564 7.19754L14.3107 19.6437C13.9816 20.5654 12.769 20.7684 12.1577 20.0042L9.15935 16.2573C9.15935 16.2573 13.7694 10.856 13.6347 10.7213C13.5 10.5866 8.09869 15.1967 8.09869 15.1967L4.35185 12.1984Z"
+                                                fill="white" />
+                                        </svg>
+                                    </span>
+                                </button>
+                                <p class="newsletters-modal-right__text x-small-text">
+                                    Prefer a tailored experience? <a href="#">Click here</a> to schedule a personalised
+                                    demo with one of our Product Specialists.
+                                </p>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </section>
     </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/init-reviews.js"></script>
     <script src="./assets/js/mtd.js"></script>
-    
+
 </body>
 
 </html>
