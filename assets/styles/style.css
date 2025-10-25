@@ -159,6 +159,26 @@ dialog::backdrop {
   background-color: transparent;
 }
 
+.form__text {
+  font-family: "Be Vietnam Pro";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.error {
+  color: var(--Color-Additional-Error, #FA504D);
+}
+
+.success {
+  color: var(--Color-Additional-Saccess, #8FE163);
+}
+
+.hidden {
+  display: none;
+}
+
 /***********TEXT*******************/
 .large-text {
   font-size: 20px;
@@ -187,6 +207,10 @@ dialog::backdrop {
   .regular-text {
     font-size: 16px;
   }
+}
+.regular-text span {
+  font-weight: 600;
+  color: var(--Color-Text-White-100, #FFF);
 }
 
 .small-text {
@@ -749,6 +773,73 @@ dialog::backdrop {
   }
 }
 
+.modal-overlay {
+  background: rgba(0, 0, 0, 0.2);
+  -webkit-backdrop-filter: blur(40px);
+          backdrop-filter: blur(40px);
+}
+
+.modal {
+  position: fixed;
+  padding: 0px 16px;
+  z-index: 1000;
+  visibility: hidden;
+  height: 100dvh;
+  width: 100dvw;
+  display: flex;
+  opacity: 0;
+  align-items: center;
+  top: -100%;
+  inset: 0;
+  transition: opacity 0.3s ease-in-out, top 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+.modal._active {
+  inset: 0;
+  top: 0;
+  opacity: 1;
+  visibility: visible;
+}
+.modal._active .modal__body {
+  transform: translateY(0);
+}
+.modal__wrapper {
+  position: relative;
+  margin: auto;
+}
+.modal__body {
+  transition: all 0.3s ease-in-out;
+  transform: translateY(-100%);
+  max-height: 90dvh;
+  height: auto;
+  overflow-y: auto;
+  max-width: 1086px;
+  padding: 40px;
+  border-radius: 24px;
+  background: var(--Color-Primary-Dark-Blue, #161625);
+}
+@media (max-width: 991.98px) {
+  .modal__body {
+    padding: 32px 20px;
+  }
+}
+.modal__close {
+  position: absolute;
+  right: -32px;
+  border-radius: 24px;
+  background: #FFF;
+  display: flex;
+  padding: 4px;
+  align-items: center;
+  gap: 8px;
+  top: -32px;
+}
+@media (max-width: 1200.98px) {
+  .modal__close {
+    right: 0;
+    top: -36px;
+  }
+}
+
 /***********BUTTONS*************************/
 .button-icon {
   display: flex;
@@ -769,6 +860,14 @@ dialog::backdrop {
   z-index: -1;
   border-radius: 48px;
   content: "";
+}
+.button-icon.large {
+  width: 72px;
+  height: 72px;
+  border-radius: 100%;
+}
+.button-icon.large:hover {
+  cursor: pointer;
 }
 
 .button-icon-max {
@@ -819,12 +918,29 @@ dialog::backdrop {
   width: calc(100% + 8px);
   height: calc(100% + 8px);
   position: absolute;
+  border-radius: 48px;
   transition: opacity 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
   inset: -4px;
   opacity: 0;
   background-color: transparent;
   z-index: -1;
   content: "";
+}
+.button.base {
+  padding: 8px 8px 8px 32px;
+  gap: 16px;
+  height: 64px;
+  border-radius: 48px;
+}
+.button.base .button-icon {
+  border-radius: 48px;
+  padding: 8px;
+  width: 48px;
+  height: 48px;
+}
+.button.base::after {
+  display: none;
+  border-radius: 48px;
 }
 .button.large {
   height: 80px;
@@ -836,9 +952,6 @@ dialog::backdrop {
   padding: 16px;
   width: 56px;
   height: 56px;
-}
-.button.large::after {
-  border-radius: 48px;
 }
 @media (max-width: 767.98px) {
   .button.large {
@@ -909,7 +1022,7 @@ dialog::backdrop {
 
 .button-accent-secondary {
   background-color: transparent;
-  border: 1px solid var(--Color-Accent-Lime, #d1f55f);
+  border: 3px solid var(--Color-Accent-Lime, #d1f55f);
   color: var(--Color-Text-White-100, #fff);
 }
 .button-accent-secondary:focus {
@@ -930,6 +1043,7 @@ dialog::backdrop {
 }
 
 .button-accent {
+  border: 3px solid var(--Color-Accent-Lime, #d1f55f);
   color: var(--Color-Primary-Dark-Blue, #161625);
   background: var(--Color-Accent-Lime, #d1f55f);
 }
@@ -2988,73 +3102,6 @@ dialog::backdrop {
 }
 
 /*****************************/
-.modal-overlay {
-  background: rgba(0, 0, 0, 0.2);
-  -webkit-backdrop-filter: blur(40px);
-          backdrop-filter: blur(40px);
-}
-
-.modal {
-  position: fixed;
-  padding: 0px 16px;
-  z-index: 1000;
-  visibility: hidden;
-  height: 100dvh;
-  width: 100dvw;
-  display: flex;
-  opacity: 0;
-  align-items: center;
-  top: -100%;
-  inset: 0;
-  transition: opacity 0.3s ease-in-out, top 0.3s ease-in-out, visibility 0.3s ease-in-out;
-}
-.modal._active {
-  inset: 0;
-  top: 0;
-  opacity: 1;
-  visibility: visible;
-}
-.modal._active .modal__body {
-  transform: translateY(0);
-}
-.modal__wrapper {
-  position: relative;
-  margin: auto;
-}
-.modal__body {
-  transition: all 0.3s ease-in-out;
-  transform: translateY(-100%);
-  max-height: 90dvh;
-  height: auto;
-  overflow-y: auto;
-  max-width: 1086px;
-  padding: 40px;
-  border-radius: 24px;
-  background: var(--Color-Primary-Dark-Blue, #161625);
-}
-@media (max-width: 991.98px) {
-  .modal__body {
-    padding: 32px 20px;
-  }
-}
-.modal__close {
-  position: absolute;
-  right: -32px;
-  border-radius: 24px;
-  background: #FFF;
-  display: flex;
-  padding: 4px;
-  align-items: center;
-  gap: 8px;
-  top: -32px;
-}
-@media (max-width: 1200.98px) {
-  .modal__close {
-    right: 0;
-    top: -36px;
-  }
-}
-
 .newsletters-modal {
   display: flex;
   gap: 24px;
@@ -3228,21 +3275,8 @@ dialog::backdrop {
   color: var(--Color-Primary-Dark-Blue, #161625);
   border-bottom: 1px solid var(--Color-Primary-Purple-Gray, #89899E);
 }
-.newsletters-form .error {
-  color: var(--Color-Additional-Error, #FA504D);
-}
-.newsletters-form .hidden {
-  display: none;
-}
-.newsletters-form .form__text {
-  /* Body/2xsmall Text */
-  font-family: "Be Vietnam Pro";
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 20px; /* 166.667% */
-}
 
+/******************************/
 .video-review-modal {
   width: 100%;
   height: 100%;
@@ -3253,4 +3287,143 @@ dialog::backdrop {
   aspect-ratio: 16/9;
   max-width: 100%;
   height: auto;
+}
+
+/******************************/
+.main-demo {
+  background: #FFF;
+  padding: 48px 0px 96px 0px;
+}
+.main-demo__image {
+  max-width: 834px;
+  height: auto;
+  position: relative;
+  aspect-ratio: 834/464;
+  margin: 0px auto 48px auto;
+}
+.main-demo__image img {
+  max-width: 100%;
+  height: auto;
+}
+.main-demo__image .button-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.main-demo__content {
+  padding: 56px 24px 24px 24px;
+  border-radius: 24px;
+  background: var(--Color-Primary-Dark-Blue, #161625);
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+@media (max-width: 1200.98px) {
+  .main-demo__content {
+    flex-direction: column;
+  }
+}
+@media (min-width: 1200.98px) {
+  .main-demo__content {
+    align-items: center;
+  }
+}
+@media (min-width: 991.98px) {
+  .main-demo__content {
+    padding: 56px;
+  }
+}
+@media (max-width: 640.98px) {
+  .main-demo__content {
+    padding: 24px;
+  }
+}
+.main-demo__left, .main-demo__right {
+  flex: 0 1 50%;
+}
+.main-demo__title {
+  margin-bottom: 16px;
+  color: var(--Color-Text-White-100, #FFF);
+}
+.main-demo__text {
+  max-width: 530px;
+}
+
+.main-demo-form {
+  display: flex;
+  padding: 40px 32px 48px 32px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  flex: 1 0 0;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+}
+@media (max-width: 640.98px) {
+  .main-demo-form {
+    padding: 16px;
+  }
+}
+.main-demo-form__text {
+  color: var(--Color-Text-White-100, #FFF);
+}
+.main-demo-form__label {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  position: relative;
+  gap: 16px;
+  align-self: stretch;
+}
+.main-demo-form__label .form__text {
+  position: absolute;
+  bottom: -28px;
+  left: 0;
+}
+@media (max-width: 640.98px) {
+  .main-demo-form__label .form__text {
+    flex-direction: column;
+    bottom: 76px;
+  }
+}
+@media (max-width: 640.98px) {
+  .main-demo-form__label {
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+.main-demo-form__input {
+  height: 64px;
+  display: flex;
+  padding: 18px 16px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 12px;
+  align-self: stretch;
+  border-radius: 12px;
+  outline: none;
+  width: 100%;
+  border: 1px solid var(--Color-Stroke-Dark, rgba(137, 137, 158, 0.3));
+  background: var(--Color-Primary-Light-Gray, #F3F4F6);
+  font-family: "Be Vietnam Pro";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: -0.36px;
+  caret-color: #000;
+}
+.main-demo-form__input::-moz-placeholder {
+  color: var(--Color-Text-Grey-60, rgba(64, 64, 99, 0.6));
+}
+.main-demo-form__input::placeholder {
+  color: var(--Color-Text-Grey-60, rgba(64, 64, 99, 0.6));
+}
+.main-demo-form__input:focus {
+  border: 2px solid var(--Color-Accent-Lime, #D1F55F);
+  color: var(--Color-Primary-Dark-Blue, #161625);
 }/*# sourceMappingURL=style.css.map */
