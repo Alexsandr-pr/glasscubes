@@ -1022,7 +1022,7 @@ dialog::backdrop {
 
 .button-accent-secondary {
   background-color: transparent;
-  border: 3px solid var(--Color-Accent-Lime, #d1f55f);
+  border: 1px solid var(--Color-Accent-Lime, #d1f55f);
   color: var(--Color-Text-White-100, #fff);
 }
 .button-accent-secondary:focus {
@@ -3085,12 +3085,15 @@ dialog::backdrop {
   color: var(--Color-Text-Black-80, rgba(0, 0, 0, 0.8));
 }
 .mtd-subscription-right__info {
-  color: var(--Color-Text-Black-100, #000);
+  color: var(--Color-Text-Black-100, #000) !important;
   display: flex;
   padding: 16px 0;
   align-items: center;
   gap: 8px;
   align-self: stretch;
+}
+.mtd-subscription-right__info .h1 {
+  color: var(--Color-Text-Black-100, #000) !important;
 }
 .mtd-subscription-right__card {
   color: var(--Color-Text-Black-80, rgba(0, 0, 0, 0.8));
