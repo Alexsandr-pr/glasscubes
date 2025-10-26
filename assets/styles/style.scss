@@ -82,6 +82,10 @@ body {
     font-size: 18px;
     color: var(--Color-Text-Black-80);
     cursor: url("../icons/Cursor.svg"), auto;
+
+    &.pricing-page {
+        background: #FFF;
+    }
 }
 
 button,
@@ -175,12 +179,13 @@ dialog::backdrop {
     font-size: 12px;
     font-style: normal;
     font-weight: 400;
-    line-height: 20px; 
+    line-height: 20px;
 }
 
 .error {
     color: var(--Color-Additional-Error, #FA504D);
 }
+
 .success {
     color: var(--Color-Additional-Saccess, #8FE163);
 }
@@ -188,6 +193,81 @@ dialog::backdrop {
 .hidden {
     display: none;
 }
+
+.table {
+    width: 100%;
+    min-width: 700px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    background-color: #fff;
+    border-radius: 24px;
+
+    thead>tr>th {
+        &:first-child {
+            width: 389px;
+
+            @media(max-width:767.98px) {
+                width: 250px;
+                min-width: 250px;
+            }
+        }
+
+        &:not(:first-child) {
+            width: 275px;
+            min-width: 275px;
+
+            @media(max-width:767.98px) {
+                width: 200px;
+                min-width: 200px;
+            }
+        }
+    }
+
+    tbody>tr>td {
+        &:not(:first-child) {
+            width: 275px;
+            min-width: 275px;
+
+            @media(max-width:767.98px) {
+                width: 200px;
+                min-width: 200px;
+            }
+        }
+
+        &:first-child {
+            width: 389px;
+            min-width: 389px;
+            max-width: 389px !important;
+
+            @media(max-width:767.98px) {
+                width: 250px;
+                min-width: 250px;
+            }
+        }
+    }
+}
+
+
+.table-layout {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 12px;
+
+    &::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: var(--Color-Accent-Light, #d9d9d9);
+        border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+}
+
 
 /***********TEXT*******************/
 
@@ -217,6 +297,7 @@ dialog::backdrop {
     @media (max-width: 767.98px) {
         font-size: 16px;
     }
+
     span {
         font-weight: 600;
         color: var(--Color-Text-White-100, #FFF);
@@ -232,10 +313,12 @@ dialog::backdrop {
     @media (max-width: 767.98px) {
         font-size: 14px;
     }
+
     span {
         font-weight: 600;
         color: var(--Color-Text-White-100, #FFF);
     }
+
     a {
         text-decoration-line: underline;
         text-decoration-style: solid;
@@ -251,7 +334,8 @@ dialog::backdrop {
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: 142%; 
+    line-height: 142%;
+
     a {
         text-decoration-line: underline;
         text-decoration-style: solid;
@@ -434,7 +518,7 @@ dialog::backdrop {
     aspect-ratio: 1/1;
     border-radius: 16px;
 
-    &.mini { 
+    &.mini {
         height: 32px;
         width: 32px;
         border-radius: 8px;
@@ -451,6 +535,7 @@ dialog::backdrop {
         max-width: 40px;
         height: 40px;
         padding: 8px;
+
         img {
             width: 24px;
             height: 24px;
@@ -478,10 +563,12 @@ dialog::backdrop {
         padding: 16px;
         width: 56px;
         height: 56px;
+
         img {
             width: 24px;
             height: 24px;
         }
+
         @media (max-width: 767.98px) {
             width: 48px;
             height: 48px;
@@ -535,9 +622,11 @@ dialog::backdrop {
 .badge-icon.primary-light-gray {
     background: var(--Color-Primary-Light-Gray, #f3f4f6);
 }
+
 .badge-icon.primary-dark-blue {
     background: var(--Color-Primary-Dark-Blue, #161625);
 }
+
 .badge-icon.black-100 {
     background: var(--Color-Text-Black-100, #000);
 }
@@ -592,6 +681,7 @@ dialog::backdrop {
         padding-bottom: var(--section-padding);
     }
 }
+
 .section {
     padding: var(--section-padding) 0px;
 
@@ -654,6 +744,7 @@ dialog::backdrop {
 .flex-content-50 {
     display: flex;
     gap: 24px;
+
     @media (min-width: 991.98px) {
         align-items: center;
         justify-content: space-between;
@@ -663,6 +754,7 @@ dialog::backdrop {
             flex: 0 1 50%;
         }
     }
+
     @media (max-width: 991.98px) {
         flex-direction: column;
     }
@@ -699,6 +791,7 @@ dialog::backdrop {
         align-items: center;
         gap: 8px;
         padding: 0px 8px;
+
         &::before {
             width: 24px;
             height: 24px;
@@ -726,16 +819,18 @@ dialog::backdrop {
     border: 1px solid var(--Color-Stroke-Dark, rgba(137, 137, 158, 0.30));
     background: rgba(255, 255, 255, 0.90);
     backdrop-filter: blur(5px);
+
     @media(min-width:991.98px) {
         padding: 24px 32px 24px 24px;
     }
+
     @media(max-width:991.98px) {
         padding: 16px 24px 16px 16px;
     }
 }
 
-.text-dark-100 .regular-text{
-    color: var(--Color-Text-Black-100, #000) !important; 
+.text-dark-100 .regular-text {
+    color: var(--Color-Text-Black-100, #000) !important;
 }
 
 
@@ -749,9 +844,11 @@ dialog::backdrop {
     flex-shrink: 0;
     border: 1px solid var(--Boarder-Gradient-Stroke, rgba(255, 255, 255, 0.08));
     backdrop-filter: blur(5px);
+
     @media(min-width:991.98px) {
         padding: 56px 40px;
     }
+
     @media(max-width:991.98px) {
         padding: 32px 24px;
     }
@@ -782,10 +879,12 @@ dialog::backdrop {
         top: 0;
         opacity: 1;
         visibility: visible;
+
         .modal__body {
             transform: translateY(0);
         }
     }
+
     &__wrapper {
         position: relative;
         margin: auto;
@@ -801,6 +900,7 @@ dialog::backdrop {
         padding: 40px;
         border-radius: 24px;
         background: var(--Color-Primary-Dark-Blue, #161625);
+
         @media(max-width: 991.98px) {
             padding: 32px 20px;
         }
@@ -816,12 +916,13 @@ dialog::backdrop {
         align-items: center;
         gap: 8px;
         top: -32px;
+
         @media(max-width: 1200.98px) {
             right: 0;
             top: -36px;
         }
     }
-}   
+}
 
 
 /***********BUTTONS*************************/
@@ -851,6 +952,7 @@ dialog::backdrop {
         width: 72px;
         height: 72px;
         border-radius: 100%;
+
         &:hover {
             cursor: pointer;
         }
@@ -919,12 +1021,14 @@ dialog::backdrop {
         gap: 16px;
         height: 64px;
         border-radius: 48px;
+
         .button-icon {
             border-radius: 48px;
             padding: 8px;
             width: 48px;
             height: 48px;
         }
+
         &::after {
             display: none;
             border-radius: 48px;
@@ -944,7 +1048,7 @@ dialog::backdrop {
             height: 56px;
         }
 
-       
+
 
         @media (max-width: 767.98px) {
             height: 64px;
@@ -1657,6 +1761,11 @@ dialog::backdrop {
 
     &__reviews {}
 
+    .main-reviews-pricing {
+        border-radius: 40px 40px 0 0;
+        background: var(--Color-Primary-Light-Gray, #F3F4F6);
+    }
+
     // .main__subscription
 
     &__subscription {}
@@ -1721,9 +1830,11 @@ dialog::backdrop {
         margin: 0px auto 0px auto;
         max-width: 634px;
     }
+
     &__check-list {
         margin-top: 24px;
     }
+
     // .main-hero__buttons
 
     &__buttons {
@@ -1747,9 +1858,11 @@ dialog::backdrop {
         cursor: pointer;
         margin: 0px auto;
         height: 336px;
+
         @media (max-width: 767.98px) {
             max-height: 280px;
         }
+
         video {
             position: absolute;
             top: 50%;
@@ -1757,7 +1870,17 @@ dialog::backdrop {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transform: translate(-50%, -50%); 
+            transform: translate(-50%, -50%);
+        }
+    }
+}
+
+.main-hero-pricing {
+    padding-top: 96px !important;
+
+    .main-hero {
+        &__buttons {
+            margin-top: 16px;
         }
     }
 }
@@ -2638,8 +2761,9 @@ dialog::backdrop {
     // .services-card__text
 
     &__text {
-        
+
         color: var(--Color-Text-Black-80);
+
         @media (min-width: 487.98px) {
             margin: 0px 8px;
         }
@@ -3511,11 +3635,13 @@ dialog::backdrop {
     row-gap: 24px;
     column-gap: 24px;
     align-self: stretch;
+
     @media (min-width: 991.98px) {
         height: 400px;
         grid-template-rows: repeat(2, minmax(0, 1fr));
         grid-template-columns: repeat(5, minmax(0, 1fr));
     }
+
     @media (max-width: 991.98px) {
         grid-template-columns: 1fr;
     }
@@ -3527,17 +3653,17 @@ dialog::backdrop {
             grid-row: 1 / span 1;
             grid-column: 1 / span 3;
         }
-    
+
         &:nth-child(2) {
             grid-row: 1 / span 1;
             grid-column: 4 / span 2;
         }
-    
+
         &:nth-child(3) {
             grid-row: 2 / span 1;
             grid-column: 1 / span 2;
         }
-    
+
         &:nth-child(4) {
             grid-row: 2 / span 1;
             grid-column: 3 / span 3;
@@ -3555,8 +3681,10 @@ dialog::backdrop {
     border-radius: 40px 40px 0 0;
     background: #FFF;
 }
+
 .mtd-pricing-options__texts {
     color: var(--Color-Text-Black-100, #000);
+
     @media(min-width:991.98px) {
         max-width: 492px;
     }
@@ -3573,9 +3701,11 @@ dialog::backdrop {
     border: 1px solid var(--Boarder-Gradient-Stroke, rgba(255, 255, 255, 0.08));
     background: var(--Color-Accent-Light-Blue, #E3E3FC);
     backdrop-filter: blur(5px);
+
     @media(min-width:991.98px) {
         padding: 56px 40px;
     }
+
     &__title {
         color: var(--Color-Text-Black-100, #000);
     }
@@ -3587,13 +3717,15 @@ dialog::backdrop {
         padding: 32px 24px;
         border-radius: 24px;
         background: var(--Color-Primary-Dark-Blue, #161625);
+
         @media(min-width:991.98px) {
             padding: 64px 56px;
         }
     }
 
     &__left {
-        padding: 20px  0px;
+        padding: 20px 0px;
+
         @media(min-width:991.98px) {
             padding: 40px 40px 40px 0px;
         }
@@ -3605,9 +3737,11 @@ dialog::backdrop {
         color: var(--Color-Text-White-100, #FFF);
         margin-bottom: 16px;
     }
+
     &__text {
         color: var(--Color-Text-White-80, rgba(255, 255, 255, 0.80));
     }
+
     &__list {
         border-radius: 16px;
         backdrop-filter: blur(9px);
@@ -3617,17 +3751,19 @@ dialog::backdrop {
         flex-direction: column;
         gap: 12px;
         margin-bottom: 56px;
+
         @media(max-width:991.98px) {
             margin-bottom: 32px;
         }
     }
 
     &__li {
-        padding:0px 16px;
+        padding: 0px 16px;
         display: flex;
         align-items: center;
         gap: 16px;
         color: var(--Color-Text-White-80, rgba(255, 255, 255, 0.80));
+
         &::before {
             width: 24px;
             height: 24px;
@@ -3639,12 +3775,15 @@ dialog::backdrop {
 .mtd-subscription-right {
     gap: 16px;
     background: var(--Color-Accent-Lime, #D1F55F);
+
     &__title {
         color: var(--Color-Text-Black-100, #000);
     }
+
     &__text {
         color: var(--Color-Text-Black-80, rgba(0, 0, 0, 0.80));
     }
+
     &__info {
         color: var(--Color-Text-Black-100, #000) !important;
         display: flex;
@@ -3652,10 +3791,12 @@ dialog::backdrop {
         align-items: center;
         gap: 8px;
         align-self: stretch;
+
         .h1 {
             color: var(--Color-Text-Black-100, #000) !important;
         }
     }
+
     &__card {
         color: var(--Color-Text-Black-80, rgba(0, 0, 0, 0.80));
     }
@@ -3674,6 +3815,7 @@ dialog::backdrop {
     display: flex;
     gap: 24px;
     align-items: center;
+
     @media(max-width: 767.98px) {
         flex-direction: column;
     }
@@ -3687,21 +3829,26 @@ dialog::backdrop {
     align-items: flex-start;
     gap: 24px;
     align-self: stretch;
+
     @media(max-width: 991.98px) {
         flex: 0 1 50%;
         padding: 0;
     }
+
     &__title {
         color: var(--Color-Text-White-100, #FFF);
     }
+
     &__list {
         display: flex;
         flex-direction: column;
         align-items: start;
         gap: 4px;
+
         .regular-text {
             color: var(--Color-Text-White-80, rgba(255, 255, 255, 0.80));
         }
+
         height: 100%;
     }
 
@@ -3714,6 +3861,7 @@ dialog::backdrop {
         border: 1px solid rgba(255, 255, 255, 0.08);
         background: rgba(255, 255, 255, 0.04);
         backdrop-filter: blur(5px);
+
         p {
             color: var(--Color-Text-White-80, rgba(255, 255, 255, 0.80));
         }
@@ -3742,10 +3890,12 @@ dialog::backdrop {
     background: #FFF;
 
     align-self: stretch;
+
     @media(max-width: 991.98px) {
         flex: 0 1 47%;
         padding: 24px;
     }
+
     &__title {
         color: var(--Color-Text-Black-100, #000);
         margin-bottom: 24px;
@@ -3756,17 +3906,21 @@ dialog::backdrop {
         flex-direction: column;
         gap: 24px;
     }
+
     &__button {
         padding: 8px 8px 8px 64px !important;
         height: 64px !important;
         border-radius: 48px;
+
         &::after {
             display: none;
             border-radius: 48px;
         }
+
         p {
             width: 100%;
         }
+
         span {
             width: 48px;
             min-width: 48px !important;
@@ -3775,10 +3929,12 @@ dialog::backdrop {
         }
 
     }
+
     &__text {
         transition: color .3s ease-in-out;
         margin-top: 78px;
         color: var(--Color-Text-Black-60, rgba(0, 0, 0, 0.60));
+
         @media(max-width: 991.98px) {
             margin-top: 32px;
         }
@@ -3791,11 +3947,13 @@ dialog::backdrop {
         .newsletters-form__span {
             opacity: 1;
         }
+
         .newsletters-form__input {
             &::placeholder {
                 opacity: 0;
             }
         }
+
         .newsletters-modal-right__text {
             color: var(--Color-Text-Black-80, rgba(0, 0, 0, 0.80));
         }
@@ -3814,7 +3972,8 @@ dialog::backdrop {
         font-size: 14px;
         font-style: normal;
         font-weight: 400;
-        line-height: 20px; /* 142.857% */
+        line-height: 20px;
+        /* 142.857% */
         opacity: 0;
         transition: all .3s ease-in-out;
     }
@@ -3827,14 +3986,16 @@ dialog::backdrop {
         font-size: 18px;
         font-style: normal;
         font-weight: 400;
-        line-height: 28px; 
+        line-height: 28px;
         outline: none;
         letter-spacing: -0.36px;
         transition: all .3s ease-in-out;
+
         &::placeholder {
             color: var(--Color-Text-Grey-60, rgba(64, 64, 99, 0.60));
             padding: 16px;
         }
+
         &:focus {
             padding: 16px 0px;
             color: var(--Color-Primary-Dark-Blue, #161625);
@@ -3861,12 +4022,14 @@ dialog::backdrop {
 .main-demo {
     background: #FFF;
     padding: 48px 0px 96px 0px;
+
     &__image {
         max-width: 834px;
         height: auto;
         position: relative;
         aspect-ratio: 834/464;
         margin: 0px auto 48px auto;
+
         img {
             max-width: 100%;
             height: auto;
@@ -3881,18 +4044,21 @@ dialog::backdrop {
     }
 
     &__content {
-        padding: 56px 24px 24px  24px;
+        padding: 56px 24px 24px 24px;
         border-radius: 24px;
         background: var(--Color-Primary-Dark-Blue, #161625);
         display: flex;
         justify-content: space-between;
         gap: 24px;
+
         @media(max-width: 1200.98px) {
             flex-direction: column;
         }
+
         @media(min-width: 1200.98px) {
             align-items: center;
         }
+
         @media(min-width: 991.98px) {
             padding: 56px;
         }
@@ -3901,10 +4067,12 @@ dialog::backdrop {
             padding: 24px;
         }
     }
+
     &__left,
     &__right {
         flex: 0 1 50%;
     }
+
     &__title {
         margin-bottom: 16px;
         color: var(--Color-Text-White-100, #FFF);
@@ -3923,10 +4091,10 @@ dialog::backdrop {
     gap: 16px;
     flex: 1 0 0;
     border-radius: 16px;
-    
-        background: rgba(255, 255, 255, 0.04);
-        backdrop-filter: blur(5px);
-    
+
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(5px);
+
     @media(max-width: 640.98px) {
         padding: 16px;
     }
@@ -3947,6 +4115,7 @@ dialog::backdrop {
             position: absolute;
             bottom: -28px;
             left: 0;
+
             @media(max-width: 640.98px) {
                 flex-direction: column;
                 bottom: 76px;
@@ -3958,6 +4127,7 @@ dialog::backdrop {
             gap: 40px;
         }
     }
+
     &__input {
         height: 64px;
         display: flex;
@@ -3984,9 +4154,504 @@ dialog::backdrop {
         &::placeholder {
             color: var(--Color-Text-Grey-60, rgba(64, 64, 99, 0.60));
         }
+
         &:focus {
             border: 2px solid var(--Color-Accent-Lime, #D1F55F);
             color: var(--Color-Primary-Dark-Blue, #161625);
+        }
+    }
+}
+
+
+/***************Pricing Page********************************/
+
+.buttons-payment {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 40px;
+    background: var(--Color-Primary-Dark-Blue, #161625);
+    padding: 4px;
+    position: relative;
+
+    &__button {
+
+        width: 122px;
+        display: flex;
+        padding: 8px 0;
+        align-items: center;
+        justify-content: center;
+        transition: color .3s ease-in;
+        height: 44px;
+        color: var(--Color-Text-White-60, rgba(255, 255, 255, 0.60));
+        /* Body/Regular Text */
+        font-family: "Be Vietnam Pro";
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 28px;
+        /* 155.556% */
+        letter-spacing: -0.36px;
+        position: relative;
+        z-index: 2;
+
+        &._active {
+            font-weight: 600;
+            color: var(--Color-Text-Black-100, #000);
+        }
+    }
+
+    &__active {
+        border-radius: 72px;
+        position: absolute;
+        width: 122px;
+        height: 44px;
+        left: 4px;
+        top: 4px;
+        transition: left .3s ease-in;
+        background: var(--Color-Accent-Lime, #D1F55F);
+    }
+}
+
+.pricing-cards {
+    border-radius: 40px 40px 0 0;
+    background: var(--Color-Primary-Light-Gray, #F3F4F6);
+
+    &__content {
+        padding: 14px 0px;
+        display: grid;
+        align-items: center;
+        grid-template-columns: repeat(3, 1fr);
+
+        @media(max-width:1280.98px) {
+            grid-template-columns: repeat(1, 1fr);
+            gap: 16px;
+        }
+    }
+}
+
+.pricing-card {
+    display: flex;
+    padding: 40px 32px;
+    flex-direction: column;
+    gap: 32px;
+    border-radius: 24px;
+    border: 1px solid var(--Color-Stroke-Dark, rgba(137, 137, 158, 0.30));
+    background: #FFF;
+    position: relative;
+    overflow: hidden;
+
+    @media(max-width:640.98px) {
+        padding: 32px 24px;
+    }
+
+    &__title {
+        color: var(--Color-Text-Black-100, #000);
+    }
+
+    &__text {
+        color: var(--Color-Text-Black-80, rgba(0, 0, 0, 0.80));
+    }
+
+    &__price {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        gap: 8px;
+
+        .h2 {
+            color: var(--Color-Text-Black-80, rgba(0, 0, 0, 0.80));
+        }
+
+        .regular-text {
+            color: var(--Color-Text-Black-80, rgba(0, 0, 0, 0.80));
+        }
+    }
+
+    &__button {
+        margin-right: auto;
+
+        @media(min-width:1280.98px) {
+            margin: 0px auto;
+        }
+    }
+
+    &__list {
+        padding-top: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        border-top: 1px solid var(--Color-Primary-Light-Gray, #F3F4F6);
+        margin: 0px 16px;
+
+        @media(max-width:640.98px) {
+            margin: 0px 12px;
+        }
+    }
+
+    &__li {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--Color-Text-Black-80, rgba(0, 0, 0, 0.80));
+
+        &::before {
+            content: url("../icons/RoundCheck.svg");
+            display: block;
+            width: 24px;
+            height: 24px;
+        }
+
+        span {
+            display: inline-flex;
+            color: var(--Color-Text-Black-100, #000);
+        }
+    }
+
+    &._active {
+        padding-top: 88px;
+        background: var(--Color-Primary-Dark-Blue, #161625);
+
+        .pricing-card__title {
+            color: var(--Color-Text-White-100, #FFF);
+        }
+
+        .pricing-card__text {
+            color: var(--Color-Text-White-80, rgba(255, 255, 255, 0.80));
+        }
+
+        .pricing-card__price {
+            .h2 {
+                color: var(--Color-Text-White-100, #FFF);
+            }
+
+            .regular-text {
+                color: var(--Color-Text-White-100, #FFF);
+            }
+        }
+
+        .pricing-card__list {
+            margin-bottom: 70px;
+            border-top: 1px solid var(--Color-Primary-Blue, #2A2A49);
+
+            @media(max-width:640.98px) {
+                margin-bottom: 40px;
+            }
+        }
+
+        .pricing-card__li {
+            color: var(--Color-Text-White-100, #FFF);
+
+            span {
+                color: var(--Color-Text-White-80, rgba(255, 255, 255, 0.80));
+            }
+        }
+
+        .pricing-card__popular {
+            border-radius: 0 0 0 46px;
+            display: flex;
+            height: 56px;
+            padding: 8px 56px;
+            top: 0;
+            color: var(--Color-Accent-Lime, #D1F55F);
+            font-family: "Be Vietnam Pro";
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 24px;
+            /* 171.429% */
+            letter-spacing: 1.68px;
+            text-transform: uppercase;
+            justify-content: center;
+            position: absolute;
+            right: -0.333px;
+            align-items: center;
+            gap: 6px;
+            background: var(--Color-Primary-Blue, #2A2A49);
+        }
+    }
+}
+
+
+.pricing-additionaly {
+    border-radius: 0 0 40px 40px;
+    background: var(--Color-Primary-Light-Gray, #F3F4F6);
+
+    &__text {
+        margin-left: 32px;
+        margin-top: 24px;
+        color: var(--Color-Text-Grey-60, rgba(64, 64, 99, 0.60));
+    }
+}
+
+.pricing-additionaly-table {
+    &__table {}
+
+    &__thead {
+        .pricing-additionaly-table__thead-th {
+            padding: 38px 0px;
+        }
+    }
+
+    &__thead-th {
+        &:first-child {
+            text-align: left;
+            background: var(--Color-Primary-Dark-Blue, #161625);
+            height: 112px;
+            padding: 16px 40px;
+            display: flex;
+            align-items: end;
+            color: var(--Color-Text-White-100, #FFF);
+            border-bottom: 1px solid var(--Color-Primary-Blue);
+            border-radius: 24px 0px 0px 0px;
+            @media(max-width:767.98px) {
+                padding: 16px;
+                height: 60px;
+            }
+        }
+
+        &:not(:first-child) {
+            color: var(--Color-Text-Black-100, #000);
+            text-align: center;
+            padding: 38px 0px;
+            border-bottom: 1px solid var(--Color-Primary-Gray, #D9D9E0);
+
+            @media(max-width:767.98px) {
+                padding: 16px;
+                height: 60px;
+            }
+        }
+
+        &:nth-child(2),
+        &:nth-child(3) {
+            border-right: 1px solid var(--Color-Primary-Gray, #D9D9E0);
+        }
+    }
+
+    &__tr {
+        &:last-child {
+            .pricing-additionaly-table__td {
+                padding-bottom: 21px;
+                height: 93px;
+            }
+            td:first-child {
+                border-radius: 0px 0px 0px 24px;
+            }
+        }
+        
+    }
+
+    &__td {
+        &:not(:first-child) {
+            color: var(--Color-Text-Black-80, rgba(0, 0, 0, 0.80));
+            text-align: center;
+            padding: 8px 0px;
+
+            img {
+                margin-right: 8px;
+            }
+
+            span {
+                color: var(--Color-Text-Black-100, #000);
+            }
+        }
+
+        &:first-child {
+            background: var(--Color-Primary-Dark-Blue, #161625);
+            height: 72px;
+            padding: 0 40px;
+            color: var(--Color-Text-White-60, rgba(255, 255, 255, 0.60));
+            
+            @media(max-width:767.98px) {
+                padding: 0px 16px;
+            }
+        }
+
+        &:nth-child(2),
+        &:nth-child(3) {
+            border-right: 1px solid var(--Color-Primary-Gray, #D9D9E0);
+        }
+
+
+    }
+}
+
+.pricing-features {
+    background: var(--Color-Primary-Light-Gray, #F3F4F6);
+
+    &__table {
+        border-collapse: separate;
+        border: 1px solid var(--Color-Primary-Gray, #D9D9E0);
+
+        thead>tr> {
+
+            th {
+
+                border-bottom: 1px solid var(--Color-Primary-Gray, #D9D9E0) !important;
+                height: 72px;
+                background: var(--Color-Primary-Gray, #D9D9E0);
+
+                &:not(:first-child) {
+                    padding: 16px;
+                }
+
+                &:first-child {
+                    padding: 16px 24px;
+
+                    @media(max-width:767.98px) {
+                        padding: 12px 16px;
+                    }
+
+                    border-radius: 24px 0px 0px 0px;
+                }
+
+                &:last-child {
+                    border-radius:0px 24px  0px 0px;
+                }
+            }
+        }
+
+        tbody>tr {
+            &:not(:last-child) {
+                td {
+                    border-bottom: 1px solid var(--Color-Primary-Gray, #D9D9E0) !important;
+                }
+            }
+
+            transition: background-color .3s ease-in;
+
+            td {
+
+                &:not(:first-child) {
+                    height: 56px;
+                    padding: 0 16px;
+                    text-align: center;
+                    color: var(--Color-Text-Black-80, rgba(0, 0, 0, 0.80));
+
+                    img {
+                        display: block;
+                        margin: 0px auto;
+                    }
+                }
+
+                &:not(:last-child) {
+                    border-right: 1px solid var(--Color-Primary-Gray, #D9D9E0) !important;
+                }
+
+                &:first-child {
+                    height: 56px;
+                    padding: 0 24px;
+                    transition: color .3s ease-in;
+                    color: var(--Color-Text-Grey-80, rgba(64, 64, 99, 0.80));
+
+                    img {
+                        transition: filter .3s ease-in;
+                    }
+
+                    div {
+                        display: flex;
+                        align-items: center;
+                        justify-content: start;
+                        gap: 8px;
+                        max-width: fit-content;
+                        margin-right: auto;
+                    }
+
+                    @media(max-width:767.98px) {
+                        padding: 12px 16px;
+                    }
+                }
+            }
+
+            @media(hover: hover) {
+                &:hover {
+                    background-color: var(--Color-Primary-Light-Gray, #F3F4F6);
+
+                    td {
+                        color: var(--Color-Text-Black-100, #000);
+
+                        &:first-child {
+                            img {
+                                filter: brightness(0) saturate(100%)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    line-height: 0;
+
+    &::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        top: 50%;
+        left: calc(100% + 12px);
+        transform: translateY(-50%);
+        padding: 20px 16px;
+        white-space: pre-line;
+        width: 343px;
+        max-width: 60vw;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .2s ease, transform .2s ease;
+        z-index: 5;
+        border-radius: 12px;
+        background: var(--Color-Primary-Dark-Blue, #161625);
+        color: var(--Color-Text-White-80, rgba(255, 255, 255, .8));
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: calc(50% - 6px);
+        left: calc(100% + 6px);
+        transform: rotate(-45deg);
+        opacity: 0;
+        transition: opacity .2s ease;
+        z-index: 6;
+        width: 12px;
+        height: 12px;
+        background: var(--Color-Primary-Dark-Blue, #161625);
+    }
+
+    &:hover::after,
+    &:hover::before {
+        opacity: 1;
+    }
+
+    @media (max-width: 767.98px) {
+        &::after {
+            top: calc(100% + 12px);
+            left: 50%;
+            transform: translateX(-45%);
+            width: 90vw;
+            max-width: 220px;
+            text-align: left;
+        }
+
+        &::before {
+            top: calc(100% + 6px);
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+        }
+
+        &.top {
+            &::after {
+                bottom: calc(50% + 20px);
+                top: inherit;
+            }
+
+            &::before {
+                top: inherit;
+                bottom: calc(50% + 14px);
+            }
         }
     }
 }
