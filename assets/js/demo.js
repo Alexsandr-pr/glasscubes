@@ -67,4 +67,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 button.disabled = false;
             });
     });
+
+
+
+    const demoButton = document.querySelector("#demo-video-button");
+
+
+    demoButton.addEventListener("click", () => {
+        const parent = demoButton.closest(".main-demo-image");
+        const video = parent.querySelector("video");
+
+        parent.classList.add("_active");
+        video.play();
+    })
 });

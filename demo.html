@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="./assets/styles/style.css">
     <title>Index</title>
 </head>
+<!--  После того, как человек ввел адрес электронной почты и отправил форму ниже, страница обновляется и показывает другое видео и календарь бронирования.
+Для PRCING - используйте блок, который находится в дизайне, а не рядом с ним (черный).
+Да, нам нужны модальные окна Cookies и Privacy. Они должны появляться только один раз.
+
+ -->
 
 <body>
     <header class="header">
@@ -54,9 +59,13 @@
         <main class="main">
             <section class="main__demo main-demo">
                 <div class="main-demo__container">
-                    <div class="main-demo__image">
-                        <img width="834" height="464" src="./assets/images/glasscubes.png" alt="glasscubes">
-                        <button data-modal-button="video-modal" data-modal-url="./assets/videos/DemoCraig.webm" class="button-icon button-icon-dark large">
+                    <div class="main-demo__image main-demo-image">
+                        <img class="main-demo-image__img" width="834" height="464" src="./assets/images/glasscubes.png" alt="glasscubes">
+                        <video class="main-demo-image__video" controls>
+						    <source src="./assets/videos/DemoCraig.webm" type="video/webm">
+                            Your browser does not support the video tag.
+                        </video>
+                        <button id="demo-video-button" class="button-icon button-icon-dark large">
                             <img width="24" height="24" src="./assets/icons/Play-Filled.svg" alt="Arrow-Up">
                         </button>
                     </div>
