@@ -272,4 +272,172 @@ window.addEventListener("DOMContentLoaded", () => {
 	}
 
 	initSlider();
+
+	function initVideo() {
+		const videos = document.querySelectorAll("[data-video]");
+
+		if (videos.length === 0) {
+			return;
+		}
+
+		videos.forEach((video) => {
+			let isVideoPlaying = false;
+
+			const videoButton = video.querySelector("[data-video-button]");
+			const videoPreview = video.querySelector("[data-video-preview]");
+			const videoContent = video.querySelector("[data-video-content]");
+
+
+			videoButton.addEventListener("click", () => {
+				if (isVideoPlaying) {
+					videoContent.pause();
+					isVideoPlaying = false;
+					videoPreview.style.display = "block";
+					videoContent.style.display = "none";
+					videoButton.classList.remove("_active");
+				} else {
+					videoContent.play();
+					isVideoPlaying = true;
+					videoPreview.style.display = "none";
+					videoContent.style.display = "block";
+					videoButton.classList.add("_active");
+				}
+			});
+		});
+	}
+
+	initVideo();
+
+
+	function activateCookies() {
+		function createFirstModal() {
+			const html = `
+			<div class="cookie-modal your-privacy-modal">
+				<div class="cookie-modal__body">
+					<p class="cookie-modal__title h5">Your Privacy</p>
+					<div class="cookie-modal__text x-small-text">
+						We use cookies to improve your experience on our site and to show you relevant advertising.
+						Read our updated privacy policy and cookie policy.
+					</div>
+					<div class="cookie-modal__buttons">
+						<button class="button-green primary" data-action="accept">Accept All</button>
+						<button class="button-green secondary" data-action="decline">Decline</button>
+					</div>
+					<div class="cookie-modal__button">
+						<button class="button-green secondary" data-action="customize">Customize Settings</button>
+					</div>
+				</div>
+			</div>`;
+			document.body.insertAdjacentHTML("beforeend", html);
+			document.body.classList.add("cookie-modal-open");
+		}
+
+		function createSecondModal() {
+			const html = `
+			<div class="cookie-modal cookie-settings-modal">
+				<div class="cookie-modal__body">
+					<p class="cookie-modal__title h5">Cookie Settings</p>
+					<div class="cookie-modal__text x-small-text">
+						When you visit any of our websites, it may store or retrieve information on your browser, mostly in the form of cookies. This information might be about you, your preferences or your device and is mostly used to make the site work as you expect it to. The information does not usually directly identify you, but it can give you a more personalized web experience.
+					</div>
+					<div class="cookie-modal__list">
+						<div class="cookie-modal__toggle">
+							<div class="toggle">
+								<input type="checkbox" id="necessary" checked disabled />
+								<label for="necessary" class="toggle-label"></label>
+							</div>
+							Just necessary
+						</div>
+						<div class="cookie-modal__toggle">
+							<div class="toggle">
+								<input type="checkbox" id="performance" />
+								<label for="performance" class="toggle-label"></label>
+							</div>
+							Performance cookies
+						</div>
+						<div class="cookie-modal__toggle">
+							<div class="toggle">
+								<input type="checkbox" id="targeting" />
+								<label for="targeting" class="toggle-label"></label>
+							</div>
+							Targeting cookies
+						</div>
+					</div>
+					<div class="cookie-modal__buttons">
+						<div class="cookie-modal__grid">
+							<button class="button-green primary" data-action="accept">Accept All</button>
+							<button class="button-green secondary" data-action="decline">Decline</button>
+						</div>
+						<button class="button-green secondary" data-action="save">Save</button>
+					</div>
+				</div>
+			</div>`;
+			document.body.insertAdjacentHTML("beforeend", html);
+			document.body.classList.remove("cookie-modal-open");
+		}
+
+		function openSettings() {
+			document.querySelector(".your-privacy-modal")?.remove();
+			createSecondModal();
+			setSecondModalListeners();
+		}
+
+		function closeAll() {
+			document.querySelectorAll(".cookie-modal").forEach((m) => m.remove());
+		}
+
+		function saveSettings() {
+			const settings = {
+				necessary: true,
+				performance: document.getElementById("performance").checked,
+				targeting: document.getElementById("targeting").checked,
+				timestamp: Date.now(),
+			};
+			localStorage.setItem("cookieSettings", JSON.stringify(settings));
+			closeAll();
+		}
+
+		function acceptAll() {
+			const settings = { necessary: true, performance: true, targeting: true, timestamp: Date.now() };
+			localStorage.setItem("cookieSettings", JSON.stringify(settings));
+			closeAll();
+		}
+
+		function declineAll() {
+			const settings = { necessary: true, performance: false, targeting: false, timestamp: Date.now() };
+			localStorage.setItem("cookieSettings", JSON.stringify(settings));
+			closeAll();
+		}
+
+		function setFirstModalListeners() {
+			const modal = document.querySelector(".your-privacy-modal");
+			modal?.addEventListener("click", (e) => {
+				const action = e.target.dataset.action;
+				if (action === "accept") acceptAll();
+				if (action === "decline") closeAll();
+				if (action === "customize") openSettings();
+			});
+		}
+
+		function setSecondModalListeners() {
+			const modal = document.querySelector(".cookie-settings-modal");
+			modal?.addEventListener("click", (e) => {
+				const action = e.target.dataset.action;
+				if (action === "accept") acceptAll();
+				if (action === "decline") declineAll();
+				if (action === "save") saveSettings();
+			});
+		}
+
+		// Показываем модалку, если настроек нет
+		if (!localStorage.getItem("cookieSettings")) {
+			setTimeout(() => {
+				createFirstModal();
+				setFirstModalListeners();
+			}, 2000);
+		}
+	}
+
+	activateCookies();
+
 })

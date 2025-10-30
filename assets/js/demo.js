@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const firstBlock = document.querySelector(".main-demo");
+    const secondBlock = document.querySelector(".main-response");
+
     const form = document.querySelector(".main-demo-form");
     const input = form.querySelector(".main-demo-form__input");
     const message = form.querySelector(".form__text");
@@ -52,32 +55,26 @@ document.addEventListener("DOMContentLoaded", () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email }),
         })
-            .then((res) => {
-                if (!res.ok) throw new Error("Server error");
-                return res.json();
-            })
-            .then(() => {
-                form.reset();
-                showMessage("Looks good!", "success");
-            })
-            .catch(() => {
-                showMessage("Something went wrong. Please try again later.", "error");
-            })
+            .then((res) => res.json())
+            .catch(() => {}) 
             .finally(() => {
-                button.disabled = false;
+                localStorage.setItem("showResponseBlock", "true");
+                location.reload();
+                window.scrollTo({
+                    top: 0
+                });
             });
     });
 
 
+    if (localStorage.getItem("showResponseBlock") === "true") {
+        firstBlock.style.display = "none";
+        secondBlock.style.display = "block";
 
-    const demoButton = document.querySelector("#demo-video-button");
+        localStorage.removeItem("showResponseBlock");
 
-
-    demoButton.addEventListener("click", () => {
-        const parent = demoButton.closest(".main-demo-image");
-        const video = parent.querySelector("video");
-
-        parent.classList.add("_active");
-        video.play();
-    })
+        window.scrollTo({
+            top: 0
+        });
+    }
 });

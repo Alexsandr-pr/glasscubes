@@ -8,11 +8,6 @@
     <link rel="stylesheet" href="./assets/styles/style.css">
     <title>Index</title>
 </head>
-<!--  После того, как человек ввел адрес электронной почты и отправил форму ниже, страница обновляется и показывает другое видео и календарь бронирования.
-Для PRCING - используйте блок, который находится в дизайне, а не рядом с ним (черный).
-Да, нам нужны модальные окна Cookies и Privacy. Они должны появляться только один раз.
-
- -->
 
 <body>
     <header class="header">
@@ -59,14 +54,16 @@
         <main class="main">
             <section class="main__demo main-demo">
                 <div class="main-demo__container">
-                    <div class="main-demo__image main-demo-image">
-                        <img class="main-demo-image__img" width="834" height="464" src="./assets/images/glasscubes.png" alt="glasscubes">
-                        <video class="main-demo-image__video" controls>
-						    <source src="./assets/videos/DemoCraig.webm" type="video/webm">
+                    <div data-video class="main-demo__image main-demo-image">
+                        <img data-video-preview class="main-demo-image__img" width="834" height="464" src="./assets/images/glasscubes.png"
+                            alt="glasscubes">
+                        <video data-video-content class="main-demo-image__video">
+                            <source src="./assets/videos/DemoCraig.webm" type="video/webm">
                             Your browser does not support the video tag.
                         </video>
-                        <button id="demo-video-button" class="button-icon button-icon-dark large">
+                        <button data-video-button id="demo-video-button" class="button-icon button-icon-dark large button-icon-video">
                             <img width="24" height="24" src="./assets/icons/Play-Filled.svg" alt="Arrow-Up">
+                            <img width="24" height="24" src="./assets/icons/PauseFilled.svg" alt="Pause">
                         </button>
                     </div>
                 </div>
@@ -100,6 +97,45 @@
                                     </button>
                                 </div>
                             </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="main__response main-response">
+                <div class="main-response__container">
+                    <div class="main-response__content">
+                        <div class="main-response__left">
+                            <h1 class="main-response__title h1">
+                                Thanks! Why not see for yourself?
+                            </h1>
+                            <ul class="main-response__list check-list">
+                                <li class="check-list__item large-text">
+                                    Get faster, higher-quality responses from clients.
+                                </li>
+                                <li class="check-list__item">
+                                    Avoid workload bottlenecks and delays.
+                                </li>
+                                <li class="check-list__item">
+                                    Save hundreds of hours of effort.
+                                </li>
+                            </ul>
+                            <div data-video class="main-response__video main-response-video">
+                                <img data-video-preview class="main-response-video__preview" width="654" height="376"
+                                    src="./assets/images/glasscubes.png" alt="glasscubes">
+                                <video data-video-content width="654" height="376" class="main-response-video__video">
+                                    <source src="./assets/videos/DemoCraig.webm" type="video/webm">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <button data-video-button class="button-icon button-icon-dark button-icon-max-3 button-icon-video">
+                                    <img width="24" height="24" src="./assets/icons/Play-Filled.svg" alt="Play">
+                                    <img width="24" height="24" src="./assets/icons/PauseFilled.svg" alt="Pause">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="main-response__right main-response-right">
+                            <div class="main-response-right__wrapper">
+
+                            </div>
                         </div>
                     </div>
                 </div>
