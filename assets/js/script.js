@@ -440,4 +440,36 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	activateCookies();
 
+
+	// Знаходимо всі елементи FAQ на сторінці
+	const faqItems = document.querySelectorAll('.faq-item');
+
+	faqItems.forEach(item => {
+		const openButton = item.querySelector('.faq-item__title .button-icon-accent');
+		const closeButton = item.querySelector('.faq-item__bottom .button-icon-dark');
+
+		if (openButton) {
+			openButton.addEventListener('click', (event) => {
+				event.preventDefault();
+				item.setAttribute('open', '');
+			});
+		}
+
+		if (closeButton) {
+			closeButton.addEventListener('click', (event) => {
+				event.preventDefault();
+				item.removeAttribute('open');
+			});
+		}
+
+		const summary = item.querySelector('.faq-item__title');
+		if (summary) {
+			summary.addEventListener('click', (event) => {
+				if (event.target.closest('.button-icon')) {
+					return;
+				}	
+			});
+		}
+	});
+
 })
